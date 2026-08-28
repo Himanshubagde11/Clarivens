@@ -65,7 +65,7 @@
 // 1. Go to https://formspree.io and create a free account.
 // 2. Create a new form, copy the endpoint it gives you (looks like https://formspree.io/f/xxxxxxxx).
 // 3. Paste it below, replacing the placeholder string.
-const FORM_ENDPOINT = "https://formspree.io/f/mjyvvkkn";
+const FORM_ENDPOINT = "https://formspree.io/f/YOUR_FORM_ID";
 
 // TO ACTIVATE THE "THANK YOU FOR CHOOSING CLARIVENS" AUTO-REPLY EMAIL TO THE CUSTOMER:
 // 1. Go to https://www.emailjs.com and create a free account.
@@ -74,12 +74,14 @@ const FORM_ENDPOINT = "https://formspree.io/f/mjyvvkkn";
 //    and make sure the "To email" field is set to {{workEmail}} — note the Template ID.
 // 4. Go to Account > General and copy your Public Key.
 // 5. Paste all three values below, replacing the placeholders.
-const EMAILJS_PUBLIC_KEY = "YOUR_PUBLIC_KEY";
-const EMAILJS_SERVICE_ID = "YOUR_SERVICE_ID";
-const EMAILJS_TEMPLATE_ID = "YOUR_TEMPLATE_ID";
+const EMAILJS_PUBLIC_KEY = "TAQ-H6Nvf7P6sBxc2";
+const EMAILJS_SERVICE_ID = "service_y4z99kp";
+const EMAILJS_TEMPLATE_ID = "template_m0ss1hj";
 
-if (window.emailjs && !EMAILJS_PUBLIC_KEY.includes('YOUR_')) {
+if (window.emailjs) {
   emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
+} else {
+  console.warn('[Clarivens] EmailJS SDK did not load — check that the <script> tag in index.html <head> is present and not blocked (ad blockers sometimes block it).');
 }
 
 (function(){
@@ -127,11 +129,25 @@ if (window.emailjs && !EMAILJS_PUBLIC_KEY.includes('YOUR_')) {
   }
 
   // Sends the branded "Thank you for choosing Clarivens" auto-reply to the customer.
-  // Fire-and-forget: never blocks the thank-you screen, and a failure here is silent
-  // since the enquiry itself has already been captured via Formspree/mailto by this point.
+  // Fire-and-forget: never blocks the thank-you screen (the enquiry itself has already
+  // been captured via Formspree/mailto by this point), but logs to the console so failures
+  // are actually visible when debugging, open DevTools (F12) → Console after submitting.
   function sendThankYouEmail(payload){
-    if (!window.emailjs || EMAILJS_SERVICE_ID.includes('YOUR_') || EMAILJS_TEMPLATE_ID.includes('YOUR_')) return;
-    emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, payload).catch(() => { /* silent */ });
+    if (!window.emailjs) {
+      console.warn('[Clarivens] Skipped auto-reply: EmailJS SDK not loaded.');
+      return;
+    }
+    if (EMAILJS_PUBLIC_KEY.includes('YOUR_') || EMAILJS_SERVICE_ID.includes('YOUR_') || EMAILJS_TEMPLATE_ID.includes('YOUR_')) {
+      console.warn('[Clarivens] Skipped auto-reply: EmailJS is not configured yet. Replace EMAILJS_PUBLIC_KEY, EMAILJS_SERVICE_ID, and EMAILJS_TEMPLATE_ID near the top of home.js with your real values from emailjs.com.');
+      return;
+    }
+    emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, payload)
+      .then((res) => {
+        console.log('[Clarivens] Auto-reply sent successfully.', res.status, res.text);
+      })
+      .catch((err) => {
+        console.error('[Clarivens] Auto-reply failed to send. This is the actual reason, read it carefully:', err);
+      });
   }
 
   form.addEventListener('submit', async (e) => {
