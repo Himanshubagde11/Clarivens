@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clarivens | Data Analytics Services</title>
+<meta name="description" content="Clarivens turns complex data into clear, meaningful insights businesses can act on. Dashboards, ETL pipelines, and data analytics services.">
+<link rel="icon" type="image/png" href="logo-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+</head>
+<body>
+
+<div class="glow-orb o1"></div>
+<div class="glow-orb o2"></div>
+<div class="glow-orb o3"></div>
+<div id="cursorRing"></div>
+<div id="cursorDot"></div>
+
+<header>
+  <nav class="wrap">
+    <a href="index.html" class="logo"><img src="logo-icon.png" alt="Clarivens"></a>
+    <div class="nav-links" id="navLinks">
+      <a href="services.html">Services</a>
+      <a href="index.html#work">Work</a>
+      <a href="about.html">Founder</a>
+      <a href="index.html#contact" class="btn btn-solid">Start a Project</a>
+    </div>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">☰</button>
+  </nav>
+</header>
+
+<div class="cookie-banner" id="cookieBanner" role="region" aria-label="Cookie consent">
+  <div class="cookie-banner-inner">
+    <p>We use minimal cookies to remember your preferences and understand site usage. No data is sold or shared with advertisers. See our <a href="privacy.html">Privacy Policy</a> for details.</p>
+    <div class="cookie-banner-actions">
+      <button class="btn btn-outline" id="cookieDecline" type="button">Decline</button>
+      <button class="btn btn-solid" id="cookieAccept" type="button">Accept</button>
+    </div>
+  </div>
+</div>
+
+<main id="top">
+<!-- HERO -->
+  <div class="hero-scroll-space" id="heroScrollSpace">
+  <section class="hero" id="heroSection">
+    <canvas id="heroCanvas"></canvas>
+    <div class="wrap hero-inner" id="heroInner">
+      <p class="eyebrow" id="heroEyebrow">Data Analytics Services</p>
+      <h1 id="heroTitle"><span class="brand-name">Clarivens</span> turns data into<br>decisions you can <span>trust</span>.</h1>
+      <p class="lead" id="heroLead">I help businesses turn raw, messy data into clean pipelines, honest dashboards and clear answers, handled with the confidentiality your numbers deserve. NDA available on every project.</p>
+      <div class="hero-ctas" id="heroCtas">
+        <a href="#contact" class="btn btn-solid">Start a project</a>
+        <a href="#work" class="btn btn-outline">See my work</a>
+      </div>
+      <div class="stat-row" id="heroStats">
+        <div class="stat"><div class="num"><span>4+</span></div><div class="label">Years of experience</div></div>
+        <div class="stat"><div class="num"><span>5+</span></div><div class="label">ETL pipelines built</div></div>
+        <div class="stat"><div class="num"><span>7M+</span></div><div class="label">Records analyzed</div></div>
+      </div>
+    </div>
+    <div class="scroll-cue" id="scrollCue"><span>SCROLL</span><span class="line"></span></div>
+  </section>
+  </div>
+  <!-- SERVICES TEASER -->
+  <section id="services">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">What I offer</p>
+        <h2>Services built around your data, not a template.</h2>
+        <p>Whether you need a one-off analysis or an ongoing reporting pipeline, here's how I can help. See the full breakdown of each service, including what's included and who it's for.</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card tilt reveal">
+          <div class="service-icon">BI</div>
+          <h3>Dashboards &amp; BI</h3>
+          <p>Power BI and Tableau dashboards built around the KPIs your team actually checks.</p>
+        </div>
+        <div class="service-card tilt reveal">
+          <div class="service-icon">ETL</div>
+          <h3>ETL &amp; Data Pipelines</h3>
+          <p>Azure Data Factory pipelines that turn scattered data into one reliable source of truth.</p>
+        </div>
+        <div class="service-card tilt reveal">
+          <div class="service-icon">EDA</div>
+          <h3>Data Cleaning &amp; Analysis</h3>
+          <p>Python-based cleaning and exploratory analysis so decisions are based on data you can trust.</p>
+        </div>
+        <div class="service-card tilt reveal">
+          <div class="service-icon">AT</div>
+          <h3>Reporting &amp; Automation</h3>
+          <p>Automated recurring reports so your team stops rebuilding the same spreadsheet every month.</p>
+        </div>
+      </div>
+      <div class="reveal" style="text-align:center; margin-top:40px;">
+        <a href="services.html" class="btn btn-outline">See full service details</a>
+      </div>
+    </div>
+  </section>
+  <!-- PROCESS -->
+  <section id="process">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">How We Work</p>
+        <h2>A clear process, from first call to finished dashboard.</h2>
+        <p>No black boxes. Here's roughly how a project moves, tap a step to see what actually happens.</p>
+      </div>
+
+      <div class="process-track">
+        <div class="process-line" aria-hidden="true"></div>
+
+        <div class="process-step reveal">
+          <div class="process-num">01</div>
+          <div class="process-card tilt">
+            <button class="process-step-head" type="button" aria-expanded="false" data-accordion-trigger>
+              <span class="process-title-wrap">
+                <span class="process-title">Discovery Call</span>
+                <span class="process-subtitle">Understand the problem</span>
+              </span>
+              <span class="accordion-icon" aria-hidden="true"></span>
+            </button>
+            <div class="process-body-outer">
+              <div class="process-body-inner">
+                <p>We talk through what data you have, what decisions it needs to support, and what "done" looks like. No jargon, no assumptions, just figuring out what you actually need.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="process-step reveal">
+          <div class="process-num">02</div>
+          <div class="process-card tilt">
+            <button class="process-step-head" type="button" aria-expanded="false" data-accordion-trigger>
+              <span class="process-title-wrap">
+                <span class="process-title">Data Audit &amp; Plan</span>
+                <span class="process-subtitle">Map what's there</span>
+              </span>
+              <span class="accordion-icon" aria-hidden="true"></span>
+            </button>
+            <div class="process-body-outer">
+              <div class="process-body-inner">
+                <p>I look at your actual sources, spreadsheets, databases, APIs, whatever it is, and put together a simple plan: what needs cleaning, what needs connecting, and roughly how long it'll take.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="process-step reveal">
+          <div class="process-num">03</div>
+          <div class="process-card tilt">
+            <button class="process-step-head" type="button" aria-expanded="false" data-accordion-trigger>
+              <span class="process-title-wrap">
+                <span class="process-title">Build &amp; Iterate</span>
+                <span class="process-subtitle">Ship something real</span>
+              </span>
+              <span class="accordion-icon" aria-hidden="true"></span>
+            </button>
+            <div class="process-body-outer">
+              <div class="process-body-inner">
+                <p>Pipelines get built, dashboards take shape, and you see working versions early, not just a final reveal. We adjust based on what actually looks useful once it's in front of you.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="process-step reveal">
+          <div class="process-num">04</div>
+          <div class="process-card tilt">
+            <button class="process-step-head" type="button" aria-expanded="false" data-accordion-trigger>
+              <span class="process-title-wrap">
+                <span class="process-title">Handover &amp; Support</span>
+                <span class="process-subtitle">Nothing stays a black box</span>
+              </span>
+              <span class="accordion-icon" aria-hidden="true"></span>
+            </button>
+            <div class="process-body-outer">
+              <div class="process-body-inner">
+                <p>You get full documentation, source files, and a walkthrough, so nothing lives only in my head. Light support is available afterward if something needs tuning as your data changes.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+<!-- PROJECTS -->
+  <section id="work">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">Projects</p>
+        <h2>A few things I've built end to end.</h2>
+      </div>
+      <div class="project-grid">
+        <div class="project-card tilt reveal">
+          <div class="project-num">01 / 2025</div>
+          <h3>E-Commerce Sales Analytics &amp; Customer Segmentation</h3>
+          <p>Analyzed 2M+ transaction records to identify sales trends and top-performing categories. Applied RFM analysis and K-Means clustering to segment customers into 5 groups, backed by a SQL Server star-schema warehouse and a Power BI dashboard tracking AOV, CLV, and churn rate.</p>
+          <div class="project-tags"><span>Python</span><span>SQL Server</span><span>Power BI</span><span>Excel</span></div>
+        </div>
+        <div class="project-card tilt reveal">
+          <div class="project-num">02 / 2025</div>
+          <h3>Azure End-to-End Data Pipeline for Retail Inventory</h3>
+          <p>Built an automated Azure pipeline ingesting inventory data from flat files and REST APIs into Azure SQL Database, with parameterized ADF pipelines, error handling, and Python-based validation for schema, null, and duplicate checks, surfaced via near real-time Power BI dashboards.</p>
+          <div class="project-tags"><span>Azure Data Factory</span><span>Azure SQL</span><span>Python</span><span>Power BI</span></div>
+        </div>
+        <div class="project-card tilt reveal">
+          <div class="project-num">03 / 2024</div>
+          <h3>COVID-19 Global Data Analysis &amp; Trend Visualization</h3>
+          <p>Collected, cleaned and transformed 5M+ COVID-19 records from WHO and Johns Hopkins datasets. Calculated 7-day rolling averages, case fatality rates and vaccination coverage across countries, documenting insights through visualizations in Jupyter Notebook.</p>
+          <div class="project-tags"><span>Python</span><span>SQL</span><span>Matplotlib</span><span>Seaborn</span></div>
+        </div>
+      </div>
+    </div>
+  </section><!-- TRUST / SECURITY -->
+  <section id="trust">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">Why work with me</p>
+        <h2>Your data, handled with care.</h2>
+        <p>Data is sensitive by default. Here's what you can expect on every engagement.</p>
+      </div>
+      <div class="trust-grid">
+        <div class="trust-card reveal">
+          <div class="check">&#10003;</div>
+          <div>
+            <h3>Confidentiality first</h3>
+            <p>An NDA is available and signed before any data changes hands, no exceptions.</p>
+          </div>
+        </div>
+        <div class="trust-card reveal">
+          <div class="check">&#10003;</div>
+          <div>
+            <h3>Enterprise-grade tools</h3>
+            <p>Work is built on Azure SQL Database, Azure Data Factory and Power BI, the same platforms large organizations trust with their data.</p>
+          </div>
+        </div>
+        <div class="trust-card reveal">
+          <div class="check">&#10003;</div>
+          <div>
+            <h3>Nothing shared without permission</h3>
+            <p>Your data and business logic stay between us. Nothing is reused, reposted, or shown publicly without your sign-off.</p>
+          </div>
+        </div>
+        <div class="trust-card reveal">
+          <div class="check">&#10003;</div>
+          <div>
+            <h3>Clean handover</h3>
+            <p>You get full documentation, source files and access at project close, so nothing lives only in my head.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>  <!-- BRAND MARK -->
+  <section id="brand-mark">
+    <div class="wrap">
+      <div class="orbit-wrap reveal">
+        <div class="orbit-graphic" id="orbitGraphic">
+          <div class="orbit-glow" aria-hidden="true"></div>
+          <div class="orbit-ring ring-1" aria-hidden="true"></div>
+          <div class="orbit-ring ring-2" aria-hidden="true"></div>
+          <div class="orbit-ring ring-3" aria-hidden="true"></div>
+          <div class="orbit-dot dot-1" aria-hidden="true"></div>
+          <div class="orbit-dot dot-2" aria-hidden="true"></div>
+          <div class="orbit-dot dot-3" aria-hidden="true"></div>
+          <img src="logo-mark.png" alt="Clarivens" class="orbit-logo">
+        </div>
+      </div>
+      <p class="orbit-tagline reveal">Clarity <span>&middot;</span> Innovation <span>&middot;</span> Progress</p>
+    </div>
+  </section>
+<!-- CONTACT -->
+  <section id="contact">
+    <div class="wrap contact-grid">
+      <div class="contact-info reveal">
+        <p class="eyebrow">Get Started</p>
+        <h2 style="margin:16px 0 0; font-size:clamp(26px,3vw,34px);">Have a dataset that needs a clearer story?</h2>
+        <p>Tell me what you're working with and what you need, a dashboard, a pipeline, or just a clear answer buried in messy data. Free initial consultation, NDA available, and I usually reply within a day.</p>
+        <div class="contact-row">
+          <div class="icon">@</div>
+          <div><span class="lbl">Email</span><a href="mailto:clarivens.io@gmail.com">clarivens.io@gmail.com</a></div>
+        </div>
+        <div class="contact-row">
+          <div class="icon">in</div>
+          <div><span class="lbl">LinkedIn</span><a href="https://www.linkedin.com/in/himanshu-bagde11/" target="_blank" rel="noopener noreferrer">linkedin.com/in/himanshu-bagde11</a></div>
+        </div>
+        <div class="contact-row">
+          <div class="icon">GH</div>
+          <div><span class="lbl">GitHub</span><a href="https://github.com/Himanshubagde11" target="_blank" rel="noopener noreferrer">github.com/Himanshubagde11</a></div>
+        </div>
+        <div class="contact-row">
+          <div class="icon">IG</div>
+          <div><span class="lbl">Instagram</span><a href="https://www.instagram.com/clarivens/" target="_blank" rel="noopener noreferrer">@clarivens</a></div>
+        </div>
+        <div class="contact-row">
+          <div class="icon">FB</div>
+          <div><span class="lbl">Facebook</span><a href="https://www.facebook.com/profile.php?id=61593940557370" target="_blank" rel="noopener noreferrer">Clarivens</a></div>
+        </div>
+      </div>
+
+      <div class="reveal">
+        <form id="contactForm" autocomplete="on" novalidate>
+          <p class="eyebrow" style="margin-bottom:6px;">📩 Enquiry Form</p>
+          <h3 style="font-size:19px; margin-bottom:22px;">Tell Us About Your Requirement</h3>
+
+          <div class="field">
+            <label for="fullName">Full Name *</label>
+            <input type="text" id="fullName" name="fullName" required autocomplete="name" placeholder="Enter your full name">
+          </div>
+
+          <div class="field">
+            <label for="company">Company / Organization <span class="optional-tag">(optional)</span></label>
+            <input type="text" id="company" name="company" autocomplete="organization" placeholder="Enter your company name">
+          </div>
+
+          <div class="field">
+            <label for="workEmail">Work Email *</label>
+            <input type="email" id="workEmail" name="workEmail" required autocomplete="email" placeholder="yourname@company.com">
+          </div>
+
+          <div class="field">
+            <label for="phone">Phone / WhatsApp Number <span class="optional-tag">(optional)</span></label>
+            <input type="tel" id="phone" name="phone" autocomplete="tel" inputmode="numeric" placeholder="+91 XXXXX XXXXX">
+          </div>
+
+          <div class="field">
+            <label for="helpType">What do you need help with? <span class="optional-tag">(optional)</span></label>
+            <select id="helpType" name="helpType">
+              <option value="" selected>Select one</option>
+              <option value="Data Analytics">Data Analytics</option>
+              <option value="Business Intelligence">Business Intelligence</option>
+              <option value="Power BI Dashboard">Power BI Dashboard</option>
+              <option value="Excel Automation">Excel Automation</option>
+              <option value="SQL / Database">SQL / Database</option>
+              <option value="Data Cleaning & Transformation">Data Cleaning &amp; Transformation</option>
+              <option value="Reporting Automation">Reporting Automation</option>
+              <option value="Custom Analytics Solution">Custom Analytics Solution</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="requirement">Tell us about your problem or requirement *</label>
+            <textarea id="requirement" name="requirement" required style="min-height:130px;" placeholder="Describe the problem you're facing, what you're trying to achieve, or the solution you're looking for..."></textarea>
+          </div>
+
+          <div class="field">
+            <label for="projectSize">Approximate project size <span class="optional-tag">(optional)</span></label>
+            <select id="projectSize" name="projectSize">
+              <option value="" selected>Select one</option>
+              <option value="Small / One-time task">Small / One-time task</option>
+              <option value="Medium project">Medium project</option>
+              <option value="Ongoing requirement">Ongoing requirement</option>
+              <option value="Not sure yet">Not sure yet</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="timeline">When do you need the solution? <span class="optional-tag">(optional)</span></label>
+            <select id="timeline" name="timeline">
+              <option value="" selected>Select one</option>
+              <option value="ASAP">ASAP</option>
+              <option value="Within 1 week">Within 1 week</option>
+              <option value="Within 1 month">Within 1 month</option>
+              <option value="Just exploring">Just exploring</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="hearAbout">How did you hear about us? <span class="optional-tag">(optional)</span></label>
+            <select id="hearAbout" name="hearAbout">
+              <option value="" selected>Select one</option>
+              <option value="LinkedIn">LinkedIn</option>
+              <option value="Instagram">Instagram</option>
+              <option value="Facebook">Facebook</option>
+              <option value="Google">Google</option>
+              <option value="Referral">Referral</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label>Preferred way to contact you <span class="optional-tag">(optional)</span></label>
+            <div class="radio-group">
+              <label class="radio-option"><input type="radio" name="contactPref" value="Email"><span>Email</span></label>
+              <label class="radio-option"><input type="radio" name="contactPref" value="WhatsApp"><span>WhatsApp</span></label>
+              <label class="radio-option"><input type="radio" name="contactPref" value="Phone Call"><span>Phone Call</span></label>
+            </div>
+          </div>
+
+          <div class="field checkbox-field">
+            <label class="checkbox-label">
+              <input type="checkbox" id="acceptPolicy" name="acceptPolicy" required>
+              <span>I have read and agree to the <a href="privacy.html" target="_blank" rel="noopener noreferrer">Privacy Policy</a> and <a href="terms.html" target="_blank" rel="noopener noreferrer">Terms &amp; Conditions</a>. *</span>
+            </label>
+          </div>
+
+          <div class="field honeypot-field" aria-hidden="true">
+            <label for="website">Website</label>
+            <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+          </div>
+
+          <button type="submit" class="submit-btn">Submit Enquiry →</button>
+          <p class="form-note" id="formNote"></p>
+        </form>
+
+        <div class="form-success" id="formSuccess">
+          <div class="success-icon" aria-hidden="true"></div>
+          <h3>Thank you!</h3>
+          <p>Your enquiry has been received. Our team will review your requirement and get back to you shortly.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap footer-grid">
+    <div class="footer-brand">
+      <img src="logo-full.png" alt="Clarivens: Clarity. Innovation. Progress." class="footer-logo">
+      <p class="footer-tagline">Clarity. Innovation. Progress.</p>
+      <p class="footer-blurb">We transform complex data into clear, meaningful insights businesses can understand and act upon.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="about.html">Founder</a>
+      <a href="index.html#work">Work</a>
+      <a href="faq.html">FAQ</a>
+      <a href="index.html#contact">Contact</a>
+    </div>
+    <div class="footer-col">
+      <h4>Legal</h4>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms &amp; Conditions</a>
+    </div>
+    <div class="footer-col">
+      <h4>Get in touch</h4>
+      <a href="mailto:clarivens.io@gmail.com">clarivens.io@gmail.com</a>
+      <a href="https://www.linkedin.com/in/himanshu-bagde11/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      <a href="https://github.com/Himanshubagde11" target="_blank" rel="noopener noreferrer">GitHub</a>
+      <a href="https://www.instagram.com/clarivens/" target="_blank" rel="noopener noreferrer">Instagram</a>
+      <a href="https://www.facebook.com/profile.php?id=61593940557370" target="_blank" rel="noopener noreferrer">Facebook</a>
+    </div>
+  </div>
+  <div class="wrap footer-bottom">
+    <p>&copy; 2026 Clarivens &middot; Clarity. Innovation. Progress.</p>
+    <a href="index.html#top">Back to top ↑</a>
+  </div>
+</footer>
+
+<script src="main.js"></script>
+<script src="home.js"></script>
+</body>
+</html>

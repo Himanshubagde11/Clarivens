@@ -1,0 +1,303 @@
+// Brand orbit graphic: subtle mouse-parallax tilt (desktop/mouse only)
+(function(){
+  const orbit = document.getElementById('orbitGraphic');
+  if(!orbit) return;
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const coarse = window.matchMedia('(pointer:coarse)').matches;
+  if(reduced || coarse) return;
+  window.addEventListener('mousemove', (e) => {
+    const rect = orbit.getBoundingClientRect();
+    const cx = rect.left + rect.width / 2;
+    const cy = rect.top + rect.height / 2;
+    const dx = (e.clientX - cx) / window.innerWidth;
+    const dy = (e.clientY - cy) / window.innerHeight;
+    orbit.style.transform = `rotateY(${dx * 16}deg) rotateX(${-dy * 16}deg)`;
+  });
+})();
+
+// Process section: open the first step by default so people notice it's interactive
+// (click-to-expand behavior itself is handled generically in main.js)
+(function(){
+  const firstHead = document.querySelector('.process-step-head');
+  if(firstHead) firstHead.setAttribute('aria-expanded', 'true');
+})();
+
+// Hero name expand-and-fade on scroll
+(function(){
+  const heroScrollSpace = document.getElementById('heroScrollSpace');
+  const heroTitle = document.getElementById('heroTitle');
+  if(!heroScrollSpace || !heroTitle) return;
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const heroEyebrow = document.getElementById('heroEyebrow');
+  const heroLead = document.getElementById('heroLead');
+  const heroCtas = document.getElementById('heroCtas');
+  const heroStats = document.getElementById('heroStats');
+  const scrollCue = document.getElementById('scrollCue');
+  let smoothed = 0;
+  const isNarrow = window.innerWidth < 560;
+  const scaleAmount = isNarrow ? 0.7 : 1.6;
+  function loop(){
+    const scrollable = heroScrollSpace.offsetHeight - window.innerHeight;
+    const raw = Math.min(Math.max(window.scrollY / scrollable, 0), 1);
+    smoothed += (raw - smoothed) * (reduced ? 1 : 0.14);
+
+    const scale = 1 + smoothed * scaleAmount;
+    const nameOpacity = Math.max(1 - smoothed * 1.3, 0);
+    const restOpacity = Math.max(1 - smoothed * 3.2, 0);
+
+    heroTitle.style.transform = `scale(${scale})`;
+    heroTitle.style.opacity = nameOpacity;
+    if(heroEyebrow) heroEyebrow.style.opacity = restOpacity;
+    if(heroLead) heroLead.style.opacity = restOpacity;
+    if(heroCtas) heroCtas.style.opacity = restOpacity;
+    if(heroStats) heroStats.style.opacity = restOpacity;
+    if(scrollCue) scrollCue.style.opacity = Math.max(1 - smoothed * 6, 0);
+
+    requestAnimationFrame(loop);
+  }
+  requestAnimationFrame(loop);
+})();
+
+// Contact form -> stores the enquiry via a form backend (Formspree), with a mailto fallback
+// if that hasn't been configured yet or the request fails, so no enquiry is ever silently lost.
+//
+// TO ACTIVATE STORAGE OF SUBMISSIONS:
+// 1. Go to https://formspree.io and create a free account.
+// 2. Create a new form, copy the endpoint it gives you (looks like https://formspree.io/f/xxxxxxxx).
+// 3. Paste it below, replacing the placeholder string.
+const FORM_ENDPOINT = "https://formspree.io/f/mjyvvkkn";
+
+// TO ACTIVATE THE "THANK YOU FOR CHOOSING CLARIVENS" AUTO-REPLY EMAIL TO THE CUSTOMER:
+// 1. Go to https://www.emailjs.com and create a free account.
+// 2. Add an Email Service (connect the clarivens.io@gmail.com Gmail account) — note the Service ID.
+// 3. Create a new Email Template, paste in the contents of email-template.html as the template body,
+//    and make sure the "To email" field is set to {{workEmail}} — note the Template ID.
+// 4. Go to Account > General and copy your Public Key.
+// 5. Paste all three values below, replacing the placeholders.
+const EMAILJS_PUBLIC_KEY = "YOUR_PUBLIC_KEY";
+const EMAILJS_SERVICE_ID = "YOUR_SERVICE_ID";
+const EMAILJS_TEMPLATE_ID = "YOUR_TEMPLATE_ID";
+
+if (window.emailjs && !EMAILJS_PUBLIC_KEY.includes('YOUR_')) {
+  emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
+}
+
+(function(){
+  const form = document.getElementById('contactForm');
+  const formNote = document.getElementById('formNote');
+  const formSuccess = document.getElementById('formSuccess');
+  if(!form) return;
+
+  // Prefill the requirement field + matching dropdown if arriving from a Services page link
+  // like index.html?service=Dashboards%20%26%20BI#contact
+  const requirementField = document.getElementById('requirement');
+  const helpTypeField = document.getElementById('helpType');
+  const query = window.location.search.replace('?', '') || (window.location.hash.includes('?') ? window.location.hash.split('?')[1] : '');
+  if(query && requirementField){
+    const params = new URLSearchParams(query);
+    const service = params.get('service');
+    if(service){
+      const decoded = decodeURIComponent(service);
+      requirementField.value = `I'm interested in: ${decoded}\n\n`;
+      requirementField.focus();
+      const serviceToHelpType = {
+        'Dashboards & BI': 'Power BI Dashboard',
+        'ETL & Data Pipelines': 'SQL / Database',
+        'Data Cleaning & Analysis': 'Data Cleaning & Transformation',
+        'Reporting & Automation': 'Reporting Automation'
+      };
+      const mapped = serviceToHelpType[decoded];
+      if(mapped && helpTypeField) helpTypeField.value = mapped;
+    }
+  }
+
+  // Clear the error highlight as soon as the person checks the box
+  const acceptPolicyCheckbox = document.getElementById('acceptPolicy');
+  if (acceptPolicyCheckbox) {
+    acceptPolicyCheckbox.addEventListener('change', () => {
+      const label = acceptPolicyCheckbox.closest('.checkbox-label');
+      if (label && acceptPolicyCheckbox.checked) label.classList.remove('error');
+    });
+  }
+
+  function showThankYou(){
+    form.style.display = 'none';
+    if(formSuccess) formSuccess.classList.add('visible');
+    if(formSuccess) formSuccess.scrollIntoView({behavior:'smooth', block:'center'});
+  }
+
+  // Sends the branded "Thank you for choosing Clarivens" auto-reply to the customer.
+  // Fire-and-forget: never blocks the thank-you screen, and a failure here is silent
+  // since the enquiry itself has already been captured via Formspree/mailto by this point.
+  function sendThankYouEmail(payload){
+    if (!window.emailjs || EMAILJS_SERVICE_ID.includes('YOUR_') || EMAILJS_TEMPLATE_ID.includes('YOUR_')) return;
+    emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, payload).catch(() => { /* silent */ });
+  }
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    // Honeypot: if this hidden field got filled in, it was almost certainly a bot. Silently drop it.
+    const honeypot = document.getElementById('website');
+    if (honeypot && honeypot.value.trim() !== '') {
+      showThankYou();
+      return;
+    }
+
+    const fullName = document.getElementById('fullName').value.trim();
+    const company = document.getElementById('company').value.trim();
+    const workEmail = document.getElementById('workEmail').value.trim();
+    const phone = document.getElementById('phone').value.trim();
+    const helpType = document.getElementById('helpType').value;
+    const requirement = document.getElementById('requirement').value.trim();
+    const projectSize = document.getElementById('projectSize').value;
+    const timeline = document.getElementById('timeline').value;
+    const hearAbout = document.getElementById('hearAbout').value;
+    const contactPrefEl = document.querySelector('input[name="contactPref"]:checked');
+    const contactPref = contactPrefEl ? contactPrefEl.value : '';
+    const acceptPolicy = document.getElementById('acceptPolicy');
+    const checkboxLabel = acceptPolicy ? acceptPolicy.closest('.checkbox-label') : null;
+
+    // Only Name, Email, and the Requirement are required, by design, to keep conversion friction low.
+    if (!fullName || !workEmail || !requirement) {
+      formNote.textContent = "Please fill in your name, email, and a short description of what you need.";
+      return;
+    }
+
+    if (acceptPolicy && !acceptPolicy.checked) {
+      formNote.textContent = "Please accept the Privacy Policy and Terms & Conditions to continue.";
+      if (checkboxLabel) checkboxLabel.classList.add('error');
+      acceptPolicy.focus();
+      return;
+    }
+    if (checkboxLabel) checkboxLabel.classList.remove('error');
+
+    const payload = {
+      fullName, company, workEmail, phone, helpType, requirement,
+      projectSize, timeline, hearAbout, contactPref,
+      _subject: `New enquiry from ${fullName}`
+    };
+
+    const submitBtn = form.querySelector('.submit-btn');
+    if(submitBtn){ submitBtn.disabled = true; submitBtn.textContent = 'Submitting...'; }
+    formNote.textContent = '';
+
+    let stored = false;
+    if (!FORM_ENDPOINT.includes('YOUR_FORM_ID')) {
+      try {
+        const res = await fetch(FORM_ENDPOINT, {
+          method: 'POST',
+          headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        stored = res.ok;
+      } catch (err) {
+        stored = false;
+      }
+    }
+
+    if (stored) {
+      sendThankYouEmail(payload);
+      showThankYou();
+      return;
+    }
+
+    // Fallback: form backend isn't configured yet (or the request failed), so open a
+    // pre-filled email as a backup delivery path instead of losing the enquiry entirely.
+    const subject = encodeURIComponent(`New enquiry from ${fullName}`);
+    const bodyLines = [
+      requirement,
+      "",
+      `Name: ${fullName}`,
+      `Email: ${workEmail}`,
+    ];
+    if (phone) bodyLines.push(`Phone: ${phone}`);
+    if (company) bodyLines.push(`Company: ${company}`);
+    if (helpType) bodyLines.push(`Help needed with: ${helpType}`);
+    if (projectSize) bodyLines.push(`Project size: ${projectSize}`);
+    if (timeline) bodyLines.push(`Timeline: ${timeline}`);
+    if (hearAbout) bodyLines.push(`Heard about us via: ${hearAbout}`);
+    if (contactPref) bodyLines.push(`Preferred contact: ${contactPref}`);
+    const body = encodeURIComponent(bodyLines.join("\n"));
+
+    window.location.href = `mailto:clarivens.io@gmail.com?subject=${subject}&body=${body}`;
+    sendThankYouEmail(payload);
+    showThankYou();
+  });
+})();
+
+// THREE.js hero: rotating 3D particle network sphere in orange, mouse-reactive
+(function(){
+  const canvas = document.getElementById('heroCanvas');
+  const heroSection = document.getElementById('heroSection');
+  if(!canvas || !heroSection || !window.THREE) return;
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  const renderer = new THREE.WebGLRenderer({canvas, antialias:true, alpha:true});
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(55, heroSection.clientWidth / heroSection.clientHeight, 0.1, 100);
+  camera.position.z = 9;
+
+  function setSize(){
+    const w = heroSection.clientWidth, h = heroSection.clientHeight;
+    renderer.setSize(w, h);
+    camera.aspect = w / h;
+    camera.updateProjectionMatrix();
+  }
+  setSize();
+  window.addEventListener('resize', setSize);
+
+  // Icosahedron point cloud "data network"
+  const geo = new THREE.IcosahedronGeometry(3.4, 3);
+  const positions = geo.attributes.position;
+  const pointsGeo = new THREE.BufferGeometry();
+  pointsGeo.setAttribute('position', positions.clone());
+
+  const pointsMat = new THREE.PointsMaterial({
+    color: 0xFF6A00, size: 0.045, transparent:true, opacity:0.9
+  });
+  const points = new THREE.Points(pointsGeo, pointsMat);
+  scene.add(points);
+
+  // wireframe lines for structure, dim
+  const wireGeo = new THREE.WireframeGeometry(geo);
+  const wireMat = new THREE.LineBasicMaterial({color:0xFF9142, transparent:true, opacity:0.14});
+  const wireframe = new THREE.LineSegments(wireGeo, wireMat);
+  scene.add(wireframe);
+
+  // subtle outer sphere shell
+  const shellGeo = new THREE.IcosahedronGeometry(4.3, 1);
+  const shellWire = new THREE.WireframeGeometry(shellGeo);
+  const shellMat = new THREE.LineBasicMaterial({color:0xFF6A00, transparent:true, opacity:0.06});
+  const shell = new THREE.LineSegments(shellWire, shellMat);
+  scene.add(shell);
+
+  let mouseX = 0, mouseY = 0;
+  window.addEventListener('mousemove', (e) => {
+    mouseX = (e.clientX / window.innerWidth - 0.5);
+    mouseY = (e.clientY / window.innerHeight - 0.5);
+  });
+
+  let scrollFactor = 0;
+  window.addEventListener('scroll', () => {
+    scrollFactor = Math.min(window.scrollY / window.innerHeight, 1.2);
+  });
+
+  function animate(){
+    if(!reducedMotion){
+      points.rotation.y += 0.0016;
+      points.rotation.x += 0.0006;
+      wireframe.rotation.y += 0.0016;
+      wireframe.rotation.x += 0.0006;
+      shell.rotation.y -= 0.0009;
+    }
+    camera.position.x += (mouseX * 1.4 - camera.position.x) * 0.04;
+    camera.position.y += (-mouseY * 1.4 - camera.position.y) * 0.04;
+    camera.position.z = 9 + scrollFactor * 2.5;
+    camera.lookAt(scene.position);
+    renderer.render(scene, camera);
+    requestAnimationFrame(animate);
+  }
+  animate();
+})();

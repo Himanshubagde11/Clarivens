@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Services | Clarivens</title>
+<meta name="description" content="Explore Clarivens' data analytics services: dashboards & BI, ETL pipelines, data cleaning & analysis, and reporting automation.">
+<link rel="icon" type="image/png" href="logo-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="glow-orb o1"></div>
+<div class="glow-orb o2"></div>
+<div class="glow-orb o3"></div>
+<div id="cursorRing"></div>
+<div id="cursorDot"></div>
+
+<header>
+  <nav class="wrap">
+    <a href="index.html" class="logo"><img src="logo-icon.png" alt="Clarivens"></a>
+    <div class="nav-links" id="navLinks">
+      <a href="services.html">Services</a>
+      <a href="index.html#work">Work</a>
+      <a href="about.html">Founder</a>
+      <a href="index.html#contact" class="btn btn-solid">Start a Project</a>
+    </div>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">☰</button>
+  </nav>
+</header>
+
+<div class="cookie-banner" id="cookieBanner" role="region" aria-label="Cookie consent">
+  <div class="cookie-banner-inner">
+    <p>We use minimal cookies to remember your preferences and understand site usage. No data is sold or shared with advertisers. See our <a href="privacy.html">Privacy Policy</a> for details.</p>
+    <div class="cookie-banner-actions">
+      <button class="btn btn-outline" id="cookieDecline" type="button">Decline</button>
+      <button class="btn btn-solid" id="cookieAccept" type="button">Accept</button>
+    </div>
+  </div>
+</div>
+
+<main id="top">
+  <!-- SERVICES PAGE HEADER -->
+  <section class="page-hero">
+    <div class="wrap">
+      <p class="eyebrow">Services</p>
+      <h1>Pick the service that fits what you need, or let's figure it out together.</h1>
+      <p class="lead">Every project starts with a short conversation about your data and your goal. Below is a detailed look at what each service actually includes.</p>
+    </div>
+  </section>
+
+  <!-- SERVICE DETAILS -->
+  <section style="padding-top:0;">
+    <div class="wrap">
+
+      <div class="service-detail tilt reveal">
+        <div class="service-detail-head">
+          <div class="service-icon">BI</div>
+          <h2>Dashboards &amp; BI</h2>
+        </div>
+        <p class="desc">Interactive Power BI and Tableau dashboards built around the KPIs your team actually checks, so decisions don't wait on someone digging through spreadsheets.</p>
+        <p class="includes-label">What's included</p>
+        <ul class="includes">
+          <li>KPI discovery: figuring out what actually matters to track for your business</li>
+          <li>Dashboard build with DAX measures, drill-through reports, slicers and filters</li>
+          <li>Clean visual design so the numbers are readable at a glance, not just accurate</li>
+          <li>A walkthrough session so your team knows how to use and read it</li>
+        </ul>
+        <p class="ideal-for"><b>Ideal for:</b> teams tracking sales, operations, or marketing metrics who are still relying on manual spreadsheet reports or scattered exports.</p>
+        <a href="index.html#contact?service=Dashboards%20%26%20BI" class="btn btn-solid">Discuss this service</a>
+      </div>
+
+      <div class="service-detail tilt reveal">
+        <div class="service-detail-head">
+          <div class="service-icon">ETL</div>
+          <h2>ETL &amp; Data Pipelines</h2>
+        </div>
+        <p class="desc">Azure Data Factory pipelines that pull data from your CSVs, APIs, and databases into one clean, reliable source of truth, with validation and error handling built in from day one.</p>
+        <p class="includes-label">What's included</p>
+        <ul class="includes">
+          <li>Mapping your current data sources and how they should flow together</li>
+          <li>Parameterized ADF pipelines with scheduling and automated triggers</li>
+          <li>Data validation for schema, nulls and duplicates before data lands downstream</li>
+          <li>Documentation and data dictionaries so the pipeline isn't a black box</li>
+        </ul>
+        <p class="ideal-for"><b>Ideal for:</b> businesses pulling data from multiple systems by hand, or anyone tired of a monthly data-wrangling scramble.</p>
+        <a href="index.html#contact?service=ETL%20%26%20Data%20Pipelines" class="btn btn-solid">Discuss this service</a>
+      </div>
+
+      <div class="service-detail tilt reveal">
+        <div class="service-detail-head">
+          <div class="service-icon">EDA</div>
+          <h2>Data Cleaning &amp; Analysis</h2>
+        </div>
+        <p class="desc">Python-based cleaning, outlier detection and exploratory analysis, so decisions are based on data you can actually trust, not a spreadsheet full of guesses and typos.</p>
+        <p class="includes-label">What's included</p>
+        <ul class="includes">
+          <li>Cleaning and standardizing messy, inconsistent, or duplicated records</li>
+          <li>Exploratory analysis to surface trends, outliers and data quality issues</li>
+          <li>A clear written summary of findings, not just a pile of charts</li>
+          <li>Recommendations on what to track going forward to keep data clean</li>
+        </ul>
+        <p class="ideal-for"><b>Ideal for:</b> anyone sitting on a dataset they don't fully trust yet, or who needs a one-time deep dive before making a decision.</p>
+        <a href="index.html#contact?service=Data%20Cleaning%20%26%20Analysis" class="btn btn-solid">Discuss this service</a>
+      </div>
+
+      <div class="service-detail tilt reveal">
+        <div class="service-detail-head">
+          <div class="service-icon">AT</div>
+          <h2>Reporting &amp; Automation</h2>
+        </div>
+        <p class="desc">Automated recurring reports and SQL stored procedures, so your team stops manually rebuilding the same spreadsheet every week or month.</p>
+        <p class="includes-label">What's included</p>
+        <ul class="includes">
+          <li>Auditing your current recurring report and where the manual effort goes</li>
+          <li>Automated workflows using ADF triggers and SQL stored procedures</li>
+          <li>Scheduled delivery so the report is ready before anyone has to ask</li>
+          <li>A fallback plan and error logging so failures get caught, not missed</li>
+        </ul>
+        <p class="ideal-for"><b>Ideal for:</b> teams that already know what report they need, they just don't want to build it by hand every cycle.</p>
+        <a href="index.html#contact?service=Reporting%20%26%20Automation" class="btn btn-solid">Discuss this service</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CLOSING CTA -->
+  <section style="padding-top:0;">
+    <div class="wrap">
+      <div class="cta-banner reveal">
+        <h2>Not sure which service fits?</h2>
+        <p>That's fine, most projects don't fit neatly into one box. Tell me what you're working with and I'll help you figure out the right approach.</p>
+        <a href="index.html#contact" class="btn btn-solid">Start the conversation</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap footer-grid">
+    <div class="footer-brand">
+      <img src="logo-full.png" alt="Clarivens: Clarity. Innovation. Progress." class="footer-logo">
+      <p class="footer-tagline">Clarity. Innovation. Progress.</p>
+      <p class="footer-blurb">We transform complex data into clear, meaningful insights businesses can understand and act upon.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="about.html">Founder</a>
+      <a href="index.html#work">Work</a>
+      <a href="faq.html">FAQ</a>
+      <a href="index.html#contact">Contact</a>
+    </div>
+    <div class="footer-col">
+      <h4>Legal</h4>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms &amp; Conditions</a>
+    </div>
+    <div class="footer-col">
+      <h4>Get in touch</h4>
+      <a href="mailto:clarivens.io@gmail.com">clarivens.io@gmail.com</a>
+      <a href="https://www.linkedin.com/in/himanshu-bagde11/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      <a href="https://github.com/Himanshubagde11" target="_blank" rel="noopener noreferrer">GitHub</a>
+      <a href="https://www.instagram.com/clarivens/" target="_blank" rel="noopener noreferrer">Instagram</a>
+      <a href="https://www.facebook.com/profile.php?id=61593940557370" target="_blank" rel="noopener noreferrer">Facebook</a>
+    </div>
+  </div>
+  <div class="wrap footer-bottom">
+    <p>&copy; 2026 Clarivens &middot; Clarity. Innovation. Progress.</p>
+    <a href="index.html#top">Back to top ↑</a>
+  </div>
+</footer>
+
+<script src="main.js"></script>
+</body>
+</html>
