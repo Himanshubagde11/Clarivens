@@ -15,13 +15,6 @@
   });
 })();
 
-// Process section: open the first step by default so people notice it's interactive
-// (click-to-expand behavior itself is handled generically in main.js)
-(function(){
-  const firstHead = document.querySelector('.process-step-head');
-  if(firstHead) firstHead.setAttribute('aria-expanded', 'true');
-})();
-
 // Hero name expand-and-fade on scroll
 (function(){
   const heroScrollSpace = document.getElementById('heroScrollSpace');
@@ -65,7 +58,7 @@
 // 1. Go to https://formspree.io and create a free account.
 // 2. Create a new form, copy the endpoint it gives you (looks like https://formspree.io/f/xxxxxxxx).
 // 3. Paste it below, replacing the placeholder string.
-const FORM_ENDPOINT = "https://formspree.io/f/YOUR_FORM_ID";
+const FORM_ENDPOINT = "https://formspree.io/f/mjyvvkkn";
 
 // TO ACTIVATE THE "THANK YOU FOR CHOOSING CLARIVENS" AUTO-REPLY EMAIL TO THE CUSTOMER:
 // 1. Go to https://www.emailjs.com and create a free account.
@@ -111,6 +104,44 @@ if (window.emailjs) {
       const mapped = serviceToHelpType[decoded];
       if(mapped && helpTypeField) helpTypeField.value = mapped;
     }
+  }
+
+  // Show the "Who referred you?" field only when Referral is selected,
+  // and the "Please specify" field only when Other is selected.
+  const hearAboutSelect = document.getElementById('hearAbout');
+  const referralField = document.getElementById('referralNameField');
+  const hearAboutOtherField = document.getElementById('hearAboutOtherField');
+  if (hearAboutSelect) {
+    const toggleHearAboutFields = () => {
+      const isReferral = hearAboutSelect.value === 'Referral';
+      const isOther = hearAboutSelect.value === 'Other';
+      if (referralField) {
+        referralField.style.display = isReferral ? 'block' : 'none';
+        const input = document.getElementById('referralName');
+        if (input) { input.required = isReferral; if (!isReferral) input.value = ''; }
+      }
+      if (hearAboutOtherField) {
+        hearAboutOtherField.style.display = isOther ? 'block' : 'none';
+        const input = document.getElementById('hearAboutOther');
+        if (input) { input.required = isOther; if (!isOther) input.value = ''; }
+      }
+    };
+    hearAboutSelect.addEventListener('change', toggleHearAboutFields);
+    toggleHearAboutFields();
+  }
+
+  // Show the "Please specify" field only when Other is selected for "What do you need help with?"
+  const helpTypeSelect = document.getElementById('helpType');
+  const helpTypeOtherField = document.getElementById('helpTypeOtherField');
+  if (helpTypeSelect && helpTypeOtherField) {
+    const toggleHelpTypeOther = () => {
+      const isOther = helpTypeSelect.value === 'Other';
+      helpTypeOtherField.style.display = isOther ? 'block' : 'none';
+      const input = document.getElementById('helpTypeOther');
+      if (input) { input.required = isOther; if (!isOther) input.value = ''; }
+    };
+    helpTypeSelect.addEventListener('change', toggleHelpTypeOther);
+    toggleHelpTypeOther();
   }
 
   // Clear the error highlight as soon as the person checks the box
@@ -165,18 +196,40 @@ if (window.emailjs) {
     const workEmail = document.getElementById('workEmail').value.trim();
     const phone = document.getElementById('phone').value.trim();
     const helpType = document.getElementById('helpType').value;
+    const helpTypeOtherField = document.getElementById('helpTypeOther');
+    const helpTypeOther = helpTypeOtherField ? helpTypeOtherField.value.trim() : '';
     const requirement = document.getElementById('requirement').value.trim();
     const projectSize = document.getElementById('projectSize').value;
     const timeline = document.getElementById('timeline').value;
     const hearAbout = document.getElementById('hearAbout').value;
+    const referralNameField = document.getElementById('referralName');
+    const referralName = referralNameField ? referralNameField.value.trim() : '';
+    const hearAboutOtherField = document.getElementById('hearAboutOther');
+    const hearAboutOther = hearAboutOtherField ? hearAboutOtherField.value.trim() : '';
     const contactPrefEl = document.querySelector('input[name="contactPref"]:checked');
     const contactPref = contactPrefEl ? contactPrefEl.value : '';
     const acceptPolicy = document.getElementById('acceptPolicy');
     const checkboxLabel = acceptPolicy ? acceptPolicy.closest('.checkbox-label') : null;
 
-    // Only Name, Email, and the Requirement are required, by design, to keep conversion friction low.
-    if (!fullName || !workEmail || !requirement) {
-      formNote.textContent = "Please fill in your name, email, and a short description of what you need.";
+    // Required: everything except Company/Organization and How did you hear about us.
+    if (!fullName || !workEmail || !phone || !helpType || !requirement ||
+        !projectSize || !timeline || !contactPref) {
+      formNote.textContent = "Please fill in the required fields before submitting.";
+      return;
+    }
+    if (helpType === 'Other' && !helpTypeOther) {
+      formNote.textContent = "Please tell us what you need help with.";
+      if (helpTypeOtherField) helpTypeOtherField.focus();
+      return;
+    }
+    if (hearAbout === 'Referral' && !referralName) {
+      formNote.textContent = "Please tell us who referred you.";
+      if (referralNameField) referralNameField.focus();
+      return;
+    }
+    if (hearAbout === 'Other' && !hearAboutOther) {
+      formNote.textContent = "Please tell us how you heard about us.";
+      if (hearAboutOtherField) hearAboutOtherField.focus();
       return;
     }
 
@@ -189,8 +242,8 @@ if (window.emailjs) {
     if (checkboxLabel) checkboxLabel.classList.remove('error');
 
     const payload = {
-      fullName, company, workEmail, phone, helpType, requirement,
-      projectSize, timeline, hearAbout, contactPref,
+      fullName, company, workEmail, phone, helpType, helpTypeOther, requirement,
+      projectSize, timeline, hearAbout, referralName, hearAboutOther, contactPref,
       _subject: `New enquiry from ${fullName}`
     };
 
@@ -207,36 +260,18 @@ if (window.emailjs) {
           body: JSON.stringify(payload)
         });
         stored = res.ok;
+        if (!stored) console.error('[Clarivens] Formspree rejected the submission:', res.status, await res.text().catch(() => ''));
       } catch (err) {
-        stored = false;
+        console.error('[Clarivens] Formspree request failed (likely a network issue):', err);
       }
+    } else {
+      console.warn('[Clarivens] FORM_ENDPOINT is not configured yet, submission was not stored anywhere.');
     }
 
-    if (stored) {
-      sendThankYouEmail(payload);
-      showThankYou();
-      return;
-    }
-
-    // Fallback: form backend isn't configured yet (or the request failed), so open a
-    // pre-filled email as a backup delivery path instead of losing the enquiry entirely.
-    const subject = encodeURIComponent(`New enquiry from ${fullName}`);
-    const bodyLines = [
-      requirement,
-      "",
-      `Name: ${fullName}`,
-      `Email: ${workEmail}`,
-    ];
-    if (phone) bodyLines.push(`Phone: ${phone}`);
-    if (company) bodyLines.push(`Company: ${company}`);
-    if (helpType) bodyLines.push(`Help needed with: ${helpType}`);
-    if (projectSize) bodyLines.push(`Project size: ${projectSize}`);
-    if (timeline) bodyLines.push(`Timeline: ${timeline}`);
-    if (hearAbout) bodyLines.push(`Heard about us via: ${hearAbout}`);
-    if (contactPref) bodyLines.push(`Preferred contact: ${contactPref}`);
-    const body = encodeURIComponent(bodyLines.join("\n"));
-
-    window.location.href = `mailto:clarivens.io@gmail.com?subject=${subject}&body=${body}`;
+    // The customer always sees the thank-you screen once basic validation passes,
+    // regardless of whether storage or the confirmation email succeeded behind the
+    // scenes — failures are logged to the console above for you to debug, but they
+    // never interrupt or redirect the person filling out the form.
     sendThankYouEmail(payload);
     showThankYou();
   });

@@ -361,6 +361,9 @@
 
   @media (max-width:900px){
     .about-grid, .contact-grid{grid-template-columns:1fr;}
+    /* Mobile/stacked order: Get Started intro, then Requirement Form. */
+    .contact-info{order:1;}
+    .contact-form-col{order:2;}
     .avatar-card{max-width:280px; margin:0 auto;}
     .skills-grid{grid-template-columns:1fr 1fr;}
     .project-grid{grid-template-columns:1fr;}
@@ -660,7 +663,8 @@ footer{border-top:1px solid var(--line); padding:56px 0 0; position:relative; z-
 .process-body-outer{
   display:grid; grid-template-rows:0fr; transition:grid-template-rows .35s ease;
 }
-[data-accordion-trigger][aria-expanded="true"] + .process-body-outer{grid-template-rows:1fr;}
+[data-accordion-trigger][aria-expanded="true"] + .process-body-outer,
+.process-step:hover .process-body-outer{grid-template-rows:1fr;}
 .process-body-inner{overflow:hidden;}
 .process-body-inner p{
   color:var(--muted); font-size:14.5px; line-height:1.65; padding:0 24px 22px;
@@ -704,7 +708,7 @@ footer{border-top:1px solid var(--line); padding:56px 0 0; position:relative; z-
 }
 
 /* ============ RADIO GROUP (Preferred contact method) ============ */
-.radio-group{display:flex; flex-wrap:wrap; gap:10px;}
+.radio-group{display:flex; flex-wrap:wrap; gap:14px 16px; margin-top:2px;}
 .radio-option{
   display:flex; align-items:center; gap:9px; cursor:pointer; user-select:none;
   border:1.5px solid var(--line-strong); border-radius:100px; padding:9px 16px 9px 12px;
@@ -800,3 +804,80 @@ footer{border-top:1px solid var(--line); padding:56px 0 0; position:relative; z-
   .orbit-tagline{font-size:12px; letter-spacing:0.12em;}
   .orbit-tagline span{margin:0 6px;}
 }
+
+/* ============ SERVICES TABS (interactive) ============ */
+.services-tabs{min-width:0;}
+.tabs-nav{display:flex; gap:10px; flex-wrap:wrap; justify-content:center; margin-bottom:28px;}
+.tab-btn{
+  display:flex; align-items:center; gap:10px; padding:11px 20px 11px 12px; border-radius:100px;
+  border:1px solid var(--line-strong); background:var(--black-2); color:var(--muted); cursor:pointer;
+  font-family:'JetBrains Mono',monospace; font-size:13px; transition:border-color .25s ease, background .25s ease, color .25s ease;
+}
+.tab-btn:hover{border-color:rgba(255,106,0,0.55); color:var(--white);}
+.tab-btn:focus-visible{outline:2px solid var(--orange); outline-offset:2px;}
+.tab-btn.active{background:var(--orange); border-color:var(--orange); color:#0A0A0B; font-weight:600;}
+.tab-icon{
+  width:26px; height:26px; border-radius:50%; display:flex; align-items:center; justify-content:center;
+  font-size:10px; font-weight:700; background:var(--black-3); border:1px solid var(--line-strong); flex-shrink:0;
+  transition:background .25s ease, border-color .25s ease, color .25s ease;
+}
+.tab-btn.active .tab-icon{background:#0A0A0B; border-color:#0A0A0B; color:var(--orange);}
+
+.tabs-panels{position:relative; min-width:0;}
+.tab-panel{
+  display:none; background:var(--black-2); border:1px solid var(--line); border-radius:var(--radius);
+  padding:36px; min-width:0;
+}
+.tab-panel.active{display:block; animation:tabFadeIn .35s ease;}
+@keyframes tabFadeIn{from{opacity:0; transform:translateY(10px);} to{opacity:1; transform:translateY(0);}}
+.tab-panel h3{font-size:21px; margin-bottom:12px;}
+.tab-panel p{color:var(--muted); font-size:14.5px; line-height:1.7; margin-bottom:18px; max-width:640px;}
+.tab-panel ul{margin:0 0 22px 20px; color:var(--muted); font-size:14px; line-height:1.7;}
+.tab-panel ul li{margin-bottom:6px;}
+.tab-panel ul li::marker{color:var(--orange);}
+
+@media (prefers-reduced-motion: reduce){.tab-panel.active{animation:none;}}
+@media (max-width:700px){
+  .tabs-nav{justify-content:flex-start; overflow-x:auto; flex-wrap:nowrap; padding-bottom:4px; -webkit-overflow-scrolling:touch;}
+  .tab-btn{flex-shrink:0;}
+  .tab-panel{padding:26px;}
+}
+
+/* ============ SOCIAL ROW BELOW CONTACT FORM ============ */
+.contact-socials{
+  grid-column:1 / -1; margin-top:8px; padding-top:32px; border-top:1px solid var(--line);
+  display:flex; align-items:center; justify-content:center; gap:18px; flex-wrap:wrap;
+}
+.contact-socials-label{
+  font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:0.08em; text-transform:uppercase;
+  color:var(--muted);
+}
+.contact-socials-row{display:flex; gap:12px;}
+.contact-socials-row a{
+  width:40px; height:40px; border-radius:10px; background:var(--black-2); border:1px solid var(--line-strong);
+  display:flex; align-items:center; justify-content:center; font-family:'JetBrains Mono',monospace; font-size:12px;
+  font-weight:600; color:var(--muted); transition:border-color .2s ease, color .2s ease, transform .2s ease;
+}
+.contact-socials-row a:hover{border-color:var(--orange); color:var(--orange); transform:translateY(-2px);}
+.contact-socials-row a svg{flex-shrink:0; display:block;}
+@media (max-width:560px){
+  .contact-socials{flex-direction:column; gap:14px;}
+}
+
+/* ============ SERVICE DETAIL META ROW ============ */
+.service-meta{display:flex; gap:28px; flex-wrap:wrap; margin-bottom:22px; position:relative;}
+.service-meta div{font-size:13px; color:var(--muted);}
+.service-meta div b{
+  display:block; font-family:'JetBrains Mono',monospace; font-size:10.5px; letter-spacing:0.06em;
+  text-transform:uppercase; color:var(--orange); margin-bottom:4px; font-weight:500;
+}
+
+/* ============ FOOTER SOCIAL ICON ROW ============ */
+.footer-social-row{display:flex; gap:10px; flex-wrap:wrap;}
+.footer-social-row a{
+  width:36px; height:36px; border-radius:9px; background:var(--black-3); border:1px solid var(--line-strong);
+  display:flex; align-items:center; justify-content:center; color:var(--muted);
+  transition:border-color .2s ease, color .2s ease, transform .2s ease;
+}
+.footer-social-row a:hover{border-color:var(--orange); color:var(--orange); transform:translateY(-2px);}
+.footer-social-row a svg{flex-shrink:0; display:block;}

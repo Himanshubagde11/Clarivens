@@ -59,6 +59,24 @@
   if(declineBtn) declineBtn.addEventListener('click', () => setConsent('declined'));
 })();
 
+// Services tabs (interactive tab switcher on the home page)
+(function(){
+  const tabBtns = document.querySelectorAll('.tab-btn');
+  if(!tabBtns.length) return;
+  tabBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const target = btn.getAttribute('data-tab');
+      document.querySelectorAll('.tab-btn').forEach(b => {
+        b.classList.toggle('active', b === btn);
+        b.setAttribute('aria-selected', b === btn ? 'true' : 'false');
+      });
+      document.querySelectorAll('.tab-panel').forEach(panel => {
+        panel.classList.toggle('active', panel.getAttribute('data-panel') === target);
+      });
+    });
+  });
+})();
+
 // Generic accordion toggle (used by Process steps, FAQ, etc. — any [data-accordion-trigger])
 (function(){
   const triggers = document.querySelectorAll('[data-accordion-trigger]');

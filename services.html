@@ -47,7 +47,7 @@
     <div class="wrap">
       <p class="eyebrow">Services</p>
       <h1>Pick the service that fits what you need, or let's figure it out together.</h1>
-      <p class="lead">Every project starts with a short conversation about your data and your goal. Below is a detailed look at what each service actually includes.</p>
+      <p class="lead">Every project starts with a short conversation about your data and your goal. Below is a detailed look at what each service actually includes, how long it typically takes, and who it's built for.</p>
     </div>
   </section>
 
@@ -60,13 +60,19 @@
           <div class="service-icon">BI</div>
           <h2>Dashboards &amp; BI</h2>
         </div>
-        <p class="desc">Interactive Power BI and Tableau dashboards built around the KPIs your team actually checks, so decisions don't wait on someone digging through spreadsheets.</p>
+        <p class="desc">Interactive Power BI and Tableau dashboards built around the KPIs your team actually checks, so decisions don't wait on someone digging through spreadsheets. Every dashboard starts with understanding what question you're actually trying to answer, not just what data you happen to have.</p>
+        <div class="service-meta">
+          <div><b>Typical timeline</b>1 to 3 weeks</div>
+          <div><b>Tools used</b>Power BI, Tableau, DAX, SQL</div>
+        </div>
         <p class="includes-label">What's included</p>
         <ul class="includes">
-          <li>KPI discovery: figuring out what actually matters to track for your business</li>
-          <li>Dashboard build with DAX measures, drill-through reports, slicers and filters</li>
-          <li>Clean visual design so the numbers are readable at a glance, not just accurate</li>
-          <li>A walkthrough session so your team knows how to use and read it</li>
+          <li>KPI discovery: a short working session to figure out what actually matters to track for your business</li>
+          <li>Data modeling so your dashboard stays fast and accurate as data grows, not a mess of one-off queries</li>
+          <li>Dashboard build with DAX measures, drill-through reports, slicers and interactive filters</li>
+          <li>Mobile-friendly layout so the numbers are readable on a phone during a meeting, not just a monitor</li>
+          <li>A walkthrough session so your team knows how to use, filter, and trust what they're looking at</li>
+          <li>One round of revisions after you've actually used it for a week and know what's missing</li>
         </ul>
         <p class="ideal-for"><b>Ideal for:</b> teams tracking sales, operations, or marketing metrics who are still relying on manual spreadsheet reports or scattered exports.</p>
         <a href="index.html?service=Dashboards%20%26%20BI#contact" class="btn btn-solid">Discuss this service</a>
@@ -77,15 +83,21 @@
           <div class="service-icon">ETL</div>
           <h2>ETL &amp; Data Pipelines</h2>
         </div>
-        <p class="desc">Azure Data Factory pipelines that pull data from your CSVs, APIs, and databases into one clean, reliable source of truth, with validation and error handling built in from day one.</p>
+        <p class="desc">Azure Data Factory pipelines that pull data from your CSVs, APIs, and databases into one clean, reliable source of truth, with validation and error handling built in from day one, not bolted on after something breaks in production.</p>
+        <div class="service-meta">
+          <div><b>Typical timeline</b>2 to 5 weeks</div>
+          <div><b>Tools used</b>Azure Data Factory, Azure SQL, Python, SQL</div>
+        </div>
         <p class="includes-label">What's included</p>
         <ul class="includes">
-          <li>Mapping your current data sources and how they should flow together</li>
-          <li>Parameterized ADF pipelines with scheduling and automated triggers</li>
+          <li>Mapping your current data sources and how they should flow together end to end</li>
+          <li>Parameterized ADF pipelines with scheduling and automated triggers, no manual exports</li>
           <li>Data validation for schema, nulls and duplicates before data lands downstream</li>
-          <li>Documentation and data dictionaries so the pipeline isn't a black box</li>
+          <li>Error handling and alerting, so a failed run gets caught the same day, not the same month</li>
+          <li>A destination data model that's actually usable for reporting, not just a raw data dump</li>
+          <li>Documentation and data dictionaries so the pipeline isn't a black box only I understand</li>
         </ul>
-        <p class="ideal-for"><b>Ideal for:</b> businesses pulling data from multiple systems by hand, or anyone tired of a monthly data-wrangling scramble.</p>
+        <p class="ideal-for"><b>Ideal for:</b> businesses pulling data from multiple systems by hand, or anyone tired of a monthly data-wrangling scramble before every report.</p>
         <a href="index.html?service=ETL%20%26%20Data%20Pipelines#contact" class="btn btn-solid">Discuss this service</a>
       </div>
 
@@ -94,13 +106,19 @@
           <div class="service-icon">EDA</div>
           <h2>Data Cleaning &amp; Analysis</h2>
         </div>
-        <p class="desc">Python-based cleaning, outlier detection and exploratory analysis, so decisions are based on data you can actually trust, not a spreadsheet full of guesses and typos.</p>
+        <p class="desc">Python-based cleaning, outlier detection and exploratory analysis, so decisions are based on data you can actually trust, not a spreadsheet full of guesses, typos, and duplicate rows nobody noticed.</p>
+        <div class="service-meta">
+          <div><b>Typical timeline</b>3 days to 2 weeks</div>
+          <div><b>Tools used</b>Python, Pandas, NumPy, Seaborn, SQL</div>
+        </div>
         <p class="includes-label">What's included</p>
         <ul class="includes">
-          <li>Cleaning and standardizing messy, inconsistent, or duplicated records</li>
-          <li>Exploratory analysis to surface trends, outliers and data quality issues</li>
-          <li>A clear written summary of findings, not just a pile of charts</li>
-          <li>Recommendations on what to track going forward to keep data clean</li>
+          <li>Cleaning and standardizing messy, inconsistent, or duplicated records across your dataset</li>
+          <li>Outlier and anomaly detection so unusual numbers get flagged instead of skewing your averages</li>
+          <li>Exploratory analysis to surface trends, patterns and data quality issues you didn't know were there</li>
+          <li>A clear written summary of findings in plain language, not just a pile of unlabeled charts</li>
+          <li>Recommendations on what to track going forward to keep the data clean without redoing this later</li>
+          <li>Cleaned dataset handed back to you in a usable format, ready for reporting or modeling</li>
         </ul>
         <p class="ideal-for"><b>Ideal for:</b> anyone sitting on a dataset they don't fully trust yet, or who needs a one-time deep dive before making a decision.</p>
         <a href="index.html?service=Data%20Cleaning%20%26%20Analysis#contact" class="btn btn-solid">Discuss this service</a>
@@ -111,15 +129,21 @@
           <div class="service-icon">AT</div>
           <h2>Reporting &amp; Automation</h2>
         </div>
-        <p class="desc">Automated recurring reports and SQL stored procedures, so your team stops manually rebuilding the same spreadsheet every week or month.</p>
+        <p class="desc">Automated recurring reports and SQL stored procedures, so your team stops manually rebuilding the same spreadsheet every week or month, and stops finding out about a broken number after it's already gone out.</p>
+        <div class="service-meta">
+          <div><b>Typical timeline</b>1 to 3 weeks</div>
+          <div><b>Tools used</b>Azure Data Factory, SQL Server, Power BI, Excel</div>
+        </div>
         <p class="includes-label">What's included</p>
         <ul class="includes">
-          <li>Auditing your current recurring report and where the manual effort goes</li>
-          <li>Automated workflows using ADF triggers and SQL stored procedures</li>
-          <li>Scheduled delivery so the report is ready before anyone has to ask</li>
-          <li>A fallback plan and error logging so failures get caught, not missed</li>
+          <li>Auditing your current recurring report and mapping exactly where the manual effort goes</li>
+          <li>Automated workflows using ADF triggers and SQL stored procedures instead of manual steps</li>
+          <li>Scheduled delivery so the report is ready and in the right inbox before anyone has to ask</li>
+          <li>A fallback plan and error logging so failures get caught and flagged, not silently missed</li>
+          <li>Version history so you can see what changed between reports without digging through email</li>
+          <li>A short handover session so your team can adjust minor things without needing to call me first</li>
         </ul>
-        <p class="ideal-for"><b>Ideal for:</b> teams that already know what report they need, they just don't want to build it by hand every cycle.</p>
+        <p class="ideal-for"><b>Ideal for:</b> teams that already know what report they need, they just don't want to build it by hand every single cycle.</p>
         <a href="index.html?service=Reporting%20%26%20Automation#contact" class="btn btn-solid">Discuss this service</a>
       </div>
 
@@ -162,11 +186,23 @@
     </div>
     <div class="footer-col">
       <h4>Get in touch</h4>
-      <a href="mailto:clarivens.io@gmail.com">clarivens.io@gmail.com</a>
-      <a href="https://www.linkedin.com/in/himanshu-bagde11/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-      <a href="https://github.com/Himanshubagde11" target="_blank" rel="noopener noreferrer">GitHub</a>
-      <a href="https://www.instagram.com/clarivens/" target="_blank" rel="noopener noreferrer">Instagram</a>
-      <a href="https://www.facebook.com/profile.php?id=61593940557370" target="_blank" rel="noopener noreferrer">Facebook</a>
+      <div class="footer-social-row">
+        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=clarivens.io@gmail.com" target="_blank" rel="noopener noreferrer" aria-label="Email">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="17" height="17" aria-hidden="true"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
+        </a>
+        <a href="https://www.linkedin.com/in/himanshu-bagde11/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="17" height="17" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        </a>
+        <a href="https://github.com/Himanshubagde11" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="17" height="17" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+        </a>
+        <a href="https://www.instagram.com/clarivens/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="17" height="17" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072c-4.358.2-6.78 2.618-6.98 6.98C.014 8.332 0 8.74 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+        </a>
+        <a href="https://www.facebook.com/profile.php?id=61593940557370" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="17" height="17" aria-hidden="true"><path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.464.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.324v-21.35c0-.732-.593-1.325-1.325-1.325z"/></svg>
+        </a>
+      </div>
     </div>
   </div>
   <div class="wrap footer-bottom">
