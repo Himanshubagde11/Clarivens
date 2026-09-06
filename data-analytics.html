@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Services | Clarivens</title>
-<meta name="description" content="Explore Clarivens' data analytics services: dashboards & BI, ETL pipelines, data cleaning & analysis, and reporting automation.">
+<title>Data Analytics Services | Clarivens</title>
+<meta name="description" content="Dashboards, ETL pipelines, data cleaning and reporting automation from Clarivens.">
 <link rel="icon" type="image/png" href="logo-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -42,51 +42,112 @@
 </div>
 
 <main id="top">
-  <!-- SERVICES PAGE HEADER -->
+  <!-- PAGE HEADER -->
   <section class="page-hero">
     <div class="wrap">
-      <p class="eyebrow">Services</p>
-      <h1>Pick the category that fits what you need.</h1>
-      <p class="lead">Every project starts with a short conversation about what you're building and what you're trying to achieve. Choose a category below for a detailed look at what's included, how long it typically takes, and who it's built for.</p>
+      <a href="services.html" class="back-link reveal">← All Services</a>
+      <p class="eyebrow">Category</p>
+      <h1>Data Analytics</h1>
+      <p class="lead">Turning the data you already have into dashboards, pipelines and decisions you can trust.</p>
     </div>
   </section>
 
-  <!-- CATEGORY CARDS -->
+  <!-- SERVICES -->
   <section style="padding-top:0;">
     <div class="wrap">
-      <div class="category-grid">
 
-        <a href="data-analytics.html" class="category-card tilt reveal">
-          <div class="category-card-icon">DA</div>
-          <h2>Data Analytics</h2>
-          <p>Dashboards, ETL pipelines, data cleaning and automated reporting, turning the data you already have into decisions you can trust.</p>
-          <div class="category-card-foot">
-            <span class="category-card-count">4 services</span>
-            <span class="category-card-cta">View services →</span>
-          </div>
-        </a>
-
-        <a href="web-development.html" class="category-card tilt reveal">
-          <div class="category-card-icon">WD</div>
-          <h2>Web Development</h2>
-          <p>Professional websites and web apps, built with whatever technology actually fits your project, budget, and timeline.</p>
-          <div class="category-card-foot">
-            <span class="category-card-count">4 services</span>
-            <span class="category-card-cta">View services →</span>
-          </div>
-        </a>
-
-        <a href="app-development.html" class="category-card tilt reveal">
-          <div class="category-card-icon">AD</div>
-          <h2>App Development</h2>
-          <p>Mobile and desktop apps for Android, iOS and Windows, cross-platform or native, whichever fits your goals best.</p>
-          <div class="category-card-foot">
-            <span class="category-card-count">4 services</span>
-            <span class="category-card-cta">View services →</span>
-          </div>
-        </a>
-
+      <div class="service-detail tilt reveal">
+        <div class="service-detail-head">
+          <div class="service-icon">BI</div>
+          <h2>Dashboards &amp; BI</h2>
+        </div>
+        <p class="desc">Interactive Power BI and Tableau dashboards built around the KPIs your team actually checks, so decisions don't wait on someone digging through spreadsheets. Every dashboard starts with understanding what question you're actually trying to answer, not just what data you happen to have.</p>
+        <div class="service-meta">
+          <div><b>Typical timeline</b>1 to 3 weeks</div>
+          <div><b>Tools used</b>Power BI, Tableau, DAX, SQL</div>
+        </div>
+        <p class="includes-label">What's included</p>
+        <ul class="includes">
+          <li>KPI discovery: a short working session to figure out what actually matters to track for your business</li>
+          <li>Data modeling so your dashboard stays fast and accurate as data grows, not a mess of one-off queries</li>
+          <li>Dashboard build with DAX measures, drill-through reports, slicers and interactive filters</li>
+          <li>Mobile-friendly layout so the numbers are readable on a phone during a meeting, not just a monitor</li>
+          <li>A walkthrough session so your team knows how to use, filter, and trust what they're looking at</li>
+          <li>One round of revisions after you've actually used it for a week and know what's missing</li>
+        </ul>
+        <p class="ideal-for"><b>Ideal for:</b> teams tracking sales, operations, or marketing metrics who are still relying on manual spreadsheet reports or scattered exports.</p>
+        <a href="contact.html?service=Dashboards%20%26%20BI" class="btn btn-solid">Discuss this service</a>
       </div>
+
+      <div class="service-detail tilt reveal">
+        <div class="service-detail-head">
+          <div class="service-icon">ETL</div>
+          <h2>ETL &amp; Data Pipelines</h2>
+        </div>
+        <p class="desc">Azure Data Factory pipelines that pull data from your CSVs, APIs, and databases into one clean, reliable source of truth, with validation and error handling built in from day one, not bolted on after something breaks in production.</p>
+        <div class="service-meta">
+          <div><b>Typical timeline</b>2 to 5 weeks</div>
+          <div><b>Tools used</b>Azure Data Factory, Azure SQL, Python, SQL</div>
+        </div>
+        <p class="includes-label">What's included</p>
+        <ul class="includes">
+          <li>Mapping your current data sources and how they should flow together end to end</li>
+          <li>Parameterized ADF pipelines with scheduling and automated triggers, no manual exports</li>
+          <li>Data validation for schema, nulls and duplicates before data lands downstream</li>
+          <li>Error handling and alerting, so a failed run gets caught the same day, not the same month</li>
+          <li>A destination data model that's actually usable for reporting, not just a raw data dump</li>
+          <li>Documentation and data dictionaries so the pipeline isn't a black box only I understand</li>
+        </ul>
+        <p class="ideal-for"><b>Ideal for:</b> businesses pulling data from multiple systems by hand, or anyone tired of a monthly data-wrangling scramble before every report.</p>
+        <a href="contact.html?service=ETL%20%26%20Data%20Pipelines" class="btn btn-solid">Discuss this service</a>
+      </div>
+
+      <div class="service-detail tilt reveal">
+        <div class="service-detail-head">
+          <div class="service-icon">EDA</div>
+          <h2>Data Cleaning &amp; Analysis</h2>
+        </div>
+        <p class="desc">Python-based cleaning, outlier detection and exploratory analysis, so decisions are based on data you can actually trust, not a spreadsheet full of guesses, typos, and duplicate rows nobody noticed.</p>
+        <div class="service-meta">
+          <div><b>Typical timeline</b>3 days to 2 weeks</div>
+          <div><b>Tools used</b>Python, Pandas, NumPy, Seaborn, SQL</div>
+        </div>
+        <p class="includes-label">What's included</p>
+        <ul class="includes">
+          <li>Cleaning and standardizing messy, inconsistent, or duplicated records across your dataset</li>
+          <li>Outlier and anomaly detection so unusual numbers get flagged instead of skewing your averages</li>
+          <li>Exploratory analysis to surface trends, patterns and data quality issues you didn't know were there</li>
+          <li>A clear written summary of findings in plain language, not just a pile of unlabeled charts</li>
+          <li>Recommendations on what to track going forward to keep the data clean without redoing this later</li>
+          <li>Cleaned dataset handed back to you in a usable format, ready for reporting or modeling</li>
+        </ul>
+        <p class="ideal-for"><b>Ideal for:</b> anyone sitting on a dataset they don't fully trust yet, or who needs a one-time deep dive before making a decision.</p>
+        <a href="contact.html?service=Data%20Cleaning%20%26%20Analysis" class="btn btn-solid">Discuss this service</a>
+      </div>
+
+      <div class="service-detail tilt reveal">
+        <div class="service-detail-head">
+          <div class="service-icon">AT</div>
+          <h2>Reporting &amp; Automation</h2>
+        </div>
+        <p class="desc">Automated recurring reports and SQL stored procedures, so your team stops manually rebuilding the same spreadsheet every week or month, and stops finding out about a broken number after it's already gone out.</p>
+        <div class="service-meta">
+          <div><b>Typical timeline</b>1 to 3 weeks</div>
+          <div><b>Tools used</b>Azure Data Factory, SQL Server, Power BI, Excel</div>
+        </div>
+        <p class="includes-label">What's included</p>
+        <ul class="includes">
+          <li>Auditing your current recurring report and mapping exactly where the manual effort goes</li>
+          <li>Automated workflows using ADF triggers and SQL stored procedures instead of manual steps</li>
+          <li>Scheduled delivery so the report is ready and in the right inbox before anyone has to ask</li>
+          <li>A fallback plan and error logging so failures get caught and flagged, not silently missed</li>
+          <li>Version history so you can see what changed between reports without digging through email</li>
+          <li>A short handover session so your team can adjust minor things without needing to call me first</li>
+        </ul>
+        <p class="ideal-for"><b>Ideal for:</b> teams that already know what report they need, they just don't want to build it by hand every single cycle.</p>
+        <a href="contact.html?service=Reporting%20%26%20Automation" class="btn btn-solid">Discuss this service</a>
+      </div>
+
     </div>
   </section>
 
@@ -94,7 +155,7 @@
   <section style="padding-top:0;">
     <div class="wrap">
       <div class="cta-banner reveal">
-        <h2>Not sure which category fits?</h2>
+        <h2>Not sure which service fits?</h2>
         <p>That's fine, most projects don't fit neatly into one box. Tell me what you're working with and I'll help you figure out the right approach.</p>
         <a href="contact.html" class="btn btn-solid">Start the conversation</a>
       </div>

@@ -99,7 +99,17 @@ if (window.emailjs) {
         'Dashboards & BI': 'Power BI Dashboard',
         'ETL & Data Pipelines': 'SQL / Database',
         'Data Cleaning & Analysis': 'Data Cleaning & Transformation',
-        'Reporting & Automation': 'Reporting Automation'
+        'Reporting & Automation': 'Reporting Automation',
+        'Web Development': 'Web Development',
+        'App Development': 'App Development',
+        'Business & Portfolio Websites': 'Web Development',
+        'E-Commerce Websites': 'Web Development',
+        'Web Applications': 'Web Development',
+        'Website Redesign & Maintenance': 'Web Development',
+        'Android App Development': 'App Development',
+        'iOS App Development': 'App Development',
+        'Cross-Platform Apps': 'App Development',
+        'Desktop / Windows Apps': 'App Development'
       };
       const mapped = serviceToHelpType[decoded];
       if(mapped && helpTypeField) helpTypeField.value = mapped;
@@ -142,6 +152,41 @@ if (window.emailjs) {
     };
     helpTypeSelect.addEventListener('change', toggleHelpTypeOther);
     toggleHelpTypeOther();
+  }
+
+  // Show only the follow-up questions relevant to whichever service category was picked,
+  // so the form asks for detail without cluttering the page with every possible question.
+  const dataAnalyticsHelpTypes = [
+    'Data Analytics', 'Business Intelligence', 'Power BI Dashboard', 'Excel Automation',
+    'SQL / Database', 'Data Cleaning & Transformation', 'Reporting Automation', 'Custom Analytics Solution'
+  ];
+  const categoryFieldGroups = {
+    dataAnalytics: document.getElementById('dataAnalyticsFields'),
+    webDev: document.getElementById('webDevFields'),
+    appDev: document.getElementById('appDevFields')
+  };
+  function clearFieldsWithin(container){
+    if (!container) return;
+    container.querySelectorAll('select, input[type="text"]').forEach(el => { el.value = ''; });
+    container.querySelectorAll('input[type="checkbox"]').forEach(el => { el.checked = false; });
+  }
+  if (helpTypeSelect) {
+    const toggleServiceDetailFields = () => {
+      const val = helpTypeSelect.value;
+      const category = dataAnalyticsHelpTypes.includes(val) ? 'dataAnalytics'
+        : val === 'Web Development' ? 'webDev'
+        : val === 'App Development' ? 'appDev'
+        : null;
+      Object.keys(categoryFieldGroups).forEach(key => {
+        const el = categoryFieldGroups[key];
+        if (!el) return;
+        const show = key === category;
+        el.style.display = show ? 'block' : 'none';
+        if (!show) clearFieldsWithin(el);
+      });
+    };
+    helpTypeSelect.addEventListener('change', toggleServiceDetailFields);
+    toggleServiceDetailFields();
   }
 
   // Clear the error highlight as soon as the person checks the box
@@ -206,6 +251,30 @@ if (window.emailjs) {
     const referralName = referralNameField ? referralNameField.value.trim() : '';
     const hearAboutOtherField = document.getElementById('hearAboutOther');
     const hearAboutOther = hearAboutOtherField ? hearAboutOtherField.value.trim() : '';
+
+    // Service-specific follow-up detail (only one group is ever visible/relevant at a time)
+    const dataSourceEl = document.getElementById('dataSource');
+    const dataVolumeEl = document.getElementById('dataVolume');
+    const hasExistingSetupEl = document.getElementById('hasExistingSetup');
+    const websiteTypeEl = document.getElementById('websiteType');
+    const hasExistingWebsiteEl = document.getElementById('hasExistingWebsite');
+    const pageCountEl = document.getElementById('pageCount');
+    const appTypeEl = document.getElementById('appType');
+    const appStoreListingEl = document.getElementById('appStoreListing');
+    const platforms = ['platformAndroid', 'platformIOS', 'platformWindows', 'platformNotSure']
+      .map(id => document.getElementById(id))
+      .filter(el => el && el.checked)
+      .map(el => el.value)
+      .join(', ');
+
+    const dataSource = dataSourceEl ? dataSourceEl.value : '';
+    const dataVolume = dataVolumeEl ? dataVolumeEl.value : '';
+    const hasExistingSetup = hasExistingSetupEl ? hasExistingSetupEl.value : '';
+    const websiteType = websiteTypeEl ? websiteTypeEl.value : '';
+    const hasExistingWebsite = hasExistingWebsiteEl ? hasExistingWebsiteEl.value : '';
+    const pageCount = pageCountEl ? pageCountEl.value : '';
+    const appType = appTypeEl ? appTypeEl.value : '';
+    const appStoreListing = appStoreListingEl ? appStoreListingEl.value : '';
     const contactPrefEl = document.querySelector('input[name="contactPref"]:checked');
     const contactPref = contactPrefEl ? contactPrefEl.value : '';
     const acceptPolicy = document.getElementById('acceptPolicy');
@@ -244,6 +313,9 @@ if (window.emailjs) {
     const payload = {
       fullName, company, workEmail, phone, helpType, helpTypeOther, requirement,
       projectSize, timeline, hearAbout, referralName, hearAboutOther, contactPref,
+      dataSource, dataVolume, hasExistingSetup,
+      websiteType, hasExistingWebsite, pageCount,
+      platforms, appType, appStoreListing,
       _subject: `New enquiry from ${fullName}`
     };
 

@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Services | Clarivens</title>
-<meta name="description" content="Explore Clarivens' data analytics services: dashboards & BI, ETL pipelines, data cleaning & analysis, and reporting automation.">
+<title>App Development | Clarivens</title>
+<meta name="description" content="Android, iOS and Windows app development from Clarivens, cross-platform or native.">
 <link rel="icon" type="image/png" href="logo-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -42,51 +42,108 @@
 </div>
 
 <main id="top">
-  <!-- SERVICES PAGE HEADER -->
+  <!-- PAGE HEADER -->
   <section class="page-hero">
     <div class="wrap">
-      <p class="eyebrow">Services</p>
-      <h1>Pick the category that fits what you need.</h1>
-      <p class="lead">Every project starts with a short conversation about what you're building and what you're trying to achieve. Choose a category below for a detailed look at what's included, how long it typically takes, and who it's built for.</p>
+      <a href="services.html" class="back-link reveal">← All Services</a>
+      <p class="eyebrow">Category</p>
+      <h1>App Development</h1>
+      <p class="lead">Mobile and desktop apps for Android, iOS and Windows.</p>
     </div>
   </section>
 
-  <!-- CATEGORY CARDS -->
+  <!-- SERVICES -->
   <section style="padding-top:0;">
     <div class="wrap">
-      <div class="category-grid">
 
-        <a href="data-analytics.html" class="category-card tilt reveal">
-          <div class="category-card-icon">DA</div>
-          <h2>Data Analytics</h2>
-          <p>Dashboards, ETL pipelines, data cleaning and automated reporting, turning the data you already have into decisions you can trust.</p>
-          <div class="category-card-foot">
-            <span class="category-card-count">4 services</span>
-            <span class="category-card-cta">View services →</span>
-          </div>
-        </a>
-
-        <a href="web-development.html" class="category-card tilt reveal">
-          <div class="category-card-icon">WD</div>
-          <h2>Web Development</h2>
-          <p>Professional websites and web apps, built with whatever technology actually fits your project, budget, and timeline.</p>
-          <div class="category-card-foot">
-            <span class="category-card-count">4 services</span>
-            <span class="category-card-cta">View services →</span>
-          </div>
-        </a>
-
-        <a href="app-development.html" class="category-card tilt reveal">
-          <div class="category-card-icon">AD</div>
-          <h2>App Development</h2>
-          <p>Mobile and desktop apps for Android, iOS and Windows, cross-platform or native, whichever fits your goals best.</p>
-          <div class="category-card-foot">
-            <span class="category-card-count">4 services</span>
-            <span class="category-card-cta">View services →</span>
-          </div>
-        </a>
-
+      <div class="service-detail tilt reveal">
+        <div class="service-detail-head">
+          <div class="service-icon">AN</div>
+          <h2>Android App Development</h2>
+        </div>
+        <p class="desc">A dedicated Android app built for your business, whether that's customer-facing or an internal tool for your team, built to feel native on the platform your users already know.</p>
+        <div class="service-meta">
+          <div><b>Typical timeline</b>3 to 6 weeks</div>
+          <div><b>Tools used</b>Native (Kotlin/Java) or cross-platform, chosen based on complexity and budget</div>
+        </div>
+        <p class="includes-label">What's included</p>
+        <ul class="includes">
+          <li>UI/UX planning specific to Android design patterns</li>
+          <li>Development and testing across a range of Android devices</li>
+          <li>Google Play Store submission support</li>
+          <li>Push notifications and basic analytics if needed</li>
+          <li>Post-launch bug fixes and updates</li>
+        </ul>
+        <p class="ideal-for"><b>Ideal for:</b> businesses whose customers or staff are primarily on Android devices.</p>
+        <a href="contact.html?service=Android%20App%20Development#contact" class="btn btn-solid">Discuss this service</a>
       </div>
+
+      <div class="service-detail tilt reveal">
+        <div class="service-detail-head">
+          <div class="service-icon">IO</div>
+          <h2>iOS App Development</h2>
+        </div>
+        <p class="desc">An iPhone and iPad app built to feel native on Apple's platform, from a simple utility to a full customer-facing product, respecting the conventions iOS users expect.</p>
+        <div class="service-meta">
+          <div><b>Typical timeline</b>3 to 6 weeks</div>
+          <div><b>Tools used</b>Native (Swift) or cross-platform, chosen based on complexity and budget</div>
+        </div>
+        <p class="includes-label">What's included</p>
+        <ul class="includes">
+          <li>UI/UX planning that follows Apple's design conventions</li>
+          <li>Development and testing on real iOS devices</li>
+          <li>Apple App Store submission support, including their review requirements</li>
+          <li>Push notifications and basic analytics if needed</li>
+          <li>Post-launch bug fixes and updates</li>
+        </ul>
+        <p class="ideal-for"><b>Ideal for:</b> businesses targeting iPhone and iPad users, or wanting a polished, App Store-ready product.</p>
+        <a href="contact.html?service=iOS%20App%20Development#contact" class="btn btn-solid">Discuss this service</a>
+      </div>
+
+      <div class="service-detail tilt reveal">
+        <div class="service-detail-head">
+          <div class="service-icon">CP</div>
+          <h2>Cross-Platform Apps</h2>
+        </div>
+        <p class="desc">One app codebase that runs on both Android and iOS, a practical option when you need to reach both audiences without building and maintaining two separate apps.</p>
+        <div class="service-meta">
+          <div><b>Typical timeline</b>4 to 8 weeks</div>
+          <div><b>Tools used</b>Flutter or React Native, chosen based on your app's requirements</div>
+        </div>
+        <p class="includes-label">What's included</p>
+        <ul class="includes">
+          <li>A single codebase covering both major platforms</li>
+          <li>Shared business logic with platform-specific UI where it matters</li>
+          <li>Testing across both Android and iOS devices</li>
+          <li>Submission support for both the Google Play Store and Apple App Store</li>
+          <li>Lower long-term maintenance cost than building two native apps</li>
+        </ul>
+        <p class="ideal-for"><b>Ideal for:</b> startups and businesses that need to launch on both platforms without doubling the development budget.</p>
+        <a href="contact.html?service=Cross-Platform%20Apps#contact" class="btn btn-solid">Discuss this service</a>
+      </div>
+
+      <div class="service-detail tilt reveal">
+        <div class="service-detail-head">
+          <div class="service-icon">DT</div>
+          <h2>Desktop / Windows Apps</h2>
+        </div>
+        <p class="desc">A Windows desktop application for internal tools, utilities, or software your team uses every day that doesn't belong in a browser tab.</p>
+        <div class="service-meta">
+          <div><b>Typical timeline</b>3 to 6 weeks</div>
+          <div><b>Tools used</b>Chosen per project based on performance and integration needs</div>
+        </div>
+        <p class="includes-label">What's included</p>
+        <ul class="includes">
+          <li>Requirements planning around how your team actually works</li>
+          <li>Development and testing on Windows</li>
+          <li>Integration with local files, hardware, or existing systems if needed</li>
+          <li>Installer and update packaging</li>
+          <li>Post-launch support and updates</li>
+        </ul>
+        <p class="ideal-for"><b>Ideal for:</b> businesses needing internal tools, utilities, or software that runs locally rather than in a browser.</p>
+        <a href="contact.html?service=Desktop%20%2F%20Windows%20Apps#contact" class="btn btn-solid">Discuss this service</a>
+      </div>
+
     </div>
   </section>
 
@@ -94,8 +151,8 @@
   <section style="padding-top:0;">
     <div class="wrap">
       <div class="cta-banner reveal">
-        <h2>Not sure which category fits?</h2>
-        <p>That's fine, most projects don't fit neatly into one box. Tell me what you're working with and I'll help you figure out the right approach.</p>
+        <h2>Not sure this is the right fit?</h2>
+        <p>That's fine, most projects don't fit neatly into one box. Tell me what you're building and I'll help you figure out the right approach.</p>
         <a href="contact.html" class="btn btn-solid">Start the conversation</a>
       </div>
     </div>

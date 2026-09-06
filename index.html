@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Clarivens | Data Analytics Services</title>
-<meta name="description" content="Clarivens turns complex data into clear, meaningful insights businesses can act on. Dashboards, ETL pipelines, and data analytics services.">
+<title>Clarivens | Data, Web &amp; App Development</title>
+<meta name="description" content="Clarivens builds dashboards, ETL pipelines, websites and mobile/desktop apps for businesses that want their data and software working together.">
 <link rel="icon" type="image/png" href="logo-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -27,7 +27,7 @@
       <a href="services.html">Services</a>
       <a href="index.html#work">Work</a>
       <a href="about.html">Founder</a>
-      <a href="index.html#contact" class="btn btn-solid">Start a Project</a>
+      <a href="contact.html" class="btn btn-solid">Start a Project</a>
     </div>
     <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">☰</button>
   </nav>
@@ -49,11 +49,11 @@
   <section class="hero" id="heroSection">
     <canvas id="heroCanvas"></canvas>
     <div class="wrap hero-inner" id="heroInner">
-      <p class="eyebrow" id="heroEyebrow">Data Analytics Services</p>
+      <p class="eyebrow" id="heroEyebrow">Data, Web &amp; App Development</p>
       <h1 id="heroTitle"><span class="brand-name">Clarivens</span> turns data into<br>decisions you can <span>trust</span>.</h1>
-      <p class="lead" id="heroLead">I help businesses turn raw, messy data into clean pipelines, honest dashboards and clear answers, handled with the confidentiality your numbers deserve. NDA available on every project.</p>
+      <p class="lead" id="heroLead">I help businesses turn raw, messy data into clean pipelines and honest dashboards, and turn ideas into the websites and apps that put that data to work, all handled with the confidentiality your project deserves. NDA available on every project.</p>
       <div class="hero-ctas" id="heroCtas">
-        <a href="#contact" class="btn btn-solid">Start a project</a>
+        <a href="contact.html" class="btn btn-solid">Start a project</a>
         <a href="#work" class="btn btn-outline">See my work</a>
       </div>
       <div class="stat-row" id="heroStats">
@@ -70,7 +70,7 @@
     <div class="wrap">
       <div class="section-head reveal">
         <p class="eyebrow">What I offer</p>
-        <h2>Services built around your data, not a template.</h2>
+        <h2>Services built around what your business actually needs, not a template.</h2>
         <p>Tap a service below to see what's included. Full detail on the Services page.</p>
       </div>
 
@@ -88,6 +88,12 @@
           <button class="tab-btn" type="button" role="tab" aria-selected="false" aria-controls="panel-at" data-tab="at">
             <span class="tab-icon">AT</span><span>Automation</span>
           </button>
+          <button class="tab-btn" type="button" role="tab" aria-selected="false" aria-controls="panel-wd" data-tab="wd">
+            <span class="tab-icon">WD</span><span>Web Development</span>
+          </button>
+          <button class="tab-btn" type="button" role="tab" aria-selected="false" aria-controls="panel-ad" data-tab="ad">
+            <span class="tab-icon">AD</span><span>App Development</span>
+          </button>
         </div>
 
         <div class="tabs-panels">
@@ -99,7 +105,7 @@
               <li>Dashboard build with DAX measures, drill-through reports, slicers and filters</li>
               <li>A walkthrough session so your team knows how to use and read it</li>
             </ul>
-            <a href="services.html" class="btn btn-outline">See full details</a>
+            <a href="data-analytics.html" class="btn btn-outline">See full details</a>
           </div>
           <div class="tab-panel" id="panel-etl" data-panel="etl" role="tabpanel">
             <h3>ETL &amp; Data Pipelines</h3>
@@ -109,7 +115,7 @@
               <li>Parameterized ADF pipelines with scheduling and automated triggers</li>
               <li>Documentation and data dictionaries so the pipeline isn't a black box</li>
             </ul>
-            <a href="services.html" class="btn btn-outline">See full details</a>
+            <a href="data-analytics.html" class="btn btn-outline">See full details</a>
           </div>
           <div class="tab-panel" id="panel-eda" data-panel="eda" role="tabpanel">
             <h3>Data Cleaning &amp; Analysis</h3>
@@ -119,7 +125,7 @@
               <li>Exploratory analysis to surface trends, outliers and data quality issues</li>
               <li>A clear written summary of findings, not just a pile of charts</li>
             </ul>
-            <a href="services.html" class="btn btn-outline">See full details</a>
+            <a href="data-analytics.html" class="btn btn-outline">See full details</a>
           </div>
           <div class="tab-panel" id="panel-at" data-panel="at" role="tabpanel">
             <h3>Reporting &amp; Automation</h3>
@@ -129,7 +135,27 @@
               <li>Automated workflows using ADF triggers and SQL stored procedures</li>
               <li>A fallback plan and error logging so failures get caught, not missed</li>
             </ul>
-            <a href="services.html" class="btn btn-outline">See full details</a>
+            <a href="data-analytics.html" class="btn btn-outline">See full details</a>
+          </div>
+          <div class="tab-panel" id="panel-wd" data-panel="wd" role="tabpanel">
+            <h3>Web Development</h3>
+            <p>Professional business websites and web apps, built with whatever technology actually fits your project, from a lightweight custom site to a CMS-based platform, not a fixed stack forced onto every client.</p>
+            <ul>
+              <li>Responsive design that works cleanly across desktop, tablet and mobile</li>
+              <li>Technology chosen per project: custom HTML/CSS/JS, WordPress, React/Next.js, or whatever fits best</li>
+              <li>Contact forms, backend integration, and hosting/deployment setup included</li>
+            </ul>
+            <a href="web-development.html" class="btn btn-outline">See full details</a>
+          </div>
+          <div class="tab-panel" id="panel-ad" data-panel="ad" role="tabpanel">
+            <h3>App Development</h3>
+            <p>Mobile and desktop apps for Android, iOS and Windows, using cross-platform tools when speed and budget matter most, or a native approach when performance and platform-specific features come first.</p>
+            <ul>
+              <li>Platform discovery to pick the right approach for your goals and budget</li>
+              <li>UI/UX planning so the app is genuinely usable, not just functional</li>
+              <li>Testing across devices and app store submission support where applicable</li>
+            </ul>
+            <a href="app-development.html" class="btn btn-outline">See full details</a>
           </div>
         </div>
       </div>
@@ -144,7 +170,7 @@
     <div class="wrap">
       <div class="section-head reveal">
         <p class="eyebrow">How We Work</p>
-        <h2>A clear process, from first call to finished dashboard.</h2>
+        <h2>A clear process, from first call to finished product.</h2>
         <p>No black boxes. Here's roughly how a project moves, tap a step to see what actually happens.</p>
       </div>
 
@@ -174,14 +200,14 @@
           <div class="process-card tilt">
             <button class="process-step-head" type="button" aria-expanded="false" data-accordion-trigger>
               <span class="process-title-wrap">
-                <span class="process-title">Data Audit &amp; Plan</span>
-                <span class="process-subtitle">Map what's there</span>
+                <span class="process-title">Scope &amp; Plan</span>
+                <span class="process-subtitle">Map out the details</span>
               </span>
               <span class="accordion-icon" aria-hidden="true"></span>
             </button>
             <div class="process-body-outer">
               <div class="process-body-inner">
-                <p>I look at your actual sources, spreadsheets, databases, APIs, whatever it is, and put together a simple plan: what needs cleaning, what needs connecting, and roughly how long it'll take.</p>
+                <p>For data work, I look at your actual sources, spreadsheets, databases, APIs, whatever it is. For a website or app, I map out the pages, features and platforms. Either way you get a simple plan: what needs doing, and roughly how long it'll take.</p>
               </div>
             </div>
           </div>
@@ -199,7 +225,7 @@
             </button>
             <div class="process-body-outer">
               <div class="process-body-inner">
-                <p>Pipelines get built, dashboards take shape, and you see working versions early, not just a final reveal. We adjust based on what actually looks useful once it's in front of you.</p>
+                <p>Pipelines get built, dashboards take shape, sites and apps come together, and you see working versions early, not just a final reveal. We adjust based on what actually looks and works well once it's in front of you.</p>
               </div>
             </div>
           </div>
@@ -259,29 +285,29 @@
     <div class="wrap">
       <div class="section-head reveal">
         <p class="eyebrow">Why work with me</p>
-        <h2>Your data, handled with care.</h2>
-        <p>Data is sensitive by default. Here's what you can expect on every engagement.</p>
+        <h2>Your data, and everything we build with it, handled with care.</h2>
+        <p>Your data and your project are sensitive by default. Here's what you can expect on every engagement.</p>
       </div>
       <div class="trust-grid">
         <div class="trust-card reveal">
           <div class="check">&#10003;</div>
           <div>
             <h3>Confidentiality first</h3>
-            <p>An NDA is available and signed before any data changes hands, no exceptions.</p>
+            <p>An NDA is available and signed before any data or project details change hands, no exceptions.</p>
           </div>
         </div>
         <div class="trust-card reveal">
           <div class="check">&#10003;</div>
           <div>
             <h3>Enterprise-grade tools</h3>
-            <p>Work is built on Azure SQL Database, Azure Data Factory and Power BI, the same platforms large organizations trust with their data.</p>
+            <p>Data work is built on Azure SQL Database, Azure Data Factory and Power BI; web and app builds use modern, well-supported frameworks chosen for your project, the same standards large organizations rely on.</p>
           </div>
         </div>
         <div class="trust-card reveal">
           <div class="check">&#10003;</div>
           <div>
             <h3>Nothing shared without permission</h3>
-            <p>Your data and business logic stay between us. Nothing is reused, reposted, or shown publicly without your sign-off.</p>
+            <p>Your data, code, and business logic stay between us. Nothing is reused, reposted, or shown publicly without your sign-off.</p>
           </div>
         </div>
         <div class="trust-card reveal">
@@ -311,148 +337,6 @@
       <p class="orbit-tagline reveal">Clarity <span>&middot;</span> Innovation <span>&middot;</span> Progress</p>
     </div>
   </section>
-<!-- CONTACT -->
-  <section id="contact">
-    <div class="wrap contact-grid">
-      <div class="contact-info reveal">
-        <p class="eyebrow">Get Started</p>
-        <h2 style="margin:16px 0 0; font-size:clamp(26px,3vw,34px);">Have a dataset that needs a clearer story?</h2>
-        <p>Tell me what you're working with and what you need, a dashboard, a pipeline, or just a clear answer buried in messy data. Free initial consultation, NDA available, and I usually reply within a day.</p>
-      </div>
-
-      <div class="reveal contact-form-col">
-        <form id="contactForm" autocomplete="on" novalidate>
-          <p class="eyebrow" style="margin-bottom:6px;">Requirement Form</p>
-          <h3 style="font-size:19px; margin-bottom:22px;">Tell Us About Your Requirement</h3>
-
-          <div class="field">
-            <label for="fullName">Full Name *</label>
-            <input type="text" id="fullName" name="fullName" required autocomplete="name" placeholder="Enter your full name">
-          </div>
-
-          <div class="field">
-            <label for="company">Company / Organization <span class="optional-tag">(optional)</span></label>
-            <input type="text" id="company" name="company" autocomplete="organization" placeholder="Enter your company name">
-          </div>
-
-          <div class="field">
-            <label for="workEmail">Work Email *</label>
-            <input type="email" id="workEmail" name="workEmail" required autocomplete="email" placeholder="yourname@company.com">
-          </div>
-
-          <div class="field">
-            <label for="phone">Phone / WhatsApp Number *</label>
-            <input type="tel" id="phone" name="phone" required autocomplete="tel" inputmode="numeric" placeholder="+91 XXXXX XXXXX">
-          </div>
-
-          <div class="field">
-            <label for="helpType">What do you need help with? *</label>
-            <select id="helpType" name="helpType" required>
-              <option value="" selected disabled>Select one</option>
-              <option value="Data Analytics">Data Analytics</option>
-              <option value="Business Intelligence">Business Intelligence</option>
-              <option value="Power BI Dashboard">Power BI Dashboard</option>
-              <option value="Excel Automation">Excel Automation</option>
-              <option value="SQL / Database">SQL / Database</option>
-              <option value="Data Cleaning & Transformation">Data Cleaning &amp; Transformation</option>
-              <option value="Reporting Automation">Reporting Automation</option>
-              <option value="Custom Analytics Solution">Custom Analytics Solution</option>
-              <option value="Other">Other</option>
-            </select>
-          </div>
-
-          <div class="field" id="helpTypeOtherField" style="display:none;">
-            <label for="helpTypeOther">Please specify *</label>
-            <input type="text" id="helpTypeOther" name="helpTypeOther" autocomplete="off" placeholder="What do you need help with?">
-          </div>
-
-          <div class="field">
-            <label for="requirement">Tell us about your problem or requirement *</label>
-            <textarea id="requirement" name="requirement" required style="min-height:130px;" placeholder="Describe the problem you're facing, what you're trying to achieve, or the solution you're looking for..."></textarea>
-          </div>
-
-          <div class="field">
-            <label for="projectSize">Approximate project size *</label>
-            <select id="projectSize" name="projectSize" required>
-              <option value="" selected disabled>Select one</option>
-              <option value="Small / One-time task">Small / One-time task</option>
-              <option value="Medium project">Medium project</option>
-              <option value="Ongoing requirement">Ongoing requirement</option>
-              <option value="Not sure yet">Not sure yet</option>
-            </select>
-          </div>
-
-          <div class="field">
-            <label for="timeline">When do you need the solution? *</label>
-            <select id="timeline" name="timeline" required>
-              <option value="" selected disabled>Select one</option>
-              <option value="ASAP">ASAP</option>
-              <option value="Within 1 week">Within 1 week</option>
-              <option value="Within 1 month">Within 1 month</option>
-              <option value="Within 2 months">Within 2 months</option>
-              <option value="Within 3 months">Within 3 months</option>
-              <option value="More than 3 months">More than 3 months</option>
-              <option value="Just exploring">Just exploring</option>
-            </select>
-          </div>
-
-          <div class="field">
-            <label for="hearAbout">How did you hear about us? <span class="optional-tag">(optional)</span></label>
-            <select id="hearAbout" name="hearAbout">
-              <option value="" selected>Select one</option>
-              <option value="LinkedIn">LinkedIn</option>
-              <option value="Instagram">Instagram</option>
-              <option value="Facebook">Facebook</option>
-              <option value="Google">Google</option>
-              <option value="Referral">Referral</option>
-              <option value="Other">Other</option>
-            </select>
-          </div>
-
-          <div class="field" id="referralNameField" style="display:none;">
-            <label for="referralName">Who referred you? *</label>
-            <input type="text" id="referralName" name="referralName" autocomplete="off" placeholder="Enter their name">
-          </div>
-
-          <div class="field" id="hearAboutOtherField" style="display:none;">
-            <label for="hearAboutOther">Please specify *</label>
-            <input type="text" id="hearAboutOther" name="hearAboutOther" autocomplete="off" placeholder="Where did you hear about us?">
-          </div>
-
-          <div class="field">
-            <label>Preferred way to contact you *</label>
-            <div class="radio-group">
-              <label class="radio-option"><input type="radio" name="contactPref" value="Email" required><span>Email</span></label>
-              <label class="radio-option"><input type="radio" name="contactPref" value="WhatsApp" required><span>WhatsApp</span></label>
-              <label class="radio-option"><input type="radio" name="contactPref" value="Phone Call" required><span>Phone Call</span></label>
-            </div>
-          </div>
-
-          <div class="field checkbox-field">
-            <label class="checkbox-label">
-              <input type="checkbox" id="acceptPolicy" name="acceptPolicy" required>
-              <span>I have read and agree to the <a href="privacy.html" target="_blank" rel="noopener noreferrer">Privacy Policy</a> and <a href="terms.html" target="_blank" rel="noopener noreferrer">Terms &amp; Conditions</a>. *</span>
-            </label>
-          </div>
-
-          <div class="field honeypot-field" aria-hidden="true">
-            <label for="website">Website</label>
-            <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
-          </div>
-
-          <button type="submit" class="submit-btn">Submit Requirement →</button>
-          <p class="form-note" id="formNote"></p>
-        </form>
-
-        <div class="form-success" id="formSuccess">
-          <div class="success-icon" aria-hidden="true"></div>
-          <h3>Thank you!</h3>
-          <p>Your enquiry has been received. Our team will review your requirement and get back to you shortly.</p>
-        </div>
-      </div>
-
-    </div>
-  </section>
 
 </main>
 
@@ -461,7 +345,7 @@
     <div class="footer-brand">
       <img src="logo-full.png" alt="Clarivens: Clarity. Innovation. Progress." class="footer-logo">
       <p class="footer-tagline">Clarity. Innovation. Progress.</p>
-      <p class="footer-blurb">We transform complex data into clear, meaningful insights businesses can understand and act upon.</p>
+      <p class="footer-blurb">We transform complex data into clear insights, and build the websites and apps that put them to work.</p>
     </div>
     <div class="footer-col">
       <h4>Company</h4>
@@ -470,7 +354,7 @@
       <a href="about.html">Founder</a>
       <a href="index.html#work">Work</a>
       <a href="faq.html">FAQ</a>
-      <a href="index.html#contact">Contact</a>
+      <a href="contact.html">Contact</a>
     </div>
     <div class="footer-col">
       <h4>Legal</h4>
