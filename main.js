@@ -3,24 +3,105 @@
   const cursorDot = document.getElementById('cursorDot');
   const cursorRing = document.getElementById('cursorRing');
   if(!cursorDot || !cursorRing) return;
-  const isCoarse = window.matchMedia('(pointer:coarse)').matches;
-  if(isCoarse) return;
 
-  let mx = window.innerWidth/2, my = window.innerHeight/2;
-  let rx = mx, ry = my;
+  const isCoarse = window.matchMedia('(pointer:coarse)').matches;
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(isCoarse || prefersReducedMotion) {
+    cursorDot.style.display = 'none';
+    cursorRing.style.display = 'none';
+    return;
+  }
+
+  let mx = -100, my = -100;
+  let rx = -100, ry = -100;
+  let isVisible = false;
+
+  function showCursor() {
+    if (!isVisible) {
+      isVisible = true;
+      cursorDot.classList.add('visible');
+      cursorRing.classList.add('visible');
+    }
+  }
+
+  function hideCursor() {
+    if (isVisible) {
+      isVisible = false;
+      cursorDot.classList.remove('visible');
+      cursorRing.classList.remove('visible');
+      cursorRing.classList.remove('active');
+      cursorRing.classList.remove('clicking');
+      cursorDot.classList.remove('active');
+      cursorDot.classList.remove('clicking');
+    }
+  }
+
   window.addEventListener('mousemove', (e) => {
-    mx = e.clientX; my = e.clientY;
-    cursorDot.style.left = mx + 'px'; cursorDot.style.top = my + 'px';
+    mx = e.clientX;
+    my = e.clientY;
+    if (!isVisible) {
+      rx = mx;
+      ry = my;
+      showCursor();
+    }
+    cursorDot.style.left = mx + 'px';
+    cursorDot.style.top = my + 'px';
+  }, { passive: true });
+
+  document.addEventListener('mouseleave', hideCursor);
+  document.addEventListener('mouseenter', showCursor);
+  window.addEventListener('blur', hideCursor);
+
+  window.addEventListener('mousedown', () => {
+    if (!isVisible) return;
+    cursorRing.classList.add('clicking');
+    cursorDot.classList.add('clicking');
   });
+
+  window.addEventListener('mouseup', () => {
+    cursorRing.classList.remove('clicking');
+    cursorDot.classList.remove('clicking');
+  });
+
   function ringLoop(){
-    rx += (mx - rx) * 0.16; ry += (my - ry) * 0.16;
-    cursorRing.style.left = rx + 'px'; cursorRing.style.top = ry + 'px';
+    if (isVisible) {
+      rx += (mx - rx) * 0.18;
+      ry += (my - ry) * 0.18;
+      cursorRing.style.left = rx + 'px';
+      cursorRing.style.top = ry + 'px';
+    }
     requestAnimationFrame(ringLoop);
   }
-  ringLoop();
-  document.querySelectorAll('a, button, .tilt, input, textarea').forEach(el => {
-    el.addEventListener('mouseenter', () => cursorRing.classList.add('active'));
-    el.addEventListener('mouseleave', () => cursorRing.classList.remove('active'));
+  requestAnimationFrame(ringLoop);
+
+  // Delegation for hover interactions across all interactive elements
+  const INTERACTIVE_SEL = 'a, button, .btn, .tilt, select, summary, [role="button"], .nav-toggle, .filter-btn, .project-card, .faq-question, .faq-item, .pricing-card, .modal-close';
+  const INPUT_SEL = 'input, textarea, [contenteditable="true"]';
+
+  document.addEventListener('mouseover', (e) => {
+    const target = e.target;
+    if (target.closest(INPUT_SEL)) {
+      cursorDot.classList.add('hidden-input');
+      cursorRing.classList.add('hidden-input');
+    } else if (target.closest(INTERACTIVE_SEL)) {
+      cursorRing.classList.add('active');
+      cursorDot.classList.add('active');
+    }
+  });
+
+  document.addEventListener('mouseout', (e) => {
+    const target = e.target;
+    if (target.closest(INPUT_SEL)) {
+      cursorDot.classList.remove('hidden-input');
+      cursorRing.classList.remove('hidden-input');
+    }
+    if (target.closest(INTERACTIVE_SEL)) {
+      const rel = e.relatedTarget;
+      if (!rel || !rel.closest(INTERACTIVE_SEL)) {
+        cursorRing.classList.remove('active');
+        cursorDot.classList.remove('active');
+      }
+    }
   });
 
   // Magnetic buttons

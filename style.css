@@ -19,23 +19,74 @@
     background:var(--black); color:var(--white);
     font-family:'Inter',sans-serif; line-height:1.6;
     overflow-x:clip; /* clips without breaking position:sticky, unlike overflow-x:hidden */
-    cursor:none;
   }
-  @media (pointer:coarse){ body{cursor:auto;} }
   ::selection{background:var(--orange); color:#000;}
+
+  /* Seamless custom glow cursor system */
+  @media (pointer:fine) {
+    body, body * {
+      cursor: none !important;
+    }
+    body input,
+    body textarea,
+    body [contenteditable="true"] {
+      cursor: text !important;
+    }
+    body select {
+      cursor: default !important;
+    }
+  }
+  @media (pointer:coarse), (prefers-reduced-motion: reduce) {
+    body, body * {
+      cursor: auto !important;
+    }
+    #cursorDot, #cursorRing {
+      display: none !important;
+    }
+  }
 
   /* custom glow cursor (desktop only) */
   #cursorDot, #cursorRing{
-    position:fixed; top:0; left:0; z-index:999; pointer-events:none;
-    border-radius:50%; transform:translate(-50%,-50%);
+    position:fixed; top:0; left:0; z-index:99999; pointer-events:none;
+    border-radius:50%; opacity:0;
+    transform:translate(-50%,-50%);
+    will-change:left, top, opacity, width, height;
   }
-  #cursorDot{width:6px; height:6px; background:var(--orange); box-shadow:0 0 10px 2px rgba(255,106,0,0.8);}
+  #cursorDot.visible, #cursorRing.visible{ opacity:1; }
+  #cursorDot.hidden-input, #cursorRing.hidden-input{ opacity:0 !important; }
+
+  #cursorDot{
+    width:6px; height:6px; background:var(--orange);
+    box-shadow:0 0 10px 2px rgba(255,106,0,0.85);
+    transition:opacity .2s ease, width .2s ease, height .2s ease, background .2s ease, box-shadow .2s ease;
+  }
+  #cursorDot.active{
+    width:4px; height:4px;
+    box-shadow:0 0 14px 3px rgba(255,106,0,1);
+  }
+  #cursorDot.clicking{
+    width:10px; height:10px; background:#ffffff;
+    box-shadow:0 0 16px 4px rgba(255,106,0,1);
+  }
+
   #cursorRing{
-    width:34px; height:34px; border:1px solid rgba(255,106,0,0.5);
-    transition:width .2s ease, height .2s ease, border-color .2s ease, background .2s ease;
+    width:34px; height:34px;
+    border:1.5px solid rgba(255,106,0,0.5);
+    box-shadow:0 0 12px rgba(255,106,0,0.15);
+    transition:opacity .25s ease, width .22s cubic-bezier(0.25, 1, 0.5, 1), height .22s cubic-bezier(0.25, 1, 0.5, 1), border-color .2s ease, background .2s ease, box-shadow .2s ease;
   }
-  #cursorRing.active{width:54px; height:54px; background:rgba(255,106,0,0.08); border-color:var(--orange);}
-  @media (pointer:coarse){ #cursorDot, #cursorRing{display:none;} }
+  #cursorRing.active{
+    width:52px; height:52px;
+    background:rgba(255,106,0,0.1);
+    border-color:var(--orange);
+    box-shadow:0 0 20px rgba(255,106,0,0.3);
+  }
+  #cursorRing.clicking{
+    width:26px; height:26px;
+    background:rgba(255,106,0,0.22);
+    border-color:#ffaa55;
+    box-shadow:0 0 14px rgba(255,106,0,0.45);
+  }
 
   /* floating ambient glow orbs, OLED depth */
   .glow-orb{
