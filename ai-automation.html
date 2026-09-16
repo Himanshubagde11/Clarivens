@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Automation Services | Clarivens</title>
+<meta name="description" content="Connect AI, data and business workflows to automate repetitive processes, generate insights and build intelligent operational systems.">
+<link rel="icon" type="image/png" href="logo-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="glow-orb o1"></div>
+<div class="glow-orb o2"></div>
+<div class="glow-orb o3"></div>
+<div id="cursorRing"></div>
+<div id="cursorDot"></div>
+
+<header>
+  <nav class="wrap">
+    <a href="index.html" class="logo"><img src="logo-icon.png" alt="Clarivens"></a>
+    <div class="nav-links" id="navLinks">
+      <a href="services.html">Services</a>
+      <a href="projects.html">Projects</a>
+      <a href="about.html">Founder</a>
+      <a href="contact.html" class="btn btn-solid">Start a Project</a>
+    </div>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">☰</button>
+  </nav>
+</header>
+
+<div class="cookie-banner" id="cookieBanner" role="region" aria-label="Cookie consent">
+  <div class="cookie-banner-inner">
+    <p>We use minimal cookies to remember your preferences and understand site usage. No data is sold or shared with advertisers. See our <a href="privacy.html">Privacy Policy</a> for details.</p>
+    <div class="cookie-banner-actions">
+      <button class="btn btn-outline" id="cookieDecline" type="button">Decline</button>
+      <button class="btn btn-solid" id="cookieAccept" type="button">Accept</button>
+    </div>
+  </div>
+</div>
+
+<main id="top">
+  <!-- PAGE HEADER -->
+  <section class="page-hero">
+    <div class="wrap">
+      <a href="services.html" class="back-link reveal">← All Services</a>
+      <p class="eyebrow">Category</p>
+      <h1>AI Automation</h1>
+      <p class="lead">Connect AI, data and business workflows to automate repetitive processes, generate insights and build intelligent operational systems.</p>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section style="padding-top:0;">
+    <div class="wrap">
+
+      <div class="service-detail tilt reveal">
+        <div class="service-detail-head">
+          <div class="service-icon">WF</div>
+          <h2>AI Workflow &amp; Agent Automation</h2>
+        </div>
+        <p class="desc">Multi-step, trigger-based workflows, specialized AI business agents, task routing, and autonomous operational execution without manual bottlenecks.</p>
+        <div class="service-meta">
+          <div><b>Typical timeline</b>2 to 5 weeks</div>
+          <div><b>Tools used</b>Python, AI APIs, LangChain, Webhooks, Cloud Functions</div>
+        </div>
+        <p class="includes-label">What's included</p>
+        <ul class="includes">
+          <li>Event-driven workflow triggers and multi-step conditional branching</li>
+          <li>AI task agents specialized for data analysis, research, and internal workflows</li>
+          <li>Intelligent task routing with automated escalation to human operators when needed</li>
+          <li>Structured input/output validation with robust retry and error recovery</li>
+          <li>Full execution auditing, observability, and logging for enterprise transparency</li>
+        </ul>
+        <p class="ideal-for"><b>Ideal for:</b> teams overwhelmed by high-volume manual ticketing, data routing, or multi-step coordination across tools.</p>
+        <a href="contact.html?service=AI%20Automation#contact" class="btn btn-solid">Discuss this capability</a>
+      </div>
+
+      <div class="service-detail tilt reveal">
+        <div class="service-detail-head">
+          <div class="service-icon">DI</div>
+          <h2>Data &amp; Document Intelligence</h2>
+        </div>
+        <p class="desc">Automated ingestion, extraction, classification, and summarization of unstructured business documents, PDFs, and invoices into structured databases.</p>
+        <div class="service-meta">
+          <div><b>Typical timeline</b>1 to 3 weeks</div>
+          <div><b>Tools used</b>Python, OCR / Vision APIs, Pydantic, JSON Schema, Cloud Storage</div>
+        </div>
+        <p class="includes-label">What's included</p>
+        <ul class="includes">
+          <li>Automated extraction of tables, line items, and metadata from PDFs, invoices, and receipts</li>
+          <li>Document classification, filing, and structured JSON schema generation</li>
+          <li>Automated data validation and anomaly flagging for mismatched totals or duplicate records</li>
+          <li>Downstream pipeline integration feeding validated records directly to ERP or reporting databases</li>
+          <li>Human-in-the-loop exception handling for flagged documents</li>
+        </ul>
+        <p class="ideal-for"><b>Ideal for:</b> operations, finance, and logistics teams spending hours manually re-keying document data into software.</p>
+        <a href="contact.html?service=AI%20Automation#contact" class="btn btn-solid">Discuss this capability</a>
+      </div>
+
+      <div class="service-detail tilt reveal">
+        <div class="service-detail-head">
+          <div class="service-icon">BP</div>
+          <h2>Business Process &amp; Reporting Automation</h2>
+        </div>
+        <p class="desc">Automate recurring reporting, CRM workflows, approval chains, notifications, and operational syncs so teams stop repeating manual work.</p>
+        <div class="service-meta">
+          <div><b>Typical timeline</b>1 to 3 weeks</div>
+          <div><b>Tools used</b>Azure Data Factory, SQL Server, Python, REST APIs, Webhooks</div>
+        </div>
+        <p class="includes-label">What's included</p>
+        <ul class="includes">
+          <li>Automated generation and scheduled dispatch of operational, inventory, and management reports</li>
+          <li>Automated CRM data hygiene, lead processing, and status synchronization</li>
+          <li>Stored procedure automation, scheduled data warehouse refreshes, and tumbling-window runs</li>
+          <li>Proactive threshold alerts via email or messaging when KPIs or inventory drop below safety levels</li>
+          <li>Full execution monitoring, audit logs, and automatic failure alerts</li>
+        </ul>
+        <p class="ideal-for"><b>Ideal for:</b> organizations tired of rebuilding the same spreadsheets every week or chasing manual status updates.</p>
+        <a href="contact.html?service=AI%20Automation#contact" class="btn btn-solid">Discuss this capability</a>
+      </div>
+
+      <div class="service-detail tilt reveal">
+        <div class="service-detail-head">
+          <div class="service-icon">DS</div>
+          <h2>Intelligent Decision Systems &amp; API Integrations</h2>
+        </div>
+        <p class="desc">Rule-based and AI-assisted decision logic that evaluates operational risks, detects anomalies, and triggers corrective actions in real time.</p>
+        <div class="service-meta">
+          <div><b>Typical timeline</b>2 to 4 weeks</div>
+          <div><b>Tools used</b>Python, REST APIs, Microservices, SQL, Cloud Endpoints</div>
+        </div>
+        <p class="includes-label">What's included</p>
+        <ul class="includes">
+          <li>Algorithmic risk evaluation (e.g. automated stockout warning levels, Days of Inventory triggers)</li>
+          <li>REST API connectivity bridging legacy databases, modern SaaS tools, and AI endpoints</li>
+          <li>Event-driven decision rules with confidence scoring and fallback validation mechanisms</li>
+          <li>Automated task prioritization and proactive notifications pushed directly to store/department managers</li>
+          <li>Performance optimization, latency management, and versioned decision rule sets</li>
+        </ul>
+        <p class="ideal-for"><b>Ideal for:</b> fast-moving retail, supply chain, and e-commerce operations where delayed decisions lead to lost revenue.</p>
+        <a href="contact.html?service=AI%20Automation#contact" class="btn btn-solid">Discuss this capability</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FEATURED PROJECT -->
+  <section style="padding-top:0;" id="featured-project">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">Featured Automation System</p>
+        <h2>Clarivens Inventory Intelligence</h2>
+        <p>An automated retail intelligence platform that connects cloud ingestion, data quality validation, warehouse processing and business intelligence into one continuous data workflow.</p>
+      </div>
+
+      <div class="featured-project tilt reveal">
+        <div class="featured-project-images grid-3">
+          <img src="assets/inventory-intelligence/architecture-diagram.png" alt="Clarivens Inventory Intelligence — Architecture Diagram">
+          <img src="assets/inventory-intelligence/data-flow.png" alt="Clarivens Inventory Intelligence — End-to-End Orchestrated Data Flow">
+          <img src="assets/inventory-intelligence/06_data_pipeline_health.png" alt="Clarivens Inventory Intelligence — Pipeline Health & Governance Telemetry">
+        </div>
+        <div class="featured-project-body">
+          <p class="featured-project-label">Flagship Automation System</p>
+          <h3>Clarivens Inventory Intelligence — Cloud Automation Platform</h3>
+          <p>An automated retail intelligence platform demonstrating how Clarivens connects data engineering, quality validation, cloud orchestration and analytics into a repeatable business workflow. Operating across 36 stores in 9 Indian states, the system ingests multi-source data, enforces a 12-rule Python automated quality gate, and schedules warehouse loads without manual intervention.</p>
+          
+          <!-- Story Block -->
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin-bottom: 24px;">
+            <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px;">
+              <div style="font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--orange); text-transform:uppercase; margin-bottom:4px; font-weight:600;">Problem</div>
+              <p style="font-size:13px; color:var(--muted); line-height:1.5; margin:0;">Retail data arrived scattered across POS terminals, inventory files, and supplier APIs, making stockout risk and margin erosion difficult to identify before losses occurred.</p>
+            </div>
+            <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px;">
+              <div style="font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--orange); text-transform:uppercase; margin-bottom:4px; font-weight:600;">Solution</div>
+              <p style="font-size:13px; color:var(--muted); line-height:1.5; margin:0;">Clarivens built an automated cloud data platform that ingests multi-source data, validates it via automated gates, transforms it into a star schema, and delivers live BI.</p>
+            </div>
+            <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px;">
+              <div style="font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--orange); text-transform:uppercase; margin-bottom:4px; font-weight:600;">Automation</div>
+              <p style="font-size:13px; color:var(--muted); line-height:1.5; margin:0;">Instead of manual file cleaning and recurring report assembly, the system automates ingestion, validation checks, warehouse loads, health monitoring, and BI refresh.</p>
+            </div>
+            <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px;">
+              <div style="font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--orange); text-transform:uppercase; margin-bottom:4px; font-weight:600;">Result</div>
+              <p style="font-size:13px; color:var(--muted); line-height:1.5; margin:0;">Management moves from raw operational data to inventory risk intelligence and replenishment action through a dependable, automated data pipeline.</p>
+            </div>
+          </div>
+
+          <div class="featured-project-metrics">
+            <div class="featured-metric-item">
+              <div class="val">ADF v2</div>
+              <div class="lbl">Orchestration</div>
+            </div>
+            <div class="featured-metric-item">
+              <div class="val">12 Rules</div>
+              <div class="lbl">Quality Gate</div>
+            </div>
+            <div class="featured-metric-item">
+              <div class="val">99.9%</div>
+              <div class="lbl">Quality Score</div>
+            </div>
+            <div class="featured-metric-item">
+              <div class="val">Zero Manual</div>
+              <div class="lbl">Reporting Prep</div>
+            </div>
+            <div class="featured-metric-item">
+              <div class="val">36 Stores</div>
+              <div class="lbl">Monitored</div>
+            </div>
+          </div>
+
+          <div class="featured-project-tags">
+            <span>Azure Data Factory</span>
+            <span>Azure SQL Database</span>
+            <span>Python 3.x</span>
+            <span>T-SQL / SQL</span>
+            <span>Power BI</span>
+            <span>REST API</span>
+            <span>ADLS Gen2</span>
+            <span>Data Quality Framework</span>
+            <span>Star Schema</span>
+            <span>Audit Logging</span>
+          </div>
+          <div class="featured-project-actions">
+            <a href="contact.html?service=AI%20Automation#contact" class="btn btn-solid">Discuss an automation project</a>
+            <a href="data-analytics.html#featured-project" class="btn btn-outline">View Analytics Suite →</a>
+            <a href="workspace.html" class="btn btn-outline">Access Workspace</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CLOSING CTA -->
+  <section style="padding-top:0;">
+    <div class="wrap">
+      <div class="cta-banner reveal">
+        <h2>Not sure which automation fits?</h2>
+        <p>That's fine, most projects don't fit neatly into one box. Tell me what operational bottlenecks you're facing and I'll help you design the right automated workflow.</p>
+        <a href="contact.html" class="btn btn-solid">Start the conversation</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap footer-grid">
+    <div class="footer-brand">
+      <img src="logo-full.png" alt="Clarivens: Clarity. Innovation. Progress." class="footer-logo">
+      <p class="footer-tagline">Clarity. Innovation. Progress.</p>
+      <p class="footer-blurb">We transform complex data into clear, meaningful insights businesses can understand and act upon.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="projects.html">Projects</a>
+      <a href="about.html">Founder</a>
+      <a href="faq.html">FAQ</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="footer-col">
+      <h4>Legal</h4>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms &amp; Conditions</a>
+    </div>
+    <div class="footer-col">
+      <h4>Get in touch</h4>
+      <div class="footer-social-row">
+        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=clarivens.io@gmail.com" target="_blank" rel="noopener noreferrer" aria-label="Email">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="17" height="17" aria-hidden="true"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
+        </a>
+        <a href="https://www.linkedin.com/in/himanshu-bagde11/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="17" height="17" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        </a>
+        <a href="https://github.com/Himanshubagde11" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="17" height="17" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+        </a>
+        <a href="https://www.instagram.com/clarivens/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="17" height="17" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072c-4.358.2-6.78 2.618-6.98 6.98C.014 8.332 0 8.74 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+        </a>
+        <a href="https://www.facebook.com/profile.php?id=61593940557370" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="17" height="17" aria-hidden="true"><path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.464.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.324v-21.35c0-.732-.593-1.325-1.325-1.325z"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="wrap footer-bottom">
+    <p>&copy; 2026 Clarivens &middot; Clarity. Innovation. Progress.</p>
+    <a href="index.html#top">Back to top ↑</a>
+  </div>
+</footer>
+
+<script src="main.js"></script>
+</body>
+</html>

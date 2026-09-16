@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Data Analytics Services | Clarivens</title>
-<meta name="description" content="Dashboards, ETL pipelines, data cleaning and reporting automation from Clarivens.">
+<meta name="description" content="Turn raw business data into clear, decision-ready intelligence. Clarivens builds ETL pipelines, data quality frameworks, Power BI dashboards, and predictive analytics.">
 <link rel="icon" type="image/png" href="logo-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -23,7 +23,7 @@
     <a href="index.html" class="logo"><img src="logo-icon.png" alt="Clarivens"></a>
     <div class="nav-links" id="navLinks">
       <a href="services.html">Services</a>
-      <a href="index.html#work">Work</a>
+      <a href="projects.html">Projects</a>
       <a href="about.html">Founder</a>
       <a href="contact.html" class="btn btn-solid">Start a Project</a>
     </div>
@@ -48,7 +48,7 @@
       <a href="services.html" class="back-link reveal">← All Services</a>
       <p class="eyebrow">Category</p>
       <h1>Data Analytics</h1>
-      <p class="lead">Turning the data you already have into dashboards, pipelines and decisions you can trust.</p>
+      <p class="lead">Turn raw business data into clear, decision-ready intelligence through data engineering, analytics, visualization and predictive insights.</p>
     </div>
   </section>
 
@@ -58,96 +58,157 @@
 
       <div class="service-detail tilt reveal">
         <div class="service-detail-head">
+          <div class="service-icon">DE</div>
+          <h2>Data Engineering &amp; ETL Pipelines</h2>
+        </div>
+        <p class="desc">Robust data engineering that pulls records from POS systems, flat files, databases, and third-party vendor APIs into structured, analytics-ready cloud warehouses with automated triggers, incremental loads, and full pipeline observability.</p>
+        <div class="service-meta">
+          <div><b>Typical timeline</b>2 to 4 weeks</div>
+          <div><b>Tools used</b>Azure Data Factory, Azure SQL, Python, T-SQL, ADLS Gen2</div>
+        </div>
+        <p class="includes-label">What's included</p>
+        <ul class="includes">
+          <li>Multi-source ingestion: automated pulls from CSV/JSON dumps, relational databases, and REST APIs</li>
+          <li>Serverless pipeline orchestration with scheduled triggers, retry policies, and tumbling-window schedules</li>
+          <li>Watermark-based incremental loading to ensure sub-second query speeds as transactional volumes grow</li>
+          <li>Staging layer setup (`stg.*`) and dimensional warehouse star schemas (`dw.*`) tailored for reporting</li>
+          <li>Detailed data dictionaries, entity-relationship models, and schema mapping documentation</li>
+        </ul>
+        <p class="ideal-for"><b>Ideal for:</b> organizations pulling data manually across fragmented systems, or needing an enterprise warehouse to power dependable reporting.</p>
+        <a href="contact.html?service=Data%20Analytics#contact" class="btn btn-solid">Discuss this capability</a>
+      </div>
+
+      <div class="service-detail tilt reveal">
+        <div class="service-detail-head">
+          <div class="service-icon">DQ</div>
+          <h2>Data Cleaning &amp; Automated Quality Gates</h2>
+        </div>
+        <p class="desc">Production-grade Python validation frameworks that audit schema conformity, eliminate duplicate records, reconcile broken equations, and enforce business integrity before bad data ever reaches decision-makers.</p>
+        <div class="service-meta">
+          <div><b>Typical timeline</b>1 to 2 weeks</div>
+          <div><b>Tools used</b>Python, Pandas, NumPy, SQL, Automated Quality Gates</div>
+        </div>
+        <p class="includes-label">What's included</p>
+        <ul class="includes">
+          <li>Multi-tier automated validation gates: schema verification, missing-value imputation, and null checks</li>
+          <li>Primary key deduplication, referential foreign-key integrity, and calendar date feasibility verification</li>
+          <li>Complex business-rule enforcement (e.g. inventory conservation equations, positive quantity guards)</li>
+          <li>Automated data quality scoring (0–100%) and error logging to audit tables for full governance</li>
+          <li>Clean, standardized, reconciled datasets handed back ready for modeling or dashboard consumption</li>
+        </ul>
+        <p class="ideal-for"><b>Ideal for:</b> teams wrestling with conflicting spreadsheet reports, unreliable transactional extracts, or untrusted numbers.</p>
+        <a href="contact.html?service=Data%20Analytics#contact" class="btn btn-solid">Discuss this capability</a>
+      </div>
+
+      <div class="service-detail tilt reveal">
+        <div class="service-detail-head">
           <div class="service-icon">BI</div>
-          <h2>Dashboards &amp; BI</h2>
+          <h2>Exploratory Analysis &amp; Business Intelligence</h2>
         </div>
-        <p class="desc">Interactive Power BI and Tableau dashboards built around the KPIs your team actually checks, so decisions don't wait on someone digging through spreadsheets. Every dashboard starts with understanding what question you're actually trying to answer, not just what data you happen to have.</p>
+        <p class="desc">Interactive Power BI and Tableau reporting suites structured around the core metrics leadership actually tracks, enabling deep exploratory analysis, category diagnostics, and regional benchmarking.</p>
         <div class="service-meta">
           <div><b>Typical timeline</b>1 to 3 weeks</div>
-          <div><b>Tools used</b>Power BI, Tableau, DAX, SQL</div>
+          <div><b>Tools used</b>Power BI, Tableau, DAX, T-SQL, Dimensional Modeling</div>
         </div>
         <p class="includes-label">What's included</p>
         <ul class="includes">
-          <li>KPI discovery: a short working session to figure out what actually matters to track for your business</li>
-          <li>Data modeling so your dashboard stays fast and accurate as data grows, not a mess of one-off queries</li>
-          <li>Dashboard build with DAX measures, drill-through reports, slicers and interactive filters</li>
-          <li>Mobile-friendly layout so the numbers are readable on a phone during a meeting, not just a monitor</li>
-          <li>A walkthrough session so your team knows how to use, filter, and trust what they're looking at</li>
-          <li>One round of revisions after you've actually used it for a week and know what's missing</li>
+          <li>Dimensional star-schema modeling with optimized single-direction relationships for rapid filtering</li>
+          <li>High-performance DAX measure libraries utilizing `VAR/RETURN` patterns for sub-second calculations</li>
+          <li>Executive KPI cards, interactive decomposition trees, dynamic date slicers, and drill-through pages</li>
+          <li>Dedicated category, supplier, store performance, and financial margin analysis views</li>
+          <li>Walkthrough and handover session so business stakeholders confidently navigate and filter insights</li>
         </ul>
-        <p class="ideal-for"><b>Ideal for:</b> teams tracking sales, operations, or marketing metrics who are still relying on manual spreadsheet reports or scattered exports.</p>
-        <a href="contact.html?service=Dashboards%20%26%20BI" class="btn btn-solid">Discuss this service</a>
+        <p class="ideal-for"><b>Ideal for:</b> C-suite executives and departmental managers needing real-time visibility into sales trends, margins, and operational drivers.</p>
+        <a href="contact.html?service=Data%20Analytics#contact" class="btn btn-solid">Discuss this capability</a>
       </div>
 
       <div class="service-detail tilt reveal">
         <div class="service-detail-head">
-          <div class="service-icon">ETL</div>
-          <h2>ETL &amp; Data Pipelines</h2>
+          <div class="service-icon">AA</div>
+          <h2>Advanced Analytics &amp; Predictive Insights</h2>
         </div>
-        <p class="desc">Azure Data Factory pipelines that pull data from your CSVs, APIs, and databases into one clean, reliable source of truth, with validation and error handling built in from day one, not bolted on after something breaks in production.</p>
+        <p class="desc">Moving beyond backward-looking reporting into algorithmic forecasting, risk tier classification, and statistical performance modeling to identify operational blind spots and guide strategic decisions.</p>
         <div class="service-meta">
-          <div><b>Typical timeline</b>2 to 5 weeks</div>
-          <div><b>Tools used</b>Azure Data Factory, Azure SQL, Python, SQL</div>
+          <div><b>Typical timeline</b>2 to 4 weeks</div>
+          <div><b>Tools used</b>Python, Scikit-Learn, Statistical Modeling, DAX</div>
         </div>
         <p class="includes-label">What's included</p>
         <ul class="includes">
-          <li>Mapping your current data sources and how they should flow together end to end</li>
-          <li>Parameterized ADF pipelines with scheduling and automated triggers, no manual exports</li>
-          <li>Data validation for schema, nulls and duplicates before data lands downstream</li>
-          <li>Error handling and alerting, so a failed run gets caught the same day, not the same month</li>
-          <li>A destination data model that's actually usable for reporting, not just a raw data dump</li>
-          <li>Documentation and data dictionaries so the pipeline isn't a black box only I understand</li>
+          <li>Days of Inventory (DOI) and Average Daily Sales (ADS) velocity modeling for stockout risk detection</li>
+          <li>Predictive reorder trigger algorithms and seasonal demand forecasting</li>
+          <li>Customer behavior segmentation, cohort retention tracking, and margin elasticity analysis</li>
+          <li>Anomaly detection to surface hidden cost leaks, return rate surges, or supplier fulfillment delays</li>
+          <li>Executive summary documentation translating statistical models into clear, actionable business strategies</li>
         </ul>
-        <p class="ideal-for"><b>Ideal for:</b> businesses pulling data from multiple systems by hand, or anyone tired of a monthly data-wrangling scramble before every report.</p>
-        <a href="contact.html?service=ETL%20%26%20Data%20Pipelines" class="btn btn-solid">Discuss this service</a>
+        <p class="ideal-for"><b>Ideal for:</b> companies looking to proactively mitigate inventory risk, protect gross margins, and make data-grounded strategic investments.</p>
+        <a href="contact.html?service=Data%20Analytics#contact" class="btn btn-solid">Discuss this capability</a>
       </div>
 
-      <div class="service-detail tilt reveal">
-        <div class="service-detail-head">
-          <div class="service-icon">EDA</div>
-          <h2>Data Cleaning &amp; Analysis</h2>
-        </div>
-        <p class="desc">Python-based cleaning, outlier detection and exploratory analysis, so decisions are based on data you can actually trust, not a spreadsheet full of guesses, typos, and duplicate rows nobody noticed.</p>
-        <div class="service-meta">
-          <div><b>Typical timeline</b>3 days to 2 weeks</div>
-          <div><b>Tools used</b>Python, Pandas, NumPy, Seaborn, SQL</div>
-        </div>
-        <p class="includes-label">What's included</p>
-        <ul class="includes">
-          <li>Cleaning and standardizing messy, inconsistent, or duplicated records across your dataset</li>
-          <li>Outlier and anomaly detection so unusual numbers get flagged instead of skewing your averages</li>
-          <li>Exploratory analysis to surface trends, patterns and data quality issues you didn't know were there</li>
-          <li>A clear written summary of findings in plain language, not just a pile of unlabeled charts</li>
-          <li>Recommendations on what to track going forward to keep the data clean without redoing this later</li>
-          <li>Cleaned dataset handed back to you in a usable format, ready for reporting or modeling</li>
-        </ul>
-        <p class="ideal-for"><b>Ideal for:</b> anyone sitting on a dataset they don't fully trust yet, or who needs a one-time deep dive before making a decision.</p>
-        <a href="contact.html?service=Data%20Cleaning%20%26%20Analysis" class="btn btn-solid">Discuss this service</a>
+    </div>
+  </section>
+
+  <!-- FEATURED PROJECT -->
+  <section style="padding-top:0;" id="featured-project">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">Flagship Intelligence Platform</p>
+        <h2>Clarivens Inventory Intelligence</h2>
+        <p>An end-to-end automated retail intelligence platform built by Clarivens.</p>
       </div>
 
-      <div class="service-detail tilt reveal">
-        <div class="service-detail-head">
-          <div class="service-icon">AT</div>
-          <h2>Reporting &amp; Automation</h2>
+      <div class="featured-project tilt reveal">
+        <div class="featured-project-images grid-3">
+          <img src="assets/inventory-intelligence/01_executive_overview.png" alt="Clarivens Inventory Intelligence — Executive Overview Dashboard">
+          <img src="assets/inventory-intelligence/02_inventory_intelligence.png" alt="Clarivens Inventory Intelligence — Stockout Risk Action Matrix">
+          <img src="assets/inventory-intelligence/03_sales_analytics.png" alt="Clarivens Inventory Intelligence — Sales & Performance Analytics">
         </div>
-        <p class="desc">Automated recurring reports and SQL stored procedures, so your team stops manually rebuilding the same spreadsheet every week or month, and stops finding out about a broken number after it's already gone out.</p>
-        <div class="service-meta">
-          <div><b>Typical timeline</b>1 to 3 weeks</div>
-          <div><b>Tools used</b>Azure Data Factory, SQL Server, Power BI, Excel</div>
-        </div>
-        <p class="includes-label">What's included</p>
-        <ul class="includes">
-          <li>Auditing your current recurring report and mapping exactly where the manual effort goes</li>
-          <li>Automated workflows using ADF triggers and SQL stored procedures instead of manual steps</li>
-          <li>Scheduled delivery so the report is ready and in the right inbox before anyone has to ask</li>
-          <li>A fallback plan and error logging so failures get caught and flagged, not silently missed</li>
-          <li>Version history so you can see what changed between reports without digging through email</li>
-          <li>A short handover session so your team can adjust minor things without needing to call me first</li>
-        </ul>
-        <p class="ideal-for"><b>Ideal for:</b> teams that already know what report they need, they just don't want to build it by hand every single cycle.</p>
-        <a href="contact.html?service=Reporting%20%26%20Automation" class="btn btn-solid">Discuss this service</a>
-      </div>
+        <div class="featured-project-body">
+          <p class="featured-project-label">End-to-End Enterprise Data Platform</p>
+          <h3>Clarivens Inventory Intelligence — Retail Data Platform</h3>
+          <p>Clarivens Inventory Intelligence is an end-to-end retail data platform that automates data ingestion, validation, transformation, warehouse loading, business intelligence and inventory-risk analysis across multi-source retail data. Architected for a multi-format retail group operating 36 physical stores across 9 Indian states, the platform ingests 178,000+ transactional and inventory records, runs a 12-rule Python automated data-quality gate, orchestrates incremental loading into an Azure SQL dimensional star schema, and powers an executive 6-page Power BI suite.</p>
+          
+          <div class="featured-project-metrics">
+            <div class="featured-metric-item">
+              <div class="val">36 Stores</div>
+              <div class="lbl">9 Indian States</div>
+            </div>
+            <div class="featured-metric-item">
+              <div class="val">178,000+</div>
+              <div class="lbl">Records Analyzed</div>
+            </div>
+            <div class="featured-metric-item">
+              <div class="val">1,200+</div>
+              <div class="lbl">Catalog SKUs</div>
+            </div>
+            <div class="featured-metric-item">
+              <div class="val">12 Rules</div>
+              <div class="lbl">Quality Gate</div>
+            </div>
+            <div class="featured-metric-item">
+              <div class="val">6 Pages</div>
+              <div class="lbl">25+ DAX Measures</div>
+            </div>
+          </div>
 
+          <div class="featured-project-tags">
+            <span>Azure Data Factory</span>
+            <span>Azure SQL Database</span>
+            <span>Python 3.x</span>
+            <span>T-SQL / SQL</span>
+            <span>Power BI</span>
+            <span>Star Schema</span>
+            <span>DAX</span>
+            <span>Data Quality Framework</span>
+            <span>ADLS Gen2</span>
+            <span>REST API</span>
+          </div>
+          <div class="featured-project-actions">
+            <a href="contact.html?service=Data%20Analytics#contact" class="btn btn-solid">Discuss a project like this</a>
+            <a href="ai-automation.html#featured-project" class="btn btn-outline">View Automation Architecture →</a>
+            <a href="workspace.html" class="btn btn-outline">Access Workspace</a>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -175,8 +236,8 @@
       <h4>Company</h4>
       <a href="index.html">Home</a>
       <a href="services.html">Services</a>
+      <a href="projects.html">Projects</a>
       <a href="about.html">Founder</a>
-      <a href="index.html#work">Work</a>
       <a href="faq.html">FAQ</a>
       <a href="contact.html">Contact</a>
     </div>

@@ -1,0 +1,73 @@
+# ============================================================
+# CLARIVENS — .gitignore
+# ============================================================
+
+# ----- SECRETS & ENVIRONMENT --------------------------------
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+
+# ----- PYTHON -----------------------------------------------
+venv/
+.venv/
+env/
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+dist/
+build/
+.eggs/
+*.egg
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+htmlcov/
+.coverage
+.coverage.*
+coverage.xml
+*.cover
+
+# ----- DATABASES --------------------------------------------
+clarivens.db
+*.sqlite
+*.sqlite3
+*.db
+
+# ----- UPLOADS & GENERATED FILES ----------------------------
+backend/uploads/
+backend/exports/
+backend/temp/
+generated/
+*.log
+*.tmp
+
+# ----- NODE / FRONTEND --------------------------------------
+node_modules/
+.next/
+dist/
+build/
+.vercel/
+.netlify/
+*.tsbuildinfo
+
+# ----- IDE & OS ---------------------------------------------
+.vscode/
+.idea/
+*.suo
+*.user
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ----- AZURE / CLOUD ----------------------------------------
+.azure/
+*.publishsettings
+
+# ----- ALEMBIC GENERATED ------------------------------------
+# Keep migrations tracked, but ignore pycache inside them
+backend/migrations/__pycache__/

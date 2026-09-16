@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Client Workspace | Clarivens</title>
+<meta name="description" content="Clarivens client portal and automated analytics workspace.">
+<link rel="icon" type="image/png" href="logo-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+  /* Minimal additions specifically for workspace, matching existing design language */
+  .workspace-container { padding: 40px 0; min-height: 50vh; }
+  .panel { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 30px; margin-bottom: 20px; }
+  .panel h3 { margin-top: 0; color: #fff; }
+  .result-box { background: rgba(0,0,0,0.5); padding: 15px; border-radius: 8px; font-family: 'JetBrains Mono', monospace; font-size: 14px; white-space: pre-wrap; margin-top: 15px; border: 1px solid rgba(255,255,255,0.05); }
+  input[type="file"] { background: rgba(255,255,255,0.05); color: #fff; padding: 10px; border-radius: 8px; border: 1px dashed rgba(255,255,255,0.2); width: 100%; margin-bottom: 15px; }
+  .status-badge { display: inline-block; padding: 4px 10px; border-radius: 20px; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+  .status-processing { background: rgba(255,193,7,0.2); color: #ffc107; }
+  .status-completed { background: rgba(40,167,69,0.2); color: #28a745; }
+  .status-pending { background: rgba(255,255,255,0.1); color: #fff; }
+</style>
+</head>
+<body>
+
+<div class="glow-orb o1"></div>
+<div class="glow-orb o2"></div>
+<div id="cursorRing"></div>
+<div id="cursorDot"></div>
+
+<header>
+  <nav class="wrap">
+    <a href="index.html" class="logo"><img src="logo-icon.png" alt="Clarivens"></a>
+    <div class="nav-links" id="navLinks">
+      <a href="services.html">Services</a>
+      <a href="projects.html">Projects</a>
+      <a href="about.html">Founder</a>
+      <a href="workspace.html" class="btn btn-solid">Workspace</a>
+    </div>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">☰</button>
+  </nav>
+</header>
+
+<main id="top">
+  <section class="page-hero" style="padding-bottom: 20px;">
+    <div class="wrap">
+      <p class="eyebrow">Client Portal</p>
+      <h1>AI Analytics Workspace</h1>
+      <p class="lead">Upload your dataset to automatically generate insights, clean data, and predict trends.</p>
+    </div>
+  </section>
+
+  <section class="workspace-container">
+    <div class="wrap" id="workspaceContent">
+      <!-- Loading State -->
+      <div id="loadingState" style="text-align: center; padding: 50px;">
+        <p>Initializing workspace...</p>
+      </div>
+      
+      <!-- Dashboard (hidden by default) -->
+      <div id="dashboardView" style="display: none;">
+        <div class="panel tilt">
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <h3>Project: <span id="projectName">New Analytics Project</span></h3>
+            <span id="projectStatus" class="status-badge status-pending">Pending Upload</span>
+          </div>
+          <p>Upload a CSV, JSON, or Excel dataset to begin the automated analysis pipeline.</p>
+          
+          <div style="margin-top: 20px;">
+            <input type="file" id="dataFile" accept=".csv, .xlsx, .xls, .json">
+            <button id="uploadBtn" class="btn btn-solid">Upload & Analyze</button>
+          </div>
+        </div>
+
+        <div class="panel reveal" id="resultsPanel" style="display: none;">
+          <h3>Analysis Results</h3>
+          
+          <h4>1. Data Profiling</h4>
+          <div id="resProfile" class="result-box">Waiting for data...</div>
+          
+          <h4 style="margin-top: 20px;">2. AI Business Insights</h4>
+          <div id="resInsights" class="result-box">Waiting for data...</div>
+          
+          <h4 style="margin-top: 20px;">3. Predictive Modeling (AutoML)</h4>
+          <div id="resML" class="result-box">Waiting for data...</div>
+          
+        </div>
+
+        <!-- Reference Production Pipeline -->
+        <div class="panel tilt reveal" style="margin-top: 30px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; flex-wrap: wrap; gap: 10px;">
+            <h3 style="margin:0;">Featured Production Pipeline: <span style="color:var(--orange);">Clarivens Inventory Intelligence</span></h3>
+            <span class="status-badge status-completed">Flagship Azure Platform</span>
+          </div>
+          <p style="color: var(--muted); font-size: 14.5px; line-height: 1.6; margin-bottom: 20px;">
+            Explore our end-to-end Azure retail data platform, ingesting multi-source data from 36 stores across 9 Indian states. 178,000+ records validated through a 12-rule Python automated quality gate, loaded into an Azure SQL star-schema data warehouse, and surfaced via a 6-page Power BI executive analytics suite.
+          </p>
+          
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 10px; margin-bottom: 20px;">
+            <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px;">
+              <div style="font-family:'Space Grotesk',sans-serif; font-size:17px; font-weight:700; color:var(--white);">36 Stores</div>
+              <div style="font-family:'JetBrains Mono',monospace; font-size:10.5px; color:var(--muted); text-transform:uppercase;">9 Indian States</div>
+            </div>
+            <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px;">
+              <div style="font-family:'Space Grotesk',sans-serif; font-size:17px; font-weight:700; color:var(--white);">178,000+</div>
+              <div style="font-family:'JetBrains Mono',monospace; font-size:10.5px; color:var(--muted); text-transform:uppercase;">Records Processed</div>
+            </div>
+            <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px;">
+              <div style="font-family:'Space Grotesk',sans-serif; font-size:17px; font-weight:700; color:var(--white);">12 Rules</div>
+              <div style="font-family:'JetBrains Mono',monospace; font-size:10.5px; color:var(--muted); text-transform:uppercase;">Quality Gate</div>
+            </div>
+            <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px;">
+              <div style="font-family:'Space Grotesk',sans-serif; font-size:17px; font-weight:700; color:var(--white);">6 Pages</div>
+              <div style="font-family:'JetBrains Mono',monospace; font-size:10.5px; color:var(--muted); text-transform:uppercase;">Power BI Suite</div>
+            </div>
+          </div>
+
+          <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+            <a href="projects.html" class="btn btn-solid">View All Projects →</a>
+            <a href="data-analytics.html#featured-project" class="btn btn-outline">Analytics Case Study</a>
+            <a href="https://github.com/Himanshubagde11/Azure-End-to-End-Data-Pipeline-for-Retail-Inventory.git" target="_blank" rel="noopener noreferrer" class="btn btn-outline">GitHub Source Code</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap footer-bottom">
+    <p>&copy; 2026 Clarivens &middot; Clarity. Innovation. Progress.</p>
+  </div>
+</footer>
+
+<script src="main.js"></script>
+<script src="frontend_api.js"></script>
+</body>
+</html>

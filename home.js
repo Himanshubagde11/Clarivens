@@ -96,6 +96,8 @@ if (window.emailjs) {
       requirementField.value = `I'm interested in: ${decoded}\n\n`;
       requirementField.focus();
       const serviceToHelpType = {
+        'Data Analytics': 'Data Analytics',
+        'AI Automation': 'AI Automation',
         'Dashboards & BI': 'Power BI Dashboard',
         'ETL & Data Pipelines': 'SQL / Database',
         'Data Cleaning & Analysis': 'Data Cleaning & Transformation',

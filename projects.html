@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Projects & Production Architectures | Clarivens</title>
+<meta name="description" content="Explore end-to-end data pipelines, cloud warehouses, executive BI platforms, full-stack web applications, and machine learning systems built by Clarivens.">
+<link rel="icon" type="image/png" href="logo-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="glow-orb o1"></div>
+<div class="glow-orb o2"></div>
+<div class="glow-orb o3"></div>
+<div id="cursorRing"></div>
+<div id="cursorDot"></div>
+
+<header>
+  <nav class="wrap">
+    <a href="index.html" class="logo"><img src="logo-icon.png" alt="Clarivens"></a>
+    <div class="nav-links" id="navLinks">
+      <a href="services.html">Services</a>
+      <a href="projects.html" style="color:var(--orange);">Projects</a>
+      <a href="about.html">Founder</a>
+      <a href="contact.html" class="btn btn-solid">Start a Project</a>
+    </div>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">☰</button>
+  </nav>
+</header>
+
+<div class="cookie-banner" id="cookieBanner" role="region" aria-label="Cookie consent">
+  <div class="cookie-banner-inner">
+    <p>We use minimal cookies to remember your preferences and understand site usage. No data is sold or shared with advertisers. See our <a href="privacy.html">Privacy Policy</a> for details.</p>
+    <div class="cookie-banner-actions">
+      <button class="btn btn-outline" id="cookieDecline" type="button">Decline</button>
+      <button class="btn btn-solid" id="cookieAccept" type="button">Accept</button>
+    </div>
+  </div>
+</div>
+
+<main id="top">
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+    <div class="wrap">
+      <p class="eyebrow">Case Studies &amp; Portfolio</p>
+      <h1>Flagship Projects &amp; Systems Built End to End.</h1>
+      <p class="lead">Explore in-depth technical case studies of enterprise data platforms, cloud warehouses, executive business intelligence suites, modern full-stack web applications, and predictive ML systems engineered by Clarivens.</p>
+    </div>
+  </section>
+
+  <!-- FILTER CONTROLS -->
+  <section style="padding-top:0; padding-bottom:30px;">
+    <div class="wrap">
+      <div class="project-filter-nav reveal">
+        <button class="project-filter-btn active" type="button" data-filter="all">All Projects (5)</button>
+        <button class="project-filter-btn" type="button" data-filter="data-cloud">Data &amp; Cloud (4)</button>
+        <button class="project-filter-btn" type="button" data-filter="web-ecommerce">Web &amp; E-Commerce (1)</button>
+        <button class="project-filter-btn" type="button" data-filter="ml-ai">AI &amp; Data Science (3)</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS LISTING -->
+  <section style="padding-top:0;">
+    <div class="wrap" id="projectsContainer">
+
+      <!-- ============================================================
+           PROJECT 1: Clarivens Inventory Intelligence (Azure Platform)
+           ============================================================ -->
+      <article class="featured-project tilt reveal project-item-card" data-category="data-cloud ml-ai">
+        <div class="featured-project-images grid-3">
+          <img src="assets/inventory-intelligence/01_executive_overview.png" alt="Clarivens Inventory Intelligence — Executive Overview Dashboard">
+          <img src="assets/inventory-intelligence/02_inventory_intelligence.png" alt="Clarivens Inventory Intelligence — Stockout Risk &amp; Inventory Optimization">
+          <img src="assets/inventory-intelligence/architecture-diagram.png" alt="Clarivens Inventory Intelligence — Azure Cloud Architecture Diagram">
+        </div>
+        <div class="featured-project-body">
+          <p class="featured-project-label">Flagship Enterprise Platform · Cloud Data &amp; Automation</p>
+          <h3>Clarivens Inventory Intelligence — Azure Retail Analytics Platform</h3>
+          <p>An enterprise-grade, end-to-end retail data platform that automates multi-source ingestion, data quality validation, warehouse transformation, and business intelligence. Architected for a multi-format retail group operating 36 physical stores across 9 Indian states, the platform ingests 178,000+ transactional and inventory records, enforces a 12-rule Python automated data-quality gate, orchestrates incremental loading into an Azure SQL dimensional star schema, and powers an executive 6-page Power BI suite.</p>
+
+          <!-- 4-Box Deep-Dive Grid -->
+          <div class="project-story-grid">
+            <div class="project-story-box">
+              <div class="box-lbl">01 / Challenge</div>
+              <p>Retail transactional and inventory data arrived fragmented across POS registers, flat supplier spreadsheets, and vendor APIs, creating blind spots in stockout risks, overstocked capital, and margin erosion.</p>
+            </div>
+            <div class="project-story-box">
+              <div class="box-lbl">02 / Cloud Architecture</div>
+              <p>Engineered an automated Azure Data Factory v2 pipeline extracting multi-source records into Azure Data Lake Storage Gen2, with orchestrated pipeline triggers and automated retry policies.</p>
+            </div>
+            <div class="project-story-box">
+              <div class="box-lbl">03 / Data Quality Gate</div>
+              <p>Implemented a 12-rule automated Python audit gate validating referential integrity, range bounds, negative stock flags, and date sanity, achieving a 99.9% clean-data pipeline score.</p>
+            </div>
+            <div class="project-story-box">
+              <div class="box-lbl">04 / Executive BI Suite</div>
+              <p>Built a 6-page interactive Power BI suite with 25+ specialized DAX measures tracking Sell-Through Rates, GMROI, Stockout Priority Matrix, and supplier delivery variances.</p>
+            </div>
+          </div>
+
+          <!-- Key Metrics -->
+          <div class="featured-project-metrics">
+            <div class="featured-metric-item">
+              <div class="val">36 Stores</div>
+              <div class="lbl">9 Indian States</div>
+            </div>
+            <div class="featured-metric-item">
+              <div class="val">178,000+</div>
+              <div class="lbl">Records Processed</div>
+            </div>
+            <div class="featured-metric-item">
+              <div class="val">1,200+</div>
+              <div class="lbl">Catalog SKUs</div>
+            </div>
+            <div class="featured-metric-item">
+              <div class="val">12 Rules</div>
+              <div class="lbl">Quality Gate</div>
+            </div>
+            <div class="featured-metric-item">
+              <div class="val">6 Pages</div>
+              <div class="lbl">25+ DAX Measures</div>
+            </div>
+            <div class="featured-metric-item">
+              <div class="val">99.9%</div>
+              <div class="lbl">Quality Score</div>
+            </div>
+          </div>
+
+          <!-- Tags -->
+          <div class="featured-project-tags">
+            <span>Azure Data Factory v2</span>
+            <span>Azure SQL Database</span>
+            <span>Python 3.14</span>
+            <span>T-SQL / SQL</span>
+            <span>Power BI</span>
+            <span>Dimensional Star Schema</span>
+            <span>DAX Modeling</span>
+            <span>ADLS Gen2</span>
+            <span>Automated Data Quality</span>
+            <span>REST API Ingestion</span>
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="featured-project-actions">
+            <a href="https://github.com/Himanshubagde11/Azure-End-to-End-Data-Pipeline-for-Retail-Inventory.git" target="_blank" rel="noopener noreferrer" class="btn btn-solid">GitHub Repository →</a>
+            <a href="data-analytics.html#featured-project" class="btn btn-outline">Analytics Deep-Dive</a>
+            <a href="ai-automation.html#featured-project" class="btn btn-outline">Automation Architecture</a>
+            <a href="workspace.html" class="btn btn-outline">Explore Workspace Demo</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- ============================================================
+           PROJECT 2: VEYRA E-Commerce Sales Analytics & Customer Segmentation
+           ============================================================ -->
+      <article class="featured-project tilt reveal project-item-card" data-category="data-cloud ml-ai">
+        <div class="featured-project-images grid-3">
+          <img src="veyra-bi-overview.png" alt="VEYRA — Executive Sales Analytics &amp; Revenue Overview Dashboard">
+          <img src="veyra-bi-products.png" alt="VEYRA — Product Performance, Categories &amp; Return Rate Diagnostics">
+          <img src="veyra-bi-financials.png" alt="VEYRA — Financial Health, Regional Analytics &amp; Gross Margin Analysis">
+        </div>
+        <div class="featured-project-body">
+          <p class="featured-project-label">Flagship Enterprise Analytics · Data Warehouse, ML &amp; BI Engineering</p>
+          <h3>VEYRA — E-Commerce Sales Analytics &amp; Customer Segmentation</h3>
+          <p>An end-to-end, enterprise-grade data analytics platform designed to Senior Data Analyst and BI Engineer standards. Features a fully operational, mathematically reconciled analytics pipeline spanning 2,099,963 order lines across 100,000 customer accounts. Engineered a Kimball star schema in Microsoft SQL Server with Columnstore indexing, automated Python 20-point data quality auditing, Scikit-Learn behavioral ML clustering (RFM &amp; K-Means K=5), explainable customer churn and CLV modeling, an analyst Excel workbook, and a 7-page C-suite Power BI reporting suite.</p>
+
+          <!-- 4-Box Deep-Dive Grid -->
+          <div class="project-story-grid">
+            <div class="project-story-box">
+              <div class="box-lbl">01 / Star Schema &amp; Columnstore</div>
+              <p>Architected a high-performance Kimball data warehouse in SQL Server (<code>DimCustomer</code>, <code>DimProduct</code>, <code>DimDate</code>, <code>DimLocation</code>, <code>DimPayment</code>, <code>FactSales</code>, <code>FactReturns</code>). Implemented a Nonclustered Columnstore Index (<code>NCCIX_FactSales</code>) achieving 90%+ compression and accelerating aggregations by &gt;20x.</p>
+            </div>
+            <div class="project-story-box">
+              <div class="box-lbl">02 / Automated Quality Gate</div>
+              <p>Built an automated Python audit framework executing 20 structural, referential, and mathematical checks across 100k accounts, guaranteeing 100% financial accuracy across $941.6M in net sales and $371.9M in gross profit (39.50% margin).</p>
+            </div>
+            <div class="project-story-box">
+              <div class="box-lbl">03 / RFM &amp; K-Means Clustering</div>
+              <p>Applied 1–5 quintile RFM scoring and Scikit-Learn K-Means (K=5): revealed that 28.4% of customers (&ldquo;Champions&rdquo;) drive 72.6% ($683.6M) of revenue, while isolating 15,498 high-churn accounts representing $50,940,454.53 in Revenue at Churn Risk.</p>
+            </div>
+            <div class="project-story-box">
+              <div class="box-lbl">04 / 7-Page Power BI &amp; Excel Suite</div>
+              <p>Engineered an executive dark/orange Power BI platform with 25+ DAX measures (<code>VAR/RETURN</code>) and customer 360 drill-through, paired with a 7-sheet Microsoft Excel financial model utilizing dynamic <code>XLOOKUP</code>, <code>SUMIFS</code>, and scenario tables.</p>
+            </div>
+          </div>
+
+          <!-- Key Metrics -->
+          <div class="featured-project-metrics">
+            <div class="featured-metric-item">
+              <div class="val">$941.6M</div>
+              <div class="lbl">Net Revenue</div>
+            </div>
+            <div class="featured-metric-item">
+              <div class="val">$371.9M</div>
+              <div class="lbl">Gross Profit (39.5%)</div>
+            </div>
+            <div class="featured-metric-item">
+              <div class="val">2,099,963</div>
+              <div class="lbl">Order Transactions</div>
+            </div>
+            <div class="featured-metric-item">
+              <div class="val">100,000</div>
+              <div class="lbl">Customers (73.8k Active)</div>
+            </div>
+            <div class="featured-metric-item">
+              <div class="val">$50.9M</div>
+              <div class="lbl">Revenue at Churn Risk</div>
+            </div>
+            <div class="featured-metric-item">
+              <div class="val">97.20%</div>
+              <div class="lbl">Repeat Revenue ($915.2M)</div>
+            </div>
+          </div>
+
+          <!-- Tags -->
+          <div class="featured-project-tags">
+            <span>Microsoft SQL Server</span>
+            <span>Power BI (7 Pages)</span>
+            <span>Python 3.14</span>
+            <span>Kimball Star Schema</span>
+            <span>Columnstore Index (NCCI)</span>
+            <span>25+ DAX Measures</span>
+            <span>Scikit-Learn</span>
+            <span>RFM Segmentation</span>
+            <span>K-Means Clustering (K=5)</span>
+            <span>Customer Lifetime Value (CLV)</span>
+            <span>Explainable Churn Modeling</span>
+            <span>Excel Financial Model</span>
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="featured-project-actions">
+            <a href="https://github.com/Himanshubagde11/Ecommerce-Sales-Analytics.git" target="_blank" rel="noopener noreferrer" class="btn btn-solid">GitHub Repository →</a>
+            <a href="contact.html?service=Data%20Analytics#contact" class="btn btn-outline">Discuss Analytics Project</a>
+            <a href="services.html" class="btn btn-outline">Explore All Services</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- ============================================================
+           PROJECT 3: VEYRA E-Commerce Web Storefront & Merchant Operations Platform
+           ============================================================ -->
+      <article class="featured-project tilt reveal project-item-card" data-category="web-ecommerce">
+        <div class="featured-project-images grid-3">
+          <img src="assets/veyra/01_storefront_hero.png" alt="VEYRA — Curated E-Commerce Consumer Storefront on Vercel">
+          <img src="assets/veyra/02_storefront_discover.png" alt="VEYRA — Interactive Discovery Experience &amp; Personalized Recommendations">
+          <img src="assets/veyra/03_admin_dashboard.png" alt="VEYRA — Centralized Merchant Admin Revenue &amp; Order Dashboard">
+        </div>
+        <div class="featured-project-body">
+          <p class="featured-project-label">Production Web Application · Next.js Storefront &amp; Merchant Admin Portal</p>
+          <h3>VEYRA — Modern E-Commerce Storefront &amp; Merchant Operations Platform</h3>
+          <p>A modern direct-to-consumer e-commerce marketplace and centralized merchant management portal engineered for performance, responsive ergonomics, and complete commerce operations. Features a customer-facing storefront with sub-second category browsing, dynamic faceted filtering, an interactive shopping cart, and a responsive checkout experience, paired with a centralized administrative control center for product catalog CRUD, category hierarchies, order status transitions, customer database tracking, and live revenue analytics.</p>
+
+          <!-- 4-Box Deep-Dive Grid -->
+          <div class="project-story-grid">
+            <div class="project-story-box">
+              <div class="box-lbl">01 / Modern Storefront</div>
+              <p>Engineered with Next.js and React, featuring sub-second category browsing, dynamic product filtering, and responsive mobile-first UI with edge caching on Vercel.</p>
+            </div>
+            <div class="project-story-box">
+              <div class="box-lbl">02 / Cart &amp; Checkout Ergonomics</div>
+              <p>Fluid client-side state handling shopping cart modifications, dynamic coupon discounts, address validation, and simulated payment transitions.</p>
+            </div>
+            <div class="project-story-box">
+              <div class="box-lbl">03 / Centralized Admin Portal</div>
+              <p>Merchant dashboard enabling full CRUD over catalog items, category hierarchies, order fulfillment status, customer relationships, and live revenue telemetry.</p>
+            </div>
+            <div class="project-story-box">
+              <div class="box-lbl">04 / Cloud Infrastructure</div>
+              <p>100% serverless deployment utilizing Vercel Edge networks for instant global asset distribution, automated SSL termination, and continuous CI/CD deployment.</p>
+            </div>
+          </div>
+
+          <!-- Admin Inventory & Hierarchy Sub-Showcase -->
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:12px; margin-bottom:24px;">
+            <div style="background:rgba(255,255,255,0.02); border:1px solid var(--line); border-radius:10px; overflow:hidden;">
+              <img src="assets/veyra/04_admin_products.png" alt="VEYRA Admin — Product Inventory &amp; Live Stock Controls" style="width:100%; display:block;">
+              <div style="padding:10px 14px; font-family:'JetBrains Mono',monospace; font-size:11.5px; color:var(--muted);">Admin / Product Inventory &amp; Live Stock Controls</div>
+            </div>
+            <div style="background:rgba(255,255,255,0.02); border:1px solid var(--line); border-radius:10px; overflow:hidden;">
+              <img src="assets/veyra/05_admin_categories.png" alt="VEYRA Admin — Category Hierarchy Management" style="width:100%; display:block;">
+              <div style="padding:10px 14px; font-family:'JetBrains Mono',monospace; font-size:11.5px; color:var(--muted);">Admin / Category Hierarchies &amp; Taxonomy</div>
+            </div>
+          </div>
+
+          <!-- Key Metrics -->
+          <div class="featured-project-metrics">
+            <div class="featured-metric-item">
+              <div class="val">Sub-second</div>
+              <div class="lbl">Storefront Load Time</div>
+            </div>
+            <div class="featured-metric-item">
+              <div class="val">Dual Portal</div>
+              <div class="lbl">Storefront + Admin</div>
+            </div>
+            <div class="featured-metric-item">
+              <div class="val">10 Categories</div>
+              <div class="lbl">Merchandise Hierarchy</div>
+            </div>
+            <div class="featured-metric-item">
+              <div class="val">100% Cloud</div>
+              <div class="lbl">Vercel Edge Hosted</div>
+            </div>
+          </div>
+
+          <!-- Tags -->
+          <div class="featured-project-tags">
+            <span>Next.js</span>
+            <span>React</span>
+            <span>Tailwind CSS</span>
+            <span>JavaScript / TypeScript</span>
+            <span>Vercel Edge</span>
+            <span>E-Commerce Storefront</span>
+            <span>Merchant Admin Portal</span>
+            <span>Cart State Management</span>
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="featured-project-actions">
+            <a href="https://veyra-gules.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn btn-solid">Visit Live Marketplace →</a>
+            <a href="contact.html?service=Web%20Development#contact" class="btn btn-outline">Discuss Web Development</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- ============================================================
+           PROJECT 4: COVID-19 Global Health Intelligence
+           ============================================================ -->
+      <article class="featured-project tilt reveal project-item-card" data-category="data-cloud ml-ai">
+        <div class="featured-project-body">
+          <p class="featured-project-label">Public Health Analytics · Time-Series &amp; Epidemiological Modeling</p>
+          <h3>Global Health Trajectory Analysis &amp; Epidemiological Trend Modeling</h3>
+          <p>A rigorous epidemiological data engineering and visualization study exploring the worldwide transmission dynamics of the COVID-19 pandemic. Collected, harmonized, and analyzed over 5,000,000 multi-national records from the World Health Organization (WHO) and Johns Hopkins University (CSSE) repositories to uncover transmission velocities, regional recovery differentials, and rolling mortality patterns across 180+ sovereign jurisdictions.</p>
+
+          <!-- 4-Box Deep-Dive Grid -->
+          <div class="project-story-grid">
+            <div class="project-story-box">
+              <div class="box-lbl">01 / Ingestion &amp; Cleansing</div>
+              <p>Aggregated raw time-series feeds from global public health registries, reconciling divergent country reporting formats, zero-value filling, and retroactive corrections.</p>
+            </div>
+            <div class="project-story-box">
+              <div class="box-lbl">02 / Moving Average Modeling</div>
+              <p>Implemented 7-day trailing moving averages to neutralize weekend reporting fluctuations, revealing underlying wave acceleration trajectories and inflection milestones.</p>
+            </div>
+            <div class="project-story-box">
+              <div class="box-lbl">03 / Case Fatality Indices</div>
+              <p>Calculated dynamic Case Fatality Rates (CFR) and testing-positivity ratios across demographic tiers and geographic regions to assess health system resilience.</p>
+            </div>
+            <div class="project-story-box">
+              <div class="box-lbl">04 / Visual Communication</div>
+              <p>Rendered multi-dimensional publication-ready heatmaps, comparative log-scale wave curves, and choropleth visualizations documented within interactive Jupyter Notebooks.</p>
+            </div>
+          </div>
+
+          <!-- Key Metrics -->
+          <div class="featured-project-metrics">
+            <div class="featured-metric-item">
+              <div class="val">5,000,000+</div>
+              <div class="lbl">Global Records</div>
+            </div>
+            <div class="featured-metric-item">
+              <div class="val">180+</div>
+              <div class="lbl">Countries Analyzed</div>
+            </div>
+            <div class="featured-metric-item">
+              <div class="val">7-Day</div>
+              <div class="lbl">Rolling Averages</div>
+            </div>
+            <div class="featured-metric-item">
+              <div class="val">Dual Source</div>
+              <div class="lbl">WHO &amp; Johns Hopkins</div>
+            </div>
+          </div>
+
+          <!-- Tags -->
+          <div class="featured-project-tags">
+            <span>Python 3.x</span>
+            <span>Pandas</span>
+            <span>NumPy</span>
+            <span>SciPy</span>
+            <span>SQL</span>
+            <span>Matplotlib</span>
+            <span>Seaborn</span>
+            <span>Jupyter Notebook</span>
+            <span>Time-Series Modeling</span>
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="featured-project-actions">
+            <a href="contact.html?service=Data%20Analytics#contact" class="btn btn-solid">Discuss Analytics Work</a>
+            <a href="services.html" class="btn btn-outline">Explore All Services</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- ============================================================
+           PROJECT 5: Clarivens Automated Analytics Workspace Engine
+           ============================================================ -->
+      <article class="featured-project tilt reveal project-item-card" data-category="data-cloud ml-ai">
+        <div class="featured-project-body">
+          <p class="featured-project-label">Cloud AI Engine · Machine Learning &amp; Generative Intelligence</p>
+          <h3>Clarivens Automated Analytics Workspace &amp; ML Inference Engine</h3>
+          <p>The core computational engine powering the Clarivens client portal. This system provides an automated, zero-ETL data analysis workflow: users upload CSV, Excel, or JSON datasets, and the engine automatically profiles statistical distributions, performs memory-safe data cleansing, benchmarks predictive machine learning models, and leverages Google Gemini 2.5 Flash to synthesize executive business insights without data hallucination.</p>
+
+          <!-- 4-Box Deep-Dive Grid -->
+          <div class="project-story-grid">
+            <div class="project-story-box">
+              <div class="box-lbl">01 / Security Gate</div>
+              <p>Magic-byte MIME verification, strict format allowlisting (CSV, XLSX, JSON), size limits (50MB), and UUID file path abstraction preventing directory traversal attacks.</p>
+            </div>
+            <div class="project-story-box">
+              <div class="box-lbl">02 / Automated Profiling</div>
+              <p>Instantaneous statistical inferencing determining column types, missingness, unique value cardinality, and distribution metrics within a sub-second sampling window.</p>
+            </div>
+            <div class="project-story-box">
+              <div class="box-lbl">03 / AutoML Target Heuristic</div>
+              <p>Intelligent target column heuristic detecting business metrics (revenue, sales, churn) and training RandomForest Regressors/Classifiers with out-of-sample benchmarking.</p>
+            </div>
+            <div class="project-story-box">
+              <div class="box-lbl">04 / Generative Strategic AI</div>
+              <p>Transmits aggregated statistical summaries (never raw records) to Google Gemini 2.5 Flash, enforcing strict Pydantic JSON schemas for structured, non-hallucinated findings.</p>
+            </div>
+          </div>
+
+          <!-- Key Metrics -->
+          <div class="featured-project-metrics">
+            <div class="featured-metric-item">
+              <div class="val">Zero-ETL</div>
+              <div class="lbl">Automated Profiling</div>
+            </div>
+            <div class="featured-metric-item">
+              <div class="val">Gemini 2.5</div>
+              <div class="lbl">Generative Flash</div>
+            </div>
+            <div class="featured-metric-item">
+              <div class="val">RandomForest</div>
+              <div class="lbl">AutoML Engine</div>
+            </div>
+            <div class="featured-metric-item">
+              <div class="val">13 / 13</div>
+              <div class="lbl">Tests Verified</div>
+            </div>
+          </div>
+
+          <!-- Tags -->
+          <div class="featured-project-tags">
+            <span>FastAPI</span>
+            <span>Python 3.14</span>
+            <span>Google Gemini 2.5 Flash</span>
+            <span>Scikit-Learn</span>
+            <span>SQLAlchemy ORM</span>
+            <span>Alembic</span>
+            <span>SlowAPI Rate Limiting</span>
+            <span>Starlette Security</span>
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="featured-project-actions">
+            <a href="workspace.html" class="btn btn-solid">Launch Live Workspace Demo →</a>
+            <a href="contact.html?service=AI%20Automation#contact" class="btn btn-outline">Discuss an AI System</a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- CLOSING CTA -->
+  <section style="padding-top:0;">
+    <div class="wrap">
+      <div class="cta-banner reveal">
+        <h2>Ready to build a reliable data or AI system?</h2>
+        <p>Whether you need an automated cloud data warehouse, executive Power BI dashboards, a modern web app, or an automated operational workflow, let's talk about what you're building.</p>
+        <a href="contact.html" class="btn btn-solid">Start the conversation</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap footer-grid">
+    <div class="footer-brand">
+      <img src="logo-full.png" alt="Clarivens: Clarity. Innovation. Progress." class="footer-logo">
+      <p class="footer-tagline">Clarity. Innovation. Progress.</p>
+      <p class="footer-blurb">We transform complex data into clear, meaningful insights businesses can understand and act upon.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="projects.html">Projects</a>
+      <a href="about.html">Founder</a>
+      <a href="faq.html">FAQ</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="footer-col">
+      <h4>Legal</h4>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms &amp; Conditions</a>
+    </div>
+    <div class="footer-col">
+      <h4>Get in touch</h4>
+      <div class="footer-social-row">
+        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=clarivens.io@gmail.com" target="_blank" rel="noopener noreferrer" aria-label="Email">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="17" height="17" aria-hidden="true"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
+        </a>
+        <a href="https://www.linkedin.com/in/himanshu-bagde11/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="17" height="17" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        </a>
+        <a href="https://github.com/Himanshubagde11" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="17" height="17" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+        </a>
+        <a href="https://www.instagram.com/clarivens/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="17" height="17" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072c-4.358.2-6.78 2.618-6.98 6.98C.014 8.332 0 8.74 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+        </a>
+        <a href="https://www.facebook.com/profile.php?id=61593940557370" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="17" height="17" aria-hidden="true"><path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.464.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.324v-21.35c0-.732-.593-1.325-1.325-1.325z"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="wrap footer-bottom">
+    <p>&copy; 2026 Clarivens &middot; Clarity. Innovation. Progress.</p>
+    <a href="projects.html#top">Back to top ↑</a>
+  </div>
+</footer>
+
+<script src="main.js"></script>
+<script>
+  // Filter functionality for Projects Page
+  document.addEventListener('DOMContentLoaded', () => {
+    const filterButtons = document.querySelectorAll('.project-filter-btn');
+    const projectCards = document.querySelectorAll('.project-item-card');
+
+    filterButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        filterButtons.forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
+
+        const filter = button.getAttribute('data-filter');
+
+        projectCards.forEach(card => {
+          if (filter === 'all') {
+            card.classList.remove('is-hidden');
+          } else {
+            const categories = card.getAttribute('data-category') || '';
+            if (categories.includes(filter)) {
+              card.classList.remove('is-hidden');
+            } else {
+              card.classList.add('is-hidden');
+            }
+          }
+        });
+      });
+    });
+  });
+</script>
+</body>
+</html>

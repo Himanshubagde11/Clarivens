@@ -25,7 +25,7 @@
     <a href="index.html" class="logo"><img src="logo-icon.png" alt="Clarivens"></a>
     <div class="nav-links" id="navLinks">
       <a href="services.html">Services</a>
-      <a href="index.html#work">Work</a>
+      <a href="projects.html">Projects</a>
       <a href="about.html">Founder</a>
       <a href="contact.html" class="btn btn-solid">Start a Project</a>
     </div>
@@ -76,17 +76,11 @@
 
       <div class="services-tabs reveal">
         <div class="tabs-nav" role="tablist" aria-label="Services">
-          <button class="tab-btn active" type="button" role="tab" aria-selected="true" aria-controls="panel-bi" data-tab="bi">
-            <span class="tab-icon">BI</span><span>Dashboards &amp; BI</span>
+          <button class="tab-btn active" type="button" role="tab" aria-selected="true" aria-controls="panel-da" data-tab="da">
+            <span class="tab-icon">DA</span><span>Data Analytics</span>
           </button>
-          <button class="tab-btn" type="button" role="tab" aria-selected="false" aria-controls="panel-etl" data-tab="etl">
-            <span class="tab-icon">ETL</span><span>ETL &amp; Pipelines</span>
-          </button>
-          <button class="tab-btn" type="button" role="tab" aria-selected="false" aria-controls="panel-eda" data-tab="eda">
-            <span class="tab-icon">EDA</span><span>Data Cleaning</span>
-          </button>
-          <button class="tab-btn" type="button" role="tab" aria-selected="false" aria-controls="panel-at" data-tab="at">
-            <span class="tab-icon">AT</span><span>Automation</span>
+          <button class="tab-btn" type="button" role="tab" aria-selected="false" aria-controls="panel-ai" data-tab="ai">
+            <span class="tab-icon">AI</span><span>AI Automation</span>
           </button>
           <button class="tab-btn" type="button" role="tab" aria-selected="false" aria-controls="panel-wd" data-tab="wd">
             <span class="tab-icon">WD</span><span>Web Development</span>
@@ -97,63 +91,43 @@
         </div>
 
         <div class="tabs-panels">
-          <div class="tab-panel active" id="panel-bi" data-panel="bi" role="tabpanel">
-            <h3>Dashboards &amp; BI</h3>
-            <p>Interactive Power BI and Tableau dashboards built around the KPIs your team actually checks, so decisions don't wait on someone digging through spreadsheets.</p>
+          <div class="tab-panel active" id="panel-da" data-panel="da" role="tabpanel">
+            <h3>Data Analytics</h3>
+            <p>From raw data to reliable insights — Clarivens builds the pipelines, cleans and transforms your data, develops analytics, and delivers interactive dashboards that help teams make better decisions.</p>
             <ul>
-              <li>KPI discovery: figuring out what actually matters to track for your business</li>
-              <li>Dashboard build with DAX measures, drill-through reports, slicers and filters</li>
-              <li>A walkthrough session so your team knows how to use and read it</li>
+              <li>Data cleaning, transformation and ETL pipelines</li>
+              <li>Power BI / Tableau dashboards and KPI intelligence</li>
+              <li>Advanced analytics, forecasting and predictive insights</li>
             </ul>
             <a href="data-analytics.html" class="btn btn-outline">See full details</a>
           </div>
-          <div class="tab-panel" id="panel-etl" data-panel="etl" role="tabpanel">
-            <h3>ETL &amp; Data Pipelines</h3>
-            <p>Azure Data Factory pipelines that pull data from your CSVs, APIs, and databases into one clean, reliable source of truth, with validation and error handling built in from day one.</p>
+          <div class="tab-panel" id="panel-ai" data-panel="ai" role="tabpanel">
+            <h3>AI Automation</h3>
+            <p>Connect AI, data and business workflows to automate repetitive processes, generate insights and reduce manual operational work.</p>
             <ul>
-              <li>Mapping your current data sources and how they should flow together</li>
-              <li>Parameterized ADF pipelines with scheduling and automated triggers</li>
-              <li>Documentation and data dictionaries so the pipeline isn't a black box</li>
+              <li>AI-powered workflows and intelligent agents</li>
+              <li>Automated data, documents, reporting and business processes</li>
+              <li>API, cloud and third-party system integrations</li>
             </ul>
-            <a href="data-analytics.html" class="btn btn-outline">See full details</a>
-          </div>
-          <div class="tab-panel" id="panel-eda" data-panel="eda" role="tabpanel">
-            <h3>Data Cleaning &amp; Analysis</h3>
-            <p>Python-based cleaning, outlier detection and exploratory analysis, so decisions are based on data you can actually trust, not a spreadsheet full of guesses and typos.</p>
-            <ul>
-              <li>Cleaning and standardizing messy, inconsistent, or duplicated records</li>
-              <li>Exploratory analysis to surface trends, outliers and data quality issues</li>
-              <li>A clear written summary of findings, not just a pile of charts</li>
-            </ul>
-            <a href="data-analytics.html" class="btn btn-outline">See full details</a>
-          </div>
-          <div class="tab-panel" id="panel-at" data-panel="at" role="tabpanel">
-            <h3>Reporting &amp; Automation</h3>
-            <p>Automated recurring reports and SQL stored procedures, so your team stops manually rebuilding the same spreadsheet every week or month.</p>
-            <ul>
-              <li>Auditing your current recurring report and where the manual effort goes</li>
-              <li>Automated workflows using ADF triggers and SQL stored procedures</li>
-              <li>A fallback plan and error logging so failures get caught, not missed</li>
-            </ul>
-            <a href="data-analytics.html" class="btn btn-outline">See full details</a>
+            <a href="ai-automation.html" class="btn btn-outline">See full details</a>
           </div>
           <div class="tab-panel" id="panel-wd" data-panel="wd" role="tabpanel">
             <h3>Web Development</h3>
-            <p>Professional business websites and web apps, built with whatever technology actually fits your project, from a lightweight custom site to a CMS-based platform, not a fixed stack forced onto every client.</p>
+            <p>Professional business websites and modern web applications, built with whatever technology actually fits your project, from custom high-performance builds to scalable web apps.</p>
             <ul>
               <li>Responsive design that works cleanly across desktop, tablet and mobile</li>
-              <li>Technology chosen per project: custom HTML/CSS/JS, WordPress, React/Next.js, or whatever fits best</li>
-              <li>Contact forms, backend integration, and hosting/deployment setup included</li>
+              <li>Custom HTML/CSS/JS, React, Next.js, or CMS platforms suited to your goals</li>
+              <li>Contact forms, backend integration, API connectivity and hosting setup</li>
             </ul>
             <a href="web-development.html" class="btn btn-outline">See full details</a>
           </div>
           <div class="tab-panel" id="panel-ad" data-panel="ad" role="tabpanel">
             <h3>App Development</h3>
-            <p>Mobile and desktop apps for Android, iOS and Windows, using cross-platform tools when speed and budget matter most, or a native approach when performance and platform-specific features come first.</p>
+            <p>Mobile and desktop applications for Android, iOS and Windows, engineered for speed, intuitive usability, and seamless platform integration.</p>
             <ul>
-              <li>Platform discovery to pick the right approach for your goals and budget</li>
-              <li>UI/UX planning so the app is genuinely usable, not just functional</li>
-              <li>Testing across devices and app store submission support where applicable</li>
+              <li>Platform discovery to choose cross-platform or native architectures</li>
+              <li>Thoughtful UI/UX planning so the app is intuitive, fast and reliable</li>
+              <li>Device testing, backend API sync, and app store deployment support</li>
             </ul>
             <a href="app-development.html" class="btn btn-outline">See full details</a>
           </div>
@@ -264,13 +238,23 @@
           <div class="project-num">01 / 2025</div>
           <h3>E-Commerce Sales Analytics &amp; Customer Segmentation</h3>
           <p>Analyzed 2M+ transaction records to identify sales trends and top-performing categories. Applied RFM analysis and K-Means clustering to segment customers into 5 groups, backed by a SQL Server star-schema warehouse and a Power BI dashboard tracking AOV, CLV, and churn rate.</p>
-          <div class="project-tags"><span>Python</span><span>SQL Server</span><span>Power BI</span><span>Excel</span></div>
+          <div class="project-tags"><span>Python</span><span>SQL Server</span><span>Power BI</span><span>Excel</span><span>RFM &amp; K-Means</span></div>
+          <div class="project-card-actions">
+            <a href="https://github.com/Himanshubagde11/Ecommerce-Sales-Analytics.git" target="_blank" rel="noopener noreferrer" class="btn btn-outline">GitHub Repo →</a>
+            <a href="data-analytics.html" class="btn btn-outline">Case Study</a>
+          </div>
         </div>
         <div class="project-card tilt reveal">
           <div class="project-num">02 / 2025</div>
-          <h3>Azure End-to-End Data Pipeline for Retail Inventory</h3>
-          <p>Built an automated Azure pipeline ingesting inventory data from flat files and REST APIs into Azure SQL Database, with parameterized ADF pipelines, error handling, and Python-based validation for schema, null, and duplicate checks, surfaced via near real-time Power BI dashboards.</p>
-          <div class="project-tags"><span>Azure Data Factory</span><span>Azure SQL</span><span>Python</span><span>Power BI</span></div>
+          <div class="project-card-label">Flagship Automation System</div>
+          <h3>Clarivens Inventory Intelligence — Azure Retail Analytics Platform</h3>
+          <p>End-to-end automated retail intelligence platform for 36 stores across 9 Indian states. 178,000+ transactional and inventory records processed through a 12-rule Python automated quality gate, loaded into an Azure SQL star-schema data warehouse, and surfaced via a 6-page Power BI executive analytics suite.</p>
+          <div class="project-tags"><span>Azure Data Factory</span><span>Azure SQL</span><span>Python</span><span>Power BI</span><span>Star Schema</span><span>DAX</span></div>
+          <div class="project-card-actions">
+            <a href="https://github.com/Himanshubagde11/Azure-End-to-End-Data-Pipeline-for-Retail-Inventory.git" target="_blank" rel="noopener noreferrer" class="btn btn-outline">GitHub Repo →</a>
+            <a href="data-analytics.html#featured-project" class="btn btn-outline">Analytics</a>
+            <a href="ai-automation.html#featured-project" class="btn btn-outline">Architecture</a>
+          </div>
         </div>
         <div class="project-card tilt reveal">
           <div class="project-num">03 / 2024</div>
@@ -278,6 +262,9 @@
           <p>Collected, cleaned and transformed 5M+ COVID-19 records from WHO and Johns Hopkins datasets. Calculated 7-day rolling averages, case fatality rates and vaccination coverage across countries, documenting insights through visualizations in Jupyter Notebook.</p>
           <div class="project-tags"><span>Python</span><span>SQL</span><span>Matplotlib</span><span>Seaborn</span></div>
         </div>
+      </div>
+      <div style="text-align: center; margin-top: 40px;" class="reveal">
+        <a href="projects.html" class="btn btn-solid">Explore All Case Studies &amp; Projects →</a>
       </div>
     </div>
   </section><!-- TRUST / SECURITY -->
@@ -351,8 +338,8 @@
       <h4>Company</h4>
       <a href="index.html">Home</a>
       <a href="services.html">Services</a>
+      <a href="projects.html">Projects</a>
       <a href="about.html">Founder</a>
-      <a href="index.html#work">Work</a>
       <a href="faq.html">FAQ</a>
       <a href="contact.html">Contact</a>
     </div>
