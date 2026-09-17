@@ -56,8 +56,8 @@ class Settings(BaseSettings):
     # --- Clarivens AI Agent ---
     agent_enabled: bool = True
     agent_version: str = "1.0.0"
-    agent_primary_model: str = "gemini-3.5-flash"
-    agent_fast_model: str = "gemini-3.5-flash"
+    agent_primary_model: str = "gemini-2.5-flash"
+    agent_fast_model: str = "gemini-2.5-flash"
     # Max conversation turns before session is considered stale
     agent_max_session_messages: int = 50
     # Requests per minute per session (rate limit)

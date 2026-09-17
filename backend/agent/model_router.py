@@ -126,20 +126,30 @@ class ModelRouter:
                 config.response_mime_type = "application/json"
                 config.response_schema = response_schema
 
-            # Make HTTP call to Gemini API
-            response = self.client.models.generate_content(
-                model=model_name,
-                contents=gemini_contents,
-                config=config,
-            )
-            
-            return ModelResponse(
-                content=response.text,
-                model_used=model_name,
-                tokens_in=response.usage_metadata.prompt_token_count if response.usage_metadata else 0,
-                tokens_out=response.usage_metadata.candidates_token_count if response.usage_metadata else 0,
-                raw=response,
-            )
+            import time
+            for attempt in range(3):
+                try:
+                    # Make HTTP call to Gemini API
+                    response = self.client.models.generate_content(
+                        model=model_name,
+                        contents=gemini_contents,
+                        config=config,
+                    )
+                    
+                    return ModelResponse(
+                        content=response.text,
+                        model_used=model_name,
+                        tokens_in=response.usage_metadata.prompt_token_count if response.usage_metadata else 0,
+                        tokens_out=response.usage_metadata.candidates_token_count if response.usage_metadata else 0,
+                        raw=response,
+                    )
+                except Exception as e:
+                    if "503" in str(e) and attempt < 2:
+                        logger.warning("[ModelRouter] 503 High Demand for model %s. Retrying attempt %d...", model_name, attempt + 1)
+                        time.sleep(1.5)
+                        continue
+                    raise e
+
 
         except Exception as e:
             logger.error("[ModelRouter] Gemini Model call failed for task '%s': %s", task, str(e))
