@@ -6,6 +6,8 @@ pydantic-settings
 pandas
 numpy
 scikit-learn
+statsmodels
+openpyxl
 python-multipart
 jinja2
 python-dotenv

@@ -23,13 +23,14 @@ from backend.config import settings
 logger = logging.getLogger(__name__)
 
 # --- Constants ---
-ALLOWED_EXTENSIONS = {"csv", "xlsx", "xls", "json"}
+ALLOWED_EXTENSIONS = {"csv", "xlsx", "xls", "json", "parquet", "xml", "txt"}
 MAX_BYTES = settings.max_upload_size_mb * 1024 * 1024
 
 # Magic byte signatures for allowed file types
 MAGIC_BYTES: Dict[bytes, str] = {
     b"\x50\x4B\x03\x04": "xlsx/xls",  # PK header (ZIP-based Office files)
     b"\xD0\xCF\x11\xE0": "xls",       # Legacy OLE compound document
+    b"PAR1": "parquet",               # Parquet format
 }
 
 UPLOAD_DIR = os.path.join(
@@ -97,6 +98,19 @@ def validate_mime_bytes(content: bytes, expected_ext: str) -> None:
         stripped = content.lstrip(b"\xef\xbb\xbf \t\r\n")  # strip BOM + whitespace
         if stripped and stripped[0] not in (ord("{"), ord("[")):
             raise ValueError("File does not appear to be valid JSON.")
+    elif expected_ext == "parquet":
+        if not content.startswith(b"PAR1"):
+            raise ValueError("File does not appear to be a valid Parquet file.")
+    elif expected_ext == "xml":
+        # Simplistic XML validation
+        stripped = content.lstrip(b"\xef\xbb\xbf \t\r\n")
+        if stripped and stripped[0] != ord("<"):
+            raise ValueError("File does not appear to be valid XML.")
+    elif expected_ext == "txt":
+        # Text must not start with binary magic bytes
+        for magic in MAGIC_BYTES:
+            if content[:4] == magic:
+                raise ValueError("File appears to be binary but was uploaded as TXT.")
 
 
 # ============================================================
@@ -171,6 +185,20 @@ def analyze_dataset_profile(file_path: str, ext: str) -> Dict[str, Any]:
             df = pd.read_excel(file_path, nrows=5000)
         elif ext == "json":
             df = pd.read_json(io.open(file_path, encoding="utf-8"), nrows=5000)
+        elif ext == "parquet":
+            # read_parquet doesn't support nrows natively in fastparquet, but pandas does via pyarrow engine
+            # For profiling, reading the whole parquet file if it's small, or we just let pandas handle it.
+            df = pd.read_parquet(file_path, engine='pyarrow').head(5000)
+        elif ext == "xml":
+            # Basic xml to pandas
+            try:
+                df = pd.read_xml(file_path)
+                df = df.head(5000)
+            except Exception:
+                return {"error": "XML_PARSE_FAILED", "message": "Failed to parse XML file into tabular format."}
+        elif ext == "txt":
+            # Attempt to read as delimiter-separated
+            df = _read_csv_safe(file_path, nrows=5000)
         else:
             return {"error": "UNSUPPORTED_FILE_TYPE", "message": f"File type '{ext}' is not supported."}
 

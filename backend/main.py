@@ -48,6 +48,7 @@ from backend.auth.dependencies import get_current_user, get_current_user_project
 from backend.services.data_ingestion import save_uploaded_file, sanitize_filename
 from backend.jobs.worker import execute_pipeline
 from backend.services.payment_service import create_checkout_session
+from backend.agent_routes import agent_router
 
 logger = logging.getLogger(__name__)
 
@@ -77,6 +78,17 @@ def _ensure_default_user():
         db.close()
 
 _ensure_default_user()
+
+# Seed Clarivens AI service catalog and knowledge base on startup (idempotent)
+def _seed_agent_data():
+    try:
+        from backend.agent.service_catalog_seed import seed_all
+        result = seed_all()
+        logger.info("[Init] Clarivens AI seed: %s", result)
+    except Exception as e:
+        logger.warning("[Init] Agent seed skipped: %s", e)
+
+_seed_agent_data()
 
 # Create FastAPI application
 app = FastAPI(
@@ -110,6 +122,9 @@ app.add_middleware(
     allow_methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allow_headers=["Authorization", "Content-Type", "X-Request-ID", "Accept"],
 )
+
+# Mount Clarivens AI Agent router
+app.include_router(agent_router)
 
 # Optional local user resolver for development fallback
 def get_user_or_dev_fallback(

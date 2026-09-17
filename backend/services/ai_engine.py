@@ -114,7 +114,7 @@ Summary Data:
 
         # Call Gemini using official google-genai 2.x SDK
         response = client.models.generate_content(
-            model="gemini-2.5-flash",
+            model=settings.agent_primary_model,
             contents=prompt,
             config=types.GenerateContentConfig(
                 response_mime_type="application/json",

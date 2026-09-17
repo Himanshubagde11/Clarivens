@@ -15,7 +15,7 @@ class Settings(BaseSettings):
     # --- URLs & CORS ---
     frontend_url: str = "http://localhost:3000"
     backend_url: str = "http://localhost:8000"
-    allowed_origins: List[str] = ["http://localhost:3000", "http://localhost:8000"]
+    allowed_origins: List[str] = ["http://localhost:3000", "http://localhost:8000", "https://clarivens.clarivens-io.workers.dev"]
 
     # --- Authentication ---
     # No default — must be set in environment. Generated with: secrets.token_hex(32)
@@ -27,17 +27,9 @@ class Settings(BaseSettings):
     auth_client_id: str = ""
     auth_client_secret: str = ""
 
-    # --- AI / Gemini ---
-    # Server-side only. Never expose to browser.
+    # --- AI / Gemini API ---
+    # Put your Gemini API Key in your production environment variables / .env
     gemini_api_key: str = ""
-
-    # Legacy support (will be removed in next major version)
-    ai_api_key: str = ""
-
-    @property
-    def resolved_gemini_key(self) -> str:
-        """Prefer GEMINI_API_KEY; fall back to AI_API_KEY for backwards compat."""
-        return self.gemini_api_key or self.ai_api_key
 
     # --- Storage ---
     storage_backend: str = "local"  # local | azure
@@ -60,6 +52,18 @@ class Settings(BaseSettings):
     # --- Payment ---
     payment_provider: str = "mock"
     payment_secret: str = ""
+
+    # --- Clarivens AI Agent ---
+    agent_enabled: bool = True
+    agent_version: str = "1.0.0"
+    agent_primary_model: str = "gemini-1.5-flash"
+    agent_fast_model: str = "gemini-1.5-flash"
+    # Max conversation turns before session is considered stale
+    agent_max_session_messages: int = 50
+    # Requests per minute per session (rate limit)
+    agent_rate_limit_per_minute: int = 20
+    # Knowledge base version tag
+    agent_knowledge_version: str = "1.0"
 
     model_config = SettingsConfigDict(
         env_file=".env",

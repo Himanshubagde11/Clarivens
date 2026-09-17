@@ -17,11 +17,14 @@ document.addEventListener('DOMContentLoaded', async () => {
     const projectStatus = document.getElementById('projectStatus');
     const resultsPanel = document.getElementById('resultsPanel');
     const resProfile = document.getElementById('resProfile');
+    const resCleaning = document.getElementById('resCleaning');
+    const resEDA = document.getElementById('resEDA');
     const resInsights = document.getElementById('resInsights');
     const resML = document.getElementById('resML');
     const projectNameEl = document.getElementById('projectName');
 
-    const API_BASE = '/api/v1';
+    const isLocalDev = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+    const API_BASE = isLocalDev ? 'http://127.0.0.1:8000/api/v1' : '/api/v1';
     let currentProjectId = null;
     let pollTimer = null;
     let pollCount = 0;
@@ -78,6 +81,80 @@ document.addEventListener('DOMContentLoaded', async () => {
                 li.appendChild(colSpan);
                 li.appendChild(sepSpan);
                 li.appendChild(typeSpan);
+                list.appendChild(li);
+            }
+            fragment.appendChild(list);
+        }
+
+        container.appendChild(fragment);
+    }
+
+    function safeRenderCleaning(container, cleaning) {
+        container.textContent = '';
+        if (!cleaning || typeof cleaning !== 'object') {
+            container.textContent = 'No cleaning data available.';
+            return;
+        }
+        
+        const fragment = document.createDocumentFragment();
+        
+        const summary = createTextEl('div', 'Cleaning Operations Performed:', {
+            color: '#ff6600',
+            fontWeight: '600',
+            marginBottom: '8px'
+        });
+        fragment.appendChild(summary);
+
+        const list = document.createElement('ul');
+        list.style.listStyle = 'none';
+        list.style.paddingLeft = '0';
+        list.style.margin = '0';
+
+        const addLi = (label, value) => {
+            const li = document.createElement('li');
+            li.style.padding = '3px 0';
+            li.appendChild(createTextEl('span', label, { color: '#fff', fontWeight: '600' }));
+            li.appendChild(createTextEl('span', ' : '));
+            li.appendChild(createTextEl('span', String(value), { color: '#888' }));
+            list.appendChild(li);
+        };
+
+        if (cleaning.duplicates_removed !== undefined) addLi('Duplicates Removed', cleaning.duplicates_removed);
+        if (cleaning.missing_values_imputed !== undefined) addLi('Missing Values Imputed', cleaning.missing_values_imputed);
+        
+        if (cleaning.imputation_strategy) {
+            for (const [col, strat] of Object.entries(cleaning.imputation_strategy)) {
+                addLi(`Imputed [${col}]`, strat);
+            }
+        }
+
+        fragment.appendChild(list);
+        container.appendChild(fragment);
+    }
+
+    function safeRenderEDA(container, eda) {
+        container.textContent = '';
+        if (!eda || typeof eda !== 'object') {
+            container.textContent = 'No EDA data available.';
+            return;
+        }
+
+        const fragment = document.createDocumentFragment();
+        
+        if (eda.summary_statistics) {
+            const title = createTextEl('div', 'Summary Statistics:', { color: '#ff6600', fontWeight: '600', marginBottom: '8px' });
+            fragment.appendChild(title);
+            
+            const list = document.createElement('ul');
+            list.style.listStyle = 'none';
+            list.style.paddingLeft = '0';
+            for (const [col, stats] of Object.entries(eda.summary_statistics)) {
+                const li = document.createElement('li');
+                li.style.padding = '4px 0';
+                li.appendChild(createTextEl('span', col, { color: '#fff', fontWeight: '600' }));
+                
+                const statStr = Object.entries(stats).map(([k, v]) => `${k}: ${typeof v === 'number' ? v.toFixed(2) : v}`).join(', ');
+                li.appendChild(createTextEl('span', ` — ${statStr}`, { color: '#888', fontSize: '12px' }));
                 list.appendChild(li);
             }
             fragment.appendChild(list);
@@ -348,6 +425,8 @@ document.addEventListener('DOMContentLoaded', async () => {
                 if (data.results && Array.isArray(data.results)) {
                     data.results.forEach(item => {
                         if (item.type === 'profile' && resProfile) safeRenderProfile(resProfile, item.data);
+                        if (item.type === 'cleaning' && resCleaning) safeRenderCleaning(resCleaning, item.data);
+                        if (item.type === 'eda' && resEDA) safeRenderEDA(resEDA, item.data);
                         if (item.type === 'insights' && resInsights) safeRenderInsights(resInsights, item.data);
                         if (item.type === 'ml' && resML) safeRenderML(resML, item.data);
                     });
