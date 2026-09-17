@@ -67,12 +67,20 @@ def log_event(
     detail: Optional[str] = None,
     metadata: Optional[Dict[str, Any]] = None,
     error_message: Optional[str] = None,
+    **kwargs: Any,
 ) -> None:
     """
     Emit a structured audit log entry.
     """
     status_str = status.value if isinstance(status, AuditStatus) else str(status)
     event_str = event.value if isinstance(event, AuditEvent) else str(event)
+
+    entry_meta = dict(metadata or {})
+    for k, v in kwargs.items():
+        if k == "details" and isinstance(v, dict):
+            entry_meta.update(v)
+        else:
+            entry_meta[k] = v
 
     entry = {
         "audit": True,
@@ -82,10 +90,10 @@ def log_event(
         "user_id": str(user_id) if user_id else "anonymous",
         "org_id": str(org_id) if org_id else "none",
         "resource_type": resource_type,
-        "resource_id": str(resource_id) if resource_id else None,
+        "resource_id": str(resource_id) if resource_id else (str(kwargs.get("project_id")) if kwargs.get("project_id") else None),
         "request_id": request_id or str(uuid.uuid4()),
-        "detail": detail or error_message,
-        "metadata": metadata,
+        "detail": detail or error_message or str(kwargs.get("details") or ""),
+        "metadata": entry_meta if entry_meta else None,
     }
 
     # Clean out None

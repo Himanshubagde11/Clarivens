@@ -571,6 +571,38 @@
   height: 16px;
 }
 
+/* Attach/Upload button */
+.cai-attach-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--cai-border);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--cai-muted);
+  transition: background 0.2s ease, color 0.2s ease, transform 0.15s ease;
+}
+
+.cai-attach-btn:hover {
+  background: rgba(255, 106, 0, 0.12);
+  color: var(--cai-orange);
+  transform: scale(1.08);
+}
+
+.cai-attach-btn:active {
+  transform: scale(0.93);
+}
+
+.cai-attach-btn svg {
+  width: 16px;
+  height: 16px;
+  stroke: currentColor;
+}
+
 /* ============================================================
    Branding footer
    ============================================================ */

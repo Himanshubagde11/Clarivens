@@ -28,8 +28,8 @@ class Settings(BaseSettings):
     auth_client_secret: str = ""
 
     # --- AI / Gemini API ---
-    # Put your Gemini API Key in your production environment variables / .env
-    gemini_api_key: str = ""
+    # Loaded securely from environment variables, .env, or backend/.env
+    gemini_api_key: str = os.environ.get("GEMINI_API_KEY") or os.environ.get("AI_API_KEY") or ""
 
     # --- Storage ---
     storage_backend: str = "local"  # local | azure
@@ -56,8 +56,8 @@ class Settings(BaseSettings):
     # --- Clarivens AI Agent ---
     agent_enabled: bool = True
     agent_version: str = "1.0.0"
-    agent_primary_model: str = "gemini-2.5-flash"
-    agent_fast_model: str = "gemini-2.5-flash"
+    agent_primary_model: str = "gemini-3.5-flash-lite"
+    agent_fast_model: str = "gemini-3.5-flash-lite"
     # Max conversation turns before session is considered stale
     agent_max_session_messages: int = 50
     # Requests per minute per session (rate limit)
@@ -66,7 +66,7 @@ class Settings(BaseSettings):
     agent_knowledge_version: str = "1.0"
 
     model_config = SettingsConfigDict(
-        env_file=".env",
+        env_file=(".env", "../.env", "backend/.env"),
         env_file_encoding="utf-8",
         extra="ignore",
     )

@@ -16,8 +16,10 @@
   // Config
   // ============================================================
   const isLocalDev = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
-  // Connected to live Render backend
-  const API_BASE = isLocalDev ? 'http://127.0.0.1:8000/api/ai' : 'https://clarivens.onrender.com/api/ai';
+  // Connected to live Render backend or local dev
+  const API_BASE = window.CLARIVENS_API_URL 
+    ? `${window.CLARIVENS_API_URL.replace(/\/+$/, '')}/api/ai`
+    : (isLocalDev ? 'http://127.0.0.1:8000/api/ai' : (window.location.hostname.includes('onrender.com') ? '/api/ai' : 'https://clarivens.onrender.com/api/ai'));
   const STORAGE_KEY = 'cai_session_id';
   const STORAGE_MSG_KEY = 'cai_last_msg_id';
 
@@ -120,12 +122,16 @@
         <!-- File upload form (shown when required) -->
         <div class="cai-lead-form cai-upload-form" id="cai-upload-form" aria-label="Upload dataset">
           <div class="cai-form-title">Upload your dataset for analysis.</div>
-          <input class="cai-lead-input" id="cai-upload-file" type="file" accept=".csv,.json,.xlsx" style="background:rgba(255,255,255,0.05); color:#fff; border:1px dashed rgba(255,255,255,0.2); padding: 8px;" />
+          <input class="cai-lead-input" id="cai-upload-file" type="file" accept=".csv,.json,.xlsx,.xls,.parquet,.xml,.txt" style="background:rgba(255,255,255,0.05); color:#fff; border:1px dashed rgba(255,255,255,0.2); padding: 8px;" />
           <button class="cai-lead-submit" id="cai-upload-submit">Upload & Analyze</button>
         </div>
 
         <!-- Input Bar -->
         <div class="cai-input-bar">
+          <button class="cai-attach-btn" id="cai-attach-btn" aria-label="Upload a data file" title="Upload Dataset">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"/></svg>
+          </button>
+          <input type="file" id="cai-inline-file" accept=".csv,.json,.xlsx,.xls,.parquet,.xml,.txt" style="display:none" aria-hidden="true" />
           <textarea
             class="cai-input"
             id="cai-input"
@@ -154,6 +160,8 @@
       messages: document.getElementById('cai-messages'),
       input: document.getElementById('cai-input'),
       sendBtn: document.getElementById('cai-send-btn'),
+      attachBtn: document.getElementById('cai-attach-btn'),
+      inlineFile: document.getElementById('cai-inline-file'),
       leadForm: document.getElementById('cai-lead-form'),
       leadName: document.getElementById('cai-lead-name'),
       leadEmail: document.getElementById('cai-lead-email'),
@@ -176,6 +184,23 @@
 
     // Send button
     elements.sendBtn.addEventListener('click', sendMessage);
+
+    // Persistent attach button — opens file picker or upload form
+    elements.attachBtn.addEventListener('click', function () {
+      if (state.sessionId) {
+        // If we have a session, trigger inline upload
+        elements.inlineFile.click();
+      } else {
+        showFileUploadForm();
+      }
+    });
+
+    // Inline file selected → upload immediately
+    elements.inlineFile.addEventListener('change', function () {
+      if (elements.inlineFile.files && elements.inlineFile.files.length > 0) {
+        submitInlineFileUpload(elements.inlineFile.files[0]);
+      }
+    });
 
     // Enter to send (Shift+Enter for newline)
     elements.input.addEventListener('keydown', function (e) {
@@ -333,8 +358,14 @@
           sessionStorage.setItem(STORAGE_KEY, resp.session_id);
         }
 
+        // Detect and clean system error messages before showing to user
+        let aiText = resp.message || '';
+        if (aiText.includes('System Error') || aiText.includes('GEMINI_API_KEY') || aiText.includes('encountered an error communicating')) {
+          aiText = "I'm having a brief connectivity issue. Please try your message again in a moment — I'll be right back!";
+        }
+
         // Show AI response
-        const aiMsgEl = addAIMessage(resp.message, { messageId: resp.last_message_id });
+        const aiMsgEl = addAIMessage(aiText, { messageId: resp.last_message_id });
         
         // Show suggested actions
         if (resp.suggested_actions && resp.suggested_actions.length > 0) {
@@ -590,6 +621,71 @@
     elements.uploadSubmit.textContent = 'Upload & Analyze';
     elements.uploadSubmit.disabled = false;
     elements.uploadFile.value = ''; // Reset input
+  }
+
+  // ============================================================
+  // Inline File Upload (from attach button)
+  // ============================================================
+  async function submitInlineFileUpload(file) {
+    if (!file) return;
+    if (!state.sessionId) {
+      await initSession();
+    }
+
+    addUserMessage('📎 Uploading: ' + file.name + '...');
+
+    const formData = new FormData();
+    formData.append('file', file);
+    formData.append('session_id', state.sessionId);
+
+    try {
+      const resp = await fetch(API_BASE + '/upload', {
+        method: 'POST',
+        body: formData,
+      });
+
+      if (!resp.ok) {
+        const err = await resp.json().catch(function () { return {}; });
+        throw new Error(err.detail || 'Upload failed');
+      }
+
+      const data = await resp.json();
+      if (data.project_id) {
+        state.projectId = data.project_id;
+      }
+
+      addAIMessage(
+        "✅ **Dataset uploaded successfully!** I'm now profiling your data to understand its structure.\n\n" +
+        "This takes just a moment. Once profiling is complete, I can tell you what analytics opportunities exist in your data and recommend the right Clarivens service for you.\n\n" +
+        "Feel free to ask questions like: *'What columns does my data have?'* or *'What can you do with this data?'*"
+      );
+
+      // Auto-send a message to trigger AI response about the data
+      setTimeout(function () {
+        if (state.sessionId) {
+          // Trigger analysis discussion
+          apiPost('/chat', {
+            message: 'I just uploaded a dataset called "' + file.name + '". Can you tell me what you see and what Clarivens services would help me?',
+            session_id: state.sessionId,
+            project_id: state.projectId,
+          }).then(function (resp) {
+            if (resp && resp.message) {
+              var aiText = resp.message;
+              if (aiText.includes('System Error') || aiText.includes('encountered an error')) {
+                aiText = "Your file has been uploaded and is being processed. Ask me anything about the data or our services!";
+              }
+              addAIMessage(aiText);
+            }
+          }).catch(function () {});
+        }
+      }, 2500);
+
+    } catch (err) {
+      console.error('[ClarivensAI] Inline upload error:', err);
+      addAIMessage("I couldn't upload that file. Please check: \n• File type is CSV, Excel, or JSON\n• File is under 50MB\n\nTry again or use the upload button below.");
+    }
+
+    elements.inlineFile.value = ''; // Reset
   }
 
   // ============================================================

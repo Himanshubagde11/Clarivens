@@ -199,6 +199,7 @@ async def chat(
             for t in response.tool_results
         ],
         tokens_used=response.tokens_used,
+        model_used=response.model_used,
     )
 
 
@@ -290,7 +291,7 @@ async def chat_upload(
     # 6. Inject a system message into the AI's memory to confirm the upload
     mem_manager.add_message(
         db=db,
-        session_id=session.id,
+        session=session,
         role="system",
         content=f"User successfully uploaded a dataset named '{dataset.original_filename}'. The dataset is currently being profiled. You will have access to the profile summary to identify opportunities and recommend services.",
     )

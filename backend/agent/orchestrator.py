@@ -10,6 +10,7 @@ Architecture principle: The LLM is one component, not the entire system.
 The orchestrator controls what the LLM sees, what tools it can call,
 and validates what it produces.
 """
+import re
 import logging
 import time
 import json
@@ -117,6 +118,9 @@ class ClarivensOrchestrator:
     Coordinates intent → state → tools → knowledge → model → validation → response.
     """
 
+    # Simple email regex for conversational lead capture
+    _EMAIL_RE = re.compile(r"[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}")
+
     def process_message(
         self,
         user_message: str,
@@ -188,6 +192,11 @@ class ClarivensOrchestrator:
             mem_manager.set_memory(db, session, "industry", entities["industry"])
         if entities.get("dataset_type"):
             mem_manager.set_memory(db, session, "dataset_type", entities["dataset_type"])
+        # Auto-extract email from user message for conversational lead capture
+        email_match = self._EMAIL_RE.search(sanitized_message)
+        if email_match and not mem_manager.get_memory(db, session, "email"):
+            mem_manager.set_memory(db, session, "email", email_match.group(0))
+            logger.info("[Orchestrator] Email auto-extracted from message: session=%s", session.session_id[:8])
 
         # 6. Advance conversation state
         has_project = bool(project_id or session.project_id)
@@ -206,7 +215,7 @@ class ClarivensOrchestrator:
         tool_results = []
         tool_results_for_prompt = []
 
-        tools_to_call = self._decide_tools(intent, session, project_id, user_id)
+        tools_to_call = self._decide_tools(intent, session, project_id, user_id, user_message=sanitized_message)
         for tool_name, tool_kwargs in tools_to_call:
             result = execute_tool(tool_name, role=role, db=db, **tool_kwargs)
             risk = get_tool_risk_level(tool_name)
@@ -259,7 +268,7 @@ class ClarivensOrchestrator:
             messages=messages_for_model,
             task=intent,
             system_prompt=system_prompt,
-            max_tokens=800,
+            max_tokens=1200,
         )
 
         # 13. Validate response
@@ -337,23 +346,26 @@ class ClarivensOrchestrator:
         session: models.AgentSession,
         project_id: Optional[int],
         user_id: Optional[int],
+        user_message: str = "",
     ) -> list[tuple[str, dict]]:
         """
         Decides which tools to call based on intent.
         Returns list of (tool_name, kwargs) tuples.
         """
         tools = []
-        session_memory = {}  # Will be loaded if needed
+        query = user_message[:200] if user_message else ""
 
-        if intent == Intent.SERVICE_DISCOVERY or intent == Intent.REQUIREMENT_ANALYSIS:
-            tools.append(("search_services", {"query": ""}))
+        if intent in (Intent.SERVICE_DISCOVERY, Intent.REQUIREMENT_ANALYSIS):
+            # Use the actual user message as the search query for better relevance
+            tools.append(("search_services", {"query": query}))
 
-        elif intent == Intent.PACKAGE_INQUIRY:
-            # Try to get a service slug from memory
-            pass  # Will be handled by the model with service search results
+        elif intent in (Intent.PACKAGE_INQUIRY, Intent.PRICING_INQUIRY):
+            # Search services with the user's query
+            tools.append(("search_services", {"query": query}))
 
-        elif intent == Intent.PRICING_INQUIRY:
-            tools.append(("search_services", {"query": ""}))
+        elif intent == Intent.GENERAL_FAQ:
+            # Broad service search for FAQs
+            tools.append(("search_services", {"query": query}))
 
         elif intent == Intent.PROJECT_STATUS and project_id and user_id:
             tools.append(("get_project_status", {"project_id": project_id, "user_id": user_id}))
@@ -377,6 +389,11 @@ class ClarivensOrchestrator:
             }))
 
         elif intent == Intent.ML_PREDICTION and project_id and user_id:
+            tools.append(("get_analysis_results", {
+                "project_id": project_id, "user_id": user_id, "result_type": "ml"
+            }))
+
+        elif intent == Intent.FORECASTING and project_id and user_id:
             tools.append(("get_analysis_results", {
                 "project_id": project_id, "user_id": user_id, "result_type": "ml"
             }))

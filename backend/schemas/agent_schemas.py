@@ -64,6 +64,7 @@ class ChatResponse(BaseModel):
     tool_results: list[ToolResultPublic] = []
     # Token count for transparency (not sensitive)
     tokens_used: int = 0
+    model_used: Optional[str] = None
 
 
 # ============================================================
