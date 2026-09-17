@@ -144,13 +144,28 @@ class ModelRouter:
         except Exception as e:
             logger.error("[ModelRouter] Gemini Model call failed for task '%s': %s", task, str(e))
             return ModelResponse(
-                content=self._fallback_response(task),
+                content=self._fallback_response(task, error_msg=str(e)),
                 model_used="fallback",
                 finish_reason="error",
             )
 
-    def _fallback_response(self, task: str) -> str:
+    def _fallback_response(self, task: str, error_msg: Optional[str] = None) -> str:
         """Returns a safe deterministic fallback when the model is unavailable."""
+        
+        # If there is no API key, give a clear message so the site owner knows why it's not working.
+        if not settings.gemini_api_key:
+            return (
+                "⚠️ **Configuration Error**: The AI is currently disconnected. "
+                "Please set the `GEMINI_API_KEY` environment variable in your Render dashboard."
+            )
+            
+        # If there was an API error, show a generic error but hint at the problem.
+        if error_msg:
+            return (
+                f"⚠️ **System Error**: The AI encountered an error communicating with Gemini. "
+                f"Please check the backend server logs for details."
+            )
+
         fallbacks = {
             "greeting": (
                 "Hello! I'm Clarivens AI, your analytics consultant. "
