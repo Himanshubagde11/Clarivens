@@ -16,8 +16,8 @@
   // Config
   // ============================================================
   const isLocalDev = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
-  // IMPORTANT: Replace 'https://YOUR_BACKEND_URL.com' with the actual URL where your Python backend is hosted!
-  const API_BASE = isLocalDev ? 'http://127.0.0.1:8000/api/ai' : 'https://YOUR_BACKEND_URL.com/api/ai';
+  // Connected to live Render backend
+  const API_BASE = isLocalDev ? 'http://127.0.0.1:8000/api/ai' : 'https://clarivens.onrender.com/api/ai';
   const STORAGE_KEY = 'cai_session_id';
   const STORAGE_MSG_KEY = 'cai_last_msg_id';
 
